@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id="title">Please, state the reason for the complaint</name>
+	<name id="ok_message">Thank you, your complaint has been taken into account. The author of the story will shortly be notified regarding your opinion.</name>
+	<name id="error_message">Something went wrong please try again later.</name>
+	<name id="signin_message">Please sign in to continue.</name>
+	<name id="submit">Submit</name>
+	<name id="cancel">I changed my mind</name>
+</names>

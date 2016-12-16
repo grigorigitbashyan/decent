@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id="yes">Visit</name>
+	<name id="no">Back</name>
+	<name id="allowMessage">This page is not free! Are you sure to visit it?</name>
+</names>

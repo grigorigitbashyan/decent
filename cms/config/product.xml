@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd"-->
+<!DOCTYPE productConfig [
+  <!ELEMENT productConfig (name*, countInPage, dateformats)>
+  <!ELEMENT dateformats (dateformat+)>
+]>
+
+<productConfig>
+	<name id="yes">Visit</name>
+	<name id="no">Back</name>
+	<name id="allowMessage">This page is not free! Are you sure to visit it?</name>
+	<countInPage>90</countInPage>
+	<dateformats>
+		<dateformat id="am">d F, Y</dateformat>
+		<dateformat id="en">d F, Y</dateformat>
+		<dateformat id="ru">d F, Y</dateformat>
+	</dateformats>
+</productConfig>

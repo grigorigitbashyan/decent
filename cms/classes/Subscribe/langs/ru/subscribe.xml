@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id='subscribe'>Подписка</name>
+	<name id='newSubscribe'>Новая подписка</name>
+	<name id='newSubscribeName'>Имя нового подписка: </name>
+	<name id="process">Процесс</name>
+	<name id="start">Старт</name>
+	<name id="abort">Аборт</name>
+	<name id="pause">Пауза</name>
+	<name id="continue">Продолжить</name>
+	<name id="subject">Тематика:</name>
+</names>

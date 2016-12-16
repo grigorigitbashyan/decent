@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id="noresults">No results found for your search.</name>
+	<name id="name">姓名</name>
+	<name id="email">邮箱</name>
+	<name id="phone">电话</name>
+	<name id="company">公司</name>
+	<name id="subject">主题</name>
+	<name id="text">内容</name>
+	<name id="send">发送</name>
+	<name id="sentmessage">您的信息已经发送。</name>
+</names>

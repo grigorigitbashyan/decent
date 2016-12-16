@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<translations>
+<!--Month-->
+<F>
+	<item>Январь</item>
+	<item>Февраль</item>
+	<item>Март</item>
+	<item>Апрель</item>
+	<item>Май</item>
+	<item>Июнь</item>
+	<item>Июль</item>
+	<item>Август</item>
+	<item>Сентябрь</item>
+	<item>Октябрь</item>
+	<item>Ноябрь</item>
+	<item>Декабрь</item>
+</F>
+<М><!--A short textual representation of a month, three letters (Jan through Dec)-->
+	<item>Янв</item>
+	<item>Фев</item>
+	<item>Мар</item>
+	<item>Апр</item>
+	<item>Май</item>
+	<item>Июн</item>
+	<item>Июл</item>
+	<item>Авг</item>
+	<item>Сен</item>
+	<item>Окт</item>
+	<item>Ноя</item>
+	<item>Дек</item>
+</М>
+<!--Day-->
+<l><!--A full textual representation of the day of the week (Sunday through Saturday)-->
+	<item>Воскресенье</item>
+	<item>Понедельник</item>
+	<item>Вторник</item>
+	<item>Среда</item>
+	<item>Чеверг</item>
+	<item>Пятница</item>
+	<item>Суббота</item>
+</l>
+<D><!--A textual representation of a day, three letters (Mon through Sun)-->
+	<item>Пон</item>
+	<item>Втр</item>
+	<item>Срд</item>
+	<item>Чет</item>
+	<item>Пят</item>
+	<item>Суб</item>
+	<item>Вск</item>
+</D>
+<S><!--English ordinal suffix for the day of the month, 2 characters (st, nd, rd or th. Works well with j)-->
+	<item>st</item>
+	<item>nd</item>
+	<item>rd</item>
+	<item>th</item>
+</S>
+</translations>

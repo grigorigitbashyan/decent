@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id='done'>Done</name>
+	<name id='delete'>Delete</name>
+	<name id='deleteRelation'>Delete relation</name>
+	<name id='addRelation'>Add relation</name>
+	<name id='options'>Options</name>
+	<name id='selectlanguage'>Choose a website language:</name>
+	<name id='show'>Show</name>
+	<name id='hide'>Hide</name>
+	<name id='select'>Select:</name>
+	<name id='all'>All</name>
+	<name id='none'>None</name>
+	<name id='rename'>Rename</name>
+	<name id='sortby'>Sort by</name>
+	
+	<!-- CMS index view  -->
+	
+	<name id="hi">Hi</name>
+	<name id="help">Help</name>
+	<name id="cmshome">CMS home</name>
+	<name id="launchsite">Launch site</name>
+	<name id="logout">Log out</name>
+	
+	<!-- content relation --> 
+	
+	<name id='contRel'>Content Relation</name>
+	<name id='selectDirectory'>Choose directory:</name>
+	<name id='relatedContent'>Related contents</name>
+	<name id='content'>Contents</name>
+	<name id='createRelate'>Create and relate</name>
+	
+	<!-- common messages -->
+	<name id="noempty">The field cannot be empty!</name>
+	<name id="sureDelete">Are you sure?</name>
+	<name id="finalDelete">Are you sure finale delete?</name>
+	<name id="noselected">Please select at least one checkbox!</name>
+</names>

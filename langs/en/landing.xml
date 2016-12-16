@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id="join">Join</name>
+	<name id="connect_with">Connect with</name>
+	<name id="or">or</name>
+	<name id="email">Email</name>
+	<name id="name">Full name</name>
+	<name id="image_desc">An image must be at least 400x400 pixel jpg, jpeg or png.</name>
+	<name id="password_desc">Create a password (min. 6 symbols)</name>
+	<name id="password">Password</name>
+	<name id="next">Next</name>
+	<name id="signup">Sign up</name>
+	<name id="signin">Sign in</name>
+	<name id="go_publiq">Go PUBLIQ</name>
+	<name id="get_started">Let's get started</name>
+	<name id="become_an_author">Become an author</name>
+	<name id="forgot_password">Forgot password?</name>
+	<name id="incorrect_password">The password is wrong, please indicate correct one.</name>
+	<name id="thanks">Thank you</name>
+	<name id="reset_password">Reset password</name>
+	<name id="reset_text">We'll send instructions to reset your password to</name>
+	<name id="reset_success_text">We've sent instructions to reset your password to</name>
+	<name id="reset_success_text_1">If you don't see the email, also check your junk, spam, social, or other folders.</name>
+	<name id="reset_not">I haven’t received the email</name>
+	<name id="send">Send</name>
+</names>

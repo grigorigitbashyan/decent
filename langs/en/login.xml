@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id="passwordLabel">Password</name>
+	<name id="signInBtn">Go</name>
+	<name id="recoverLink">Forgot Password?</name>
+	<name id="signUpLink">New user? Click here</name>
+	<name id="screenLabel">Login name</name>
+	<name id="screenDesc"></name>
+	<name id="loginNameDesc">(Your Login Name is your e-mail address and is used only for login to your account.)</name>
+	<name id="passwordDesc">Password must be at least six characters long.</name>
+	<name id="warningAlert">Please check the selected fields.</name>
+</names>

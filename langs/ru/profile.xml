@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id="passwordLabel">Password</name>
+	<name id="confirmPasswordLabel">Confirm Password</name>
+	<name id="nameLabel">Full name</name>
+	<name id="changeBtn">Change</name>
+	<name id="passwordDesc">Password must be at least six characters long.</name>
+	<name id="deactivationLink">Deactivation account</name>
+	<name id="emailLabel">E-mail</name>
+	<name id="emailDesc">We will not share your e-mail. &lt;br /&gt; This will be used when logging into the site.</name>
+	<name id="warningAlert">Please check the selected fields.</name>
+</names>

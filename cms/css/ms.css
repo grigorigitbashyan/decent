@@ -1,0 +1,499 @@
+@charset "utf-8";
+
+/* CSS Document */ /* ms.css - Revision: Release 1.0 */
+	/* Copyright (c) 2008. Aratta Una. All rights reserved. */
+body {
+	background: #ffffff;
+	margin: 0;
+	/* it's good practice to zero the margin and padding of the body element to account for differing browser defaults */
+	padding: 0;
+	font: 12px Calibri, Arial, Verdana, Helvetica, sans-serif;
+	color: #000000;
+}
+
+td,th,p,div,select,input {
+	color: #111111;
+	font: 12px Calibri, Arial, Verdana, Helvetica, sans-serif;
+}
+
+A {
+	color: #000000;
+	font: 12px Calibri, Arial, Verdana, Helvetica, sans-serif;
+}
+
+A:hover {
+	color: #3399CC;
+}
+
+A.selLink {
+	color: #3399CC;
+	font: 12px Calibri, Arial, Verdana, Helvetica, sans-serif;
+}
+
+A.selLink:hover {
+	color: #3399CC;
+}
+
+h1 {
+	font: 20px/ 20px "Calibri", sans-serif ! important;
+	color: #333333;
+	padding-bottom: 5px;
+	margin: 0;
+}
+
+h2 {
+	font: 20px/ 20px "Calibri", sans-serif ! important;
+	color: #3399CC;
+	padding-bottom: 5px;
+	margin: 0;
+}
+
+.directoryMenu0 {
+	padding: 0px 0px 3px 0px;
+	color: #3399CC;
+}
+
+.directoryMenu1 {
+	padding: 0px 0px 3px 10px;
+	color: #3399CC;
+}
+
+.directoryMenu2 {
+	padding: 0px 0px 3px 20px;
+	color: #3399CC;
+}
+
+.directoryMenu3 {
+	padding: 0px 0px 3px 30px;
+	color: #3399CC;
+}
+
+.directoryMenu4 {
+	padding: 0px 0px 3px 40px;
+	color: #3399CC;
+}
+
+.directoryMenu5 {
+	padding: 0px 0px 3px 50px;
+	color: #3399CC;
+}
+
+.directoryMenu6 {
+	padding: 0px 0px 3px 60px;
+	color: #3399CC;
+}
+
+.logoBox {
+	width: 280px;
+	height: 100px;
+	text-align: center;
+	border-bottom: 1px solid #777777;
+}
+
+.headerBox {
+	background-color: #F9F9F9;
+	border-bottom: 1px solid #777777;
+	border-left: 1px solid #777777;
+}
+
+.adminMenuBox {
+	height: 20px;
+	text-align: right;
+	padding: 10px 15px 0px 15px;
+}
+
+.versionBox {
+	height: 70px;
+	padding: 0px 15px 0px 15px;
+}
+
+.languageBox {
+	height: 32px;
+	background-image: url(../img/mm_bg.gif);
+	border-bottom: 1px solid #777777;
+	padding: 0px 0px 0px 15px;
+}
+
+.mainMenuBox {
+	background-image: url(../img/mm_bg.gif);
+	border-bottom: 1px solid #777777;
+	border-left: 1px solid #777777;
+}
+
+.navigationBox {
+	background-color: #F9F9F9;
+	vertical-align: top;
+	padding: 15px 15px 15px 15px;
+	border-bottom: 1px solid #777777;
+}
+
+.contentBox {
+	vertical-align: top;
+	padding: 15px 15px 15px 15px;
+	border-left: 1px solid #777777;
+	border-bottom: 1px solid #777777;
+}
+
+.someContent {
+	vertical-align: top;
+	padding: 15px 0px 15px 0px;
+}
+
+.mediaFileAreArea {
+	border-right: 1px solid #777;
+	border-bottom: 1px solid #777;
+	border-left: 1px solid #777;
+}
+
+.mediaFileAreAreaWithBT {
+	border-right: 1px solid #777;
+	border-left: 1px solid #777;
+}
+
+.mediaImgBox {
+	float: left;
+	width: 120px;
+	height: 190px;
+	border: 1px solid #777777;
+	margin: 5px 5px 5px 5px;
+}
+
+.mediaImgUnit {
+	height: 90px;
+	padding: 9px 10px 10px 9px;
+	text-align: center;
+}
+
+.mediaImgChackbox {
+	width: 22px;
+	height: 32px;
+	padding: 4px 5px 3px 3px;
+	border-top: 1px solid #777777;
+	background-color: #efefef;
+	float: left;
+}
+
+.mediaImgTitle {
+	width: 87px;
+	height: 30px;
+	padding: 6px 3px 3px 0px;
+	border-top: 1px solid #777777;
+	background-color: #efefef;
+	float: left;
+	overflow-x: scroll;
+}
+
+.userFormLabel {
+	float: left;
+	width: 100px;
+	padding: 3px 5px 15px 0px;
+	text-align: right;
+}
+
+.metadataFormLabel {
+	float: left;
+	width: 140px;
+	padding: 3px 5px 15px 0px;
+	text-align: right;
+}
+
+.someGTitleBox {
+	font: 14px/ 14px "Calibri", sans-serif ! important;
+	color: #111;
+	margin: 20px 0px 0px 0px;
+	padding: 3px 15px 5px 15px;
+	background-color: #F9F9F9;
+	border-top: 1px solid #777;
+	border-right: 1px solid #777;
+	border-left: 1px solid #777;
+}
+
+.someGBox {
+	padding: 15px 15px 15px 15px;
+	background-color: #F9F9F9;
+	border: 1px solid #777;
+}
+
+.someWTitleBox {
+	font: 12px Calibri, Arial, Verdana, Helvetica, sans-serif;
+	color: #111;
+	margin: 0px;
+	padding: 3px 15px 5px 10px;
+	background-color: #FFF;
+	border-top: 1px solid #777;
+	border-right: 1px solid #777;
+	border-left: 1px solid #777;
+	border-bottom: 1px solid #777;
+	background-image: url(../img/sp_bg.gif);
+	background-repeat: repeat-x;
+}
+
+.someWBox {
+	padding: 10px 10px 10px 10px;
+	background-color: #FFF;
+	border: 1px solid #777;
+}
+
+.clearFloat {
+	clear: both;
+}
+
+.clearPD {
+	margin: 0px;
+	padding: 0px;
+}
+
+.red {
+	color: #CC0000
+}
+
+.bottomTitleBox {
+	border-left: 1px solid #777777;
+	border-right: 1px solid #777777;
+	border-bottom: 1px solid #777777;
+	background-color: #F9F9F9;
+}
+
+.titleBox {
+	border: 1px solid #777777;
+	background-color: #F9F9F9;
+}
+
+.titleColL {
+	float: left;
+	padding: 10px 10px 10px 15px;
+}
+
+.titleColR {
+	float: right;
+	padding: 10px 10px 10px 10px;
+}
+
+.tableUneven {
+	float: left;
+	border-bottom: 1px solid #777777;
+	background-color: #FFF;
+	width: 100%;
+}
+
+.tableEven {
+	float: left;
+	border-bottom: 1px solid #777777;
+	background-color: #F9F9F9;
+	width: 100%;
+}
+
+.tableCHB {
+	float: left;
+	border-right: 1px solid #777777;
+	height: 20px;
+}
+
+.tableT {
+	float: left;
+	height: 18px;
+	padding: 2px 15px 0px 7px;
+}
+
+.tableTU {
+	float: left;
+	height: 18px;
+	padding: 2px 15px 0px 7px;
+	width: 30%;
+}
+
+.tableTE {
+	float: left;
+	height: 18px;
+	padding: 2px 15px 0px 7px;
+	border-left: 1px solid #777777;
+}
+
+.tableD {
+	float: right;
+	border-left: 1px solid #777777;
+	height: 18px;
+	padding: 2px 10px 0px 10px;
+}
+
+.tableUD {
+	float: right;
+	border-left: 1px solid #777777;
+	height: 18px;
+	padding: 2px 10px 0px 10px;
+}
+
+/* main menu */
+.mainMenu {
+	padding-top: 7px;
+	margin: 0px;
+	height: 25px;
+}
+
+.mainMenu span {
+	margin: 0px;
+	padding: 0px;
+}
+
+.mainMenu span a {
+	padding: 7px 15px 7px 15px;
+	border-right: 1px solid #777;
+	margin: 0px;
+	color: #111;
+	font: bold 15px Calibri, Arial, Verdana, Helvetica, sans-serif;
+	text-decoration: none;
+	position: relative;
+}
+
+.mainMenu span a:visited {
+	color: #111;
+}
+
+.mainMenu span a:hover {
+	color: #39c;
+	background-image: url(../img/mm_bg_h.gif);
+}
+
+.mainMenu span.selected {
+	margin: 0px;
+	padding: 0px;
+}
+
+.mainMenu span.selected a { /*selected main tab style */
+	color: #555;
+	background-image: url(../img/mm_bg_h.gif);
+}
+
+.mainMenu span.selected a:hover { /*selected main tab style */
+	color: #39c;
+}
+
+/*
+
+/* gradient 1 */
+.gradient1 h3 {
+	font: bold 28px/ 28px "Calibri", Arial, sans-serif;
+	position: relative;
+	margin: 0px 0px 0px 0px;
+	padding-bottom: 10px;
+	color: #3399CC;
+}
+
+.gradient1 h3 span {
+	background: url(../img/gradientGlossy.png) repeat-x;
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 42px;
+}
+
+/* gradient 2 */
+.tbei {
+	margin-left: 10px;
+	vertical-align: top
+}
+
+/* image box 2 */
+.mediaFileAreArea {
+	border-right: 1px solid #777;
+	border-bottom: 1px solid #777;
+	border-left: 1px solid #777;
+}
+
+.mediaImgBox {
+	float: left;
+	width: 140px;
+	height: 190px;
+	border: 1px solid #777777;
+	margin: 5px 5px 5px 5px;
+}
+
+.mediaImgUnit {
+	height: 90px;
+	padding: 9px 10px 10px 9px;
+	text-align: center;
+}
+
+.mediaImgChackbox {
+	width: 22px;
+	height: 72px;
+	padding: 4px 5px 3px 3px;
+	border-top: 1px solid #777777;
+	background-color: #efefef;
+	float: left;
+}
+
+.mediaImgTitle {
+	width: 107px;
+	height: 70px;
+	padding: 6px 3px 3px 0px;
+	border-top: 1px solid #777777;
+	background-color: #efefef;
+	float: left;
+	overflow: auto;
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+
+.commMenuS {
+	color: #3399CC
+}
+
+.selectedLink {
+	color: #3399CC;
+}
+
+.multiOptionsBox {
+	height: 200px;
+	overflow: scroll;
+	border: 1px inset;
+}
+
+.iconBox {
+	border: 1px solid #777777;
+	background-color: #F9F9F9;
+	padding: 15px;
+	margin: 0px 0px 15px 0px;
+}
+
+.someTableArea {
+	border-left: 1px solid #777;
+	border-right: 1px solid #777;
+}
+
+.tableFieldTitle {
+	float: left;
+	width: 120px;
+	height: 18px;
+	padding: 2px 7px 0px 7px;
+}
+
+.tableFieldOptions {
+	float: left;
+	width: 40px;
+	height: 18px;
+	padding: 2px 7px 0px 7px;
+	border-left: 1px solid #777;
+}
+
+.tableFieldCHB {
+	float: left;
+	width: 40px;
+	height: 20px;
+	padding: 0px 7px 0px 7px;
+	border-left: 1px solid #777;
+}
+
+.someGContent {
+	padding: 15px 0px 15px 0px;
+	margin-bottom: 20px;
+	border-left: 1px solid #777;
+	border-right: 1px solid #777;
+	border-bottom: 1px solid #777;
+}
+
+/*Shopping Cart CMS*/
+
+/*#buyerTbl {width:80%;}*/
+.shoppingTableCMS th {background-color:#eee;border-bottom:1px solid #777;border-right:1px solid #777;padding:10px 5px;}
+.shoppingTableCMS td {border-bottom:1px solid #777;border-right:1px solid #777;padding:2px 10px;}

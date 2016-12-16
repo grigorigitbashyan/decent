@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE extantions [
+ <!ELEMENT extantions (extantion+)>
+ <!ELEMENT extantion (#PCDATA)>
+ <!ATTLIST extantion className CDATA #REQUIRED>
+]>
+<extantions>
+	  <extantion className="StructureBoxCollectionCMS">Box/StructureBoxCollectionCMS.class.inc</extantion> 
+	  <extantion className="SGRelationCMS">Gallery/Structure/SGRelationCMS.class.inc</extantion>
+</extantions>

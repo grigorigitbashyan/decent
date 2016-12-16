@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id="emailExist">emailExist</name>
+	<name id="subSucc">subSucc</name>
+	<name id="subUnSucc">subUnSucc</name>
+	<name id="unSubSucc">unSubSucc</name>
+	<name id="unSubUnSucc">unSubUnSucc</name>
+</names>

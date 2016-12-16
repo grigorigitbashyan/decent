@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id='done'>Выполнять</name>
+	<name id='delete'>Удалять</name>
+	<name id='deleteRelation'>Удалить связь</name>
+	<name id='addRelation'>Добавлять связь</name>
+	<name id='options'>Свойства</name>
+	<name id='selectlanguage'>Выберите язык сайта:</name>
+	<name id='show'>Показывать</name>
+	<name id='hide'>Скрываться</name>
+	<name id='select'>Выбирать:</name>
+	<name id='all'>Всё</name>
+	<name id='none'>Ничто</name>
+	<name id='rename'>Переименовать</name>
+	<name id='sortby'>Сортировка по</name>
+	
+	<!-- CMS index view  -->
+	
+	<name id="hi">Привет</name>
+	<name id="help">Help</name>
+	<name id="cmshome">CMS главное</name>
+	<name id="launchsite">Открыть сайт</name>
+	<name id="logout">Выход</name>
+	
+	<!-- content relation -->
+	
+	<name id='contRel'>Связ с контентам</name>
+	<name id='selectDestination'>Выберите пункт назначения:</name>
+	<name id='relatedContent'>Связное содержание</name>
+	<name id='content'>Содержание</name>
+	<name id='createRelate'>Create and relate</name>
+	
+	<!-- common messages -->
+	<name id="noempty">Поле не может быть пустым!</name>
+	<name id="sureDelete">Вы уверены?</name>
+	<name id="finalDelete">Are you sure finale delete?</name>
+	<name id="noselected">Please select at least one checkbox!</name>
+</names>

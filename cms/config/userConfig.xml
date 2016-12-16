@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration [
+  <!ELEMENT configuration (activationType, activationWaitTerm, activatorName, activatorEmail)>
+]>
+<configuration>
+	<activationType>3</activationType>
+	<activationWaitTerm>7</activationWaitTerm>
+	<activatorName>DECENT</activatorName>
+	<activatorEmail>no-reply@ctrlq.com</activatorEmail>
+</configuration>

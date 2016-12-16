@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration [
+<!ELEMENT configuration (languages , dateformats, url , maxImageWidth , boxes? , addFileRoot? , securFolder? , productImageRoot?, recycleBinPath)>
+<!ELEMENT languages (language)+>
+<!ELEMENT dateformats (dateformat)+>
+<!ELEMENT dateformat (#PCDATA)>
+<!ATTLIST dateformat id ID #REQUIRED>
+<!ELEMENT language (linkID , linkName)>
+<!ELEMENT boxes (box)+>
+]>
+<configuration>
+	<languages>
+		<language>
+			<linkID>en</linkID>
+			<linkName>English</linkName>
+		</language>
+		<language>
+			<linkID>ru</linkID>
+			<linkName>Russian</linkName>
+		</language><language>
+			<linkID>cn</linkID>
+			<linkName>Chinese</linkName>
+		</language>
+	</languages>
+	<dateformats>
+		<dateformat id="en">d F, Y</dateformat>
+		<dateformat id="ru">d F, Y</dateformat>
+		<dateformat id="cn">d F, Y</dateformat>
+	</dateformats>
+	<url>http://decent.ctrlq.com/</url>
+	<maxImageWidth>2560</maxImageWidth>
+	<boxes>
+		<box>Right</box>
+		<box>Bottom</box>
+	</boxes>
+	<securFolder>security/</securFolder>
+	<galleryRoot>media/images/galleries/</galleryRoot>
+	<productImageRoot>media/images/products/</productImageRoot>
+	<recycleBinPath>../recyclebin/</recycleBinPath>
+</configuration>

@@ -1,0 +1,10 @@
+
+RewriteEngine on
+
+<Files ~ "\.(xml)$">
+Order Allow,Deny
+Allow from All
+</Files>
+
+
+ErrorDocument 404 http://www.croatia2u.com/404.html

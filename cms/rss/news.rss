@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<rss xmlns:media="http://search.yahoo.com/mrss/" xmlns:ynews="http://news.yahoo.com/rss/" version="2.0">
+	<channel>
+		<title>Yahoo! News: U.S. News</title>
+		<copyright>Copyright (c) 2009 Yahoo! Inc. All rights reserved.</copyright>
+		<link/>
+		<category>us</category>
+		<description>U.S. News</description>
+		<language>en-us</language>
+		<lastBuildDate>Mon, 14 Sep 2009 08:03:38 -0400</lastBuildDate>
+		<ttl>5</ttl>
+		<image>
+			<title>Yahoo! News</title>
+			<width>142</width>
+			<height>18</height>
+			<link>http://news.yahoo.com/i/718</link>
+			<url>http://l.yimg.com/a/i/us/nws/th/main_142b.gif</url>
+		</image>
+		
+	<item><title>Newest</title><link>Newest</link><guid>Newest</guid><pubDate>Wed, 30 Sep 2009 03:40:45 -0400</pubDate><description>Newest</description></item><item><title>Hello</title><link>New</link><guid>new</guid><pubDate>Wed, 30 Sep 2009 03:35:12 -0400</pubDate><description>new</description></item><item><title>a</title><link>b</link><guid>d</guid><pubDate>Mon, 14 Sep 2009 08:00:58 -0400</pubDate><description>c</description></item></channel>
+</rss>

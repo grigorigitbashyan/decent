@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Resizable unit tests</title>
+    <link rel="stylesheet" type="text/css" href="/jsunit/css/jsUnitStyle.css">    
+	<link rel="stylesheet" type="text/css" href="../../css/effects.css"> 
+    <script language="JavaScript" type="text/javascript" src="/dhtmlgds/scripts/chess-api/js/tests/defaultIncludes.js"></script>
+	<script type="text/javascript" src="/dhtmlgds/scripts/chess-api/js/effects/effect-element.js"></script>
+	<script type="text/javascript" src="/dhtmlgds/scripts/chess-api/js/effects/resizable.js"></script>
+	<style type="text/css">
+		#resizableDiv{
+			width:300px;
+			height:300px;
+
+			
+		}		
+		#parentDiv{
+			width:700px;
+			height:700px;
+			border:1px solid #888;
+			background-color:#CCC;
+		}
+		body{
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+	<script type="text/javascript">
+	var originalHTML;
+	
+	function setUp(){
+		if(!originalHTML) {
+			originalHTML = document.body.innerHTML;
+		}
+		document.body.innerHTML = originalHTML;	
+	}
+	
+	function getResizable(config) {
+		
+		var resizable = new DG.Resizable('resizableDiv', $merge({
+			handles : 'all'
+		}, config));		
+		return resizable;		
+	}
+	
+	function getBasicEventMock(handle, config) {
+		config = config || {};		
+		return $merge({
+			target : handle,
+			page : {
+				x: 0,
+				y : 0
+			},
+			shift : false
+		}, config);
+	}
+		
+	
+	function testShouldAddResizeHandles() {
+		
+		var resizable = getResizable();	
+		
+		
+	}
+	
+	function testShouldBeAbleToResize() {
+		
+		// given
+		var resizable = getResizable({
+			handles : 'se'
+		});
+		var size = resizable.el.getSize();
+
+
+		var e = getBasicEventMock(resizable.handles.se);
+		resizable.handles.se.fireEvent('mousedown', e);
+		
+		e.page.x = 100;
+		e.page.y = 150;
+		
+		// when
+		$(document.documentElement).fireEvent('mousemove', e);
+		$(document.documentElement).fireEvent('mouseup', e);	
+		
+		// then
+		assertEquals('wrong width', 402, resizable.getSize().x);
+		assertEquals('wrong height', 452, resizable.getSize().y);			
+		
+	}
+	
+	function testShouldBeAbleToSpecifyMinimumSizes() {
+		
+		// given
+		var resizable = getResizable({
+			handles : 'se',
+			minWidth : 100,
+			minHeight : 100
+		});
+		var size = resizable.el.getSize();
+
+		var e = getBasicEventMock(resizable.handles.se, {
+			page : {
+				x : 500,
+				y : 500
+			}
+		});
+		resizable.handles.se.fireEvent('mousedown', e);
+		
+		e.page.x = 100;
+		e.page.y = 150;
+		
+		// when
+		$(document.documentElement).fireEvent('mousemove', e);
+		$(document.documentElement).fireEvent('mouseup', e);	
+		
+		// then
+		assertEquals('wrong width', 100, resizable.getSize().x);
+		assertEquals('wrong height', 100, resizable.getSize().y);			
+		
+	}
+	
+	function testShouldBeAbleToSpecifyMaximumSizes() {
+		
+		// given
+		var resizable = getResizable({
+			handles : 'se',
+			maxWidth : 600,
+			maxHeight : 600
+		});
+		var size = resizable.el.getSize();
+
+		var e = getBasicEventMock(resizable.handles.se);
+		resizable.handles.se.fireEvent('mousedown', e);
+		
+		e.page.x = 550;
+		e.page.y = 550;
+		
+		// when
+		$(document.documentElement).fireEvent('mousemove', e);
+		$(document.documentElement).fireEvent('mouseup', e);	
+		
+		// then
+		assertEquals('wrong width', 600, resizable.getSize().x);
+		assertEquals('wrong height', 600, resizable.getSize().y);			
+		
+	}
+		
+		
+	function testShouldBeableToPreserveAspectRatio() {
+		// given
+		var resizable = getResizable({
+			handles : 'se',
+			preserveAspectRatio : true
+		});
+		var size = resizable.el.getSize();
+
+		var e = getBasicEventMock(resizable.handles.se);
+		resizable.handles.se.fireEvent('mousedown', e);
+		
+		e.page.x = 100;
+		
+		// when
+		$(document.documentElement).fireEvent('mousemove', e);
+		$(document.documentElement).fireEvent('mouseup', e);	
+		
+		// then
+		assertEquals(402, resizable.getSize().x);
+		assertEquals(402, resizable.getSize().y);	
+		
+		
+	}	
+	</script>
+</head>
+<body>
+	<div id="parentDiv" style="margin:30px">
+		<div id="resizableDiv" style="border:1px dotted #555;">
+		<img src="../../images/alpha90bk.png" width="300" height="300" id="chessImage">		
+	</div></div>
+
+	Content<br>
+	<script type="text/javascript">
+		if (top.location.href == location.href) {
+			testShouldBeAbleToResize();
+			/*
+			var el = getResizable({
+				handles: 'se',
+				shim: true,
+				handleOffset: 4,
+				handleSize : 7,
+				boundaryEl: 'parentDiv'
+			});
+			el.addEvent('afterresize', function() {
+				var image = document.getElementById('chessImage');
+				image.width = this.el.style.width.replace('px','');
+				image.height = this.el.style.height.replace('px','');
+				
+			});
+			*/
+		}
+	</script>
+	<div id="debug"></div>
+</html>

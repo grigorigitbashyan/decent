@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id="transactionID">Transaction ID</name>
+	<name id="products">Products</name>
+	<name id="totalAmount">Total amount</name>
+	<name id="giftMsg">Gift message</name>
+	<name id="giftCustMsg">Custom gift message</name>
+	<name id="shippingInfo">Shipping info</name>
+	<name id="shipped">Shipped to customer</name>
+	<name id="markShipped">Mark as shipped</name>
+	<name id="markNotShipped">Mark as not shipped</name>
+	<name id="insertGiftMsg">Please, insert a gift message</name>
+	<name id="thankyouMsg">Thank you for your payment!</name>
+	<name id="unsuccessfulPayment2">Your payment was unsuccessful.</name>
+	<name id="unsuccessfulPayment3">Your payment was unsuccessful.</name>
+	<name id="unsuccessfulPayment4">Your payment was unsuccessful.</name>
+	<name id="noItemsInYourCart">There are no items in your shopping cart.</name>
+	<name id="continueShopping">Continue shopping.</name>
+	<name id="firstname">First Name:</name>
+	<name id="lastname">Last Name:</name>
+	<name id="company">Company:</name>
+	<name id="address">Address:</name>
+	<name id="city">City:</name>
+	<name id="state">State/Province:</name>
+	<name id="zip">Zip/Postal Code:</name>
+	<name id="country">Country:</name>
+	<name id="shipPrice">Shipping price:</name>
+</names>

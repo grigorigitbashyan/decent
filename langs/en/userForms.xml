@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id="signInBtn">Go</name>
+	<name id="recoverBtn">Begin Recovery</name>
+	<name id="signUpBtn">Create My Account</name>
+	<name id="doneBtn">Done</name>
+	<name id="changeBtn">Change</name>
+	<name id="deactivationBtn">Deactivation</name>
+	
+	<name id="signUpLink">If you do not have a Login Name, click Enroll in ZFoods Advantage program</name>	
+	<name id="recoverLink">Forgot ZFoods Advantage Password?</name>
+	<name id="deactivationLink">Deactivation account</name>
+	<name id="signOutLink">Sign Out</name>
+	<name id="profileLink">Profile</name>
+
+	<name id="nameLabel">Full name</name>
+	
+	<name id="emailLabel">E-mail</name>
+	<name id="emailDesc">We will not share your e-mail. &lt;br /&gt; This will be used when logging into the site.</name>
+	
+	<name id="passwordLabel">Password</name>
+	<name id="confirmPasswordLabel">Confirm Password</name>
+	<name id="passwordDesc">Password must be at least six characters long.</name>
+	
+	<name id="agreementLabel">Yes, you may use the information I provide on this form to send me newsletters and alerts.</name>
+	<name id="agreementDesc">Please, select the option below, in case you agree that we share the contact information you provide on this form to send you information via e-mail:</name>
+	
+	<name id="captchaDesc">Type in the characters in the image. This allows us to prevent computers signing up with the site automatically.</name>
+	<name id="recoverEmailDesc">This should be the email registered with the site.</name>
+	
+	<name id="screenLabel">Login name</name>
+	<name id="screenDesc"></name>
+	
+	<name id="warningAlert">Please check the selected fields.</name>
+	
+	<name id="loginNameDesc">(Your Login Name is your e-mail address and is used only for login to your ZFoods Advantage account.)</name>
+	<name id="passwordDesc">(Your password is case sensitive and must be 6 or more numbers and/or letters long.)</name>
+</names>

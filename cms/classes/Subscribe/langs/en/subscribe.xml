@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id='subscribe'>Subscribe</name>
+	<name id='newSubscribe'>New subscribe</name>
+	<name id='newSubscribeName'>New subscribe name</name>
+	<name id="process">Process</name>
+	<name id="start">Start</name>
+	<name id="abort">Abort</name>
+	<name id="pause">Pause</name>
+	<name id="continue">Continue</name>
+	<name id="subject">Subject:</name>
+</names>

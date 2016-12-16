@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id="RSSName">RSS</name>
+	<name id='createFile'>Create file:</name>
+	<name id="importFile">File URL:</name>
+	<name id="import">Import</name>
+	<name id="uploadFile">Upload file:</name>
+	<name id="upload">Upload</name>
+	<!-- channel  -->
+	<name id="channel">Channel</name>
+	<name id="channelTitle">Title:</name>
+	<name id="channelLink">Link:</name>
+	<name id="channelDescription">Description:</name>
+	<name id="channelLanguage">Language:</name>
+	<name id="channelCopyright">Copyright:</name>
+	<name id="channelLastBuildDate">Last Build Date:</name>
+	<name id="channelCategory">Category:</name>
+	<name id="channelGenerator">Generator:</name>
+	<name id="channelTTL">TTL:</name>
+	<name id="channelImageTitle">Image title:</name>
+	<name id="channelImageLink">Image Link:</name>
+	<name id="channelImageURL">Image URL:</name>
+	<name id="channelWidth">Width:</name>
+	<name id="channelHeight">Height</name>
+	<name id="newItem">Add new item</name>
+	<name id="items">Items</name>
+	<name id="guid">Guid:</name>
+	<name id="pubDate">Pub Date:</name>
+</names>

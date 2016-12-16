@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id='menuNew'>New Menu</name>
+	<name id='menuName'>Menu name:</name>
+	<name id='menuDepth'>Menu depth:</name>
+	<name id='menuNewDepth'>Menu depth:</name>
+</names>

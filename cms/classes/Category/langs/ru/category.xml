@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id='pathname'>Имя пути</name>
+	<name id='move'>Изменять положение</name>
+	<name id='reposition'>Изменять позицию</name>
+	<name id='redirect'>Переадресовывать</name>
+	<name id='visibility'>Состояние видимости</name>
+	<name id='contenttype'>Тип содержания</name>
+	<name id='pageoptions'>Свойства страницы</name>
+	<name id='security'>Параметры безопасности</name>
+	<name id='subcategory'>Суб категоря</name>
+	<name id='selectDestination'>Выберите пункт назначения:</name>
+	<name id='singleContent'>Одноместный содержание</name>
+	<name id='multiContent'>Множественное содержания</name>
+	<name id='pageTitle'>Название страницы:</name>
+	<name id='pageKeyword'>Ключевые слова цтраницы:</name>
+	<name id='pageDesc'>Описание страницы:</name>
+	<name id='public'>общедоступный:</name>
+	<name id='private'>приватный:</name>
+	<name id='other'>Другой:</name>
+	<name id='defopt'>Стандарт + Дополнительно:</name>
+	<name id='selectDirectory'>Выберите каталог:</name>
+	<name id='freeContents'>Свободное содержание</name>
+	<name id='usedContents'>Подержанные содержание</name>
+	<name id='donotRedirect'>Не перенаправления</name>
+	<name id='firstRedirect'>Перейти на первом подпункта </name>
+	<name id='lastRedirect'>Перейти к последнему подпункту</name>
+	<name id='relatedFiles'>Связные files</name>
+	<name id="templateTab">Template</name>
+	<name id="teleportTab">Teleport</name>
+	<name id="adminControls">Admin controls</name>
+</names>

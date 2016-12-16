@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<email>admin@mail.am</email>
+	<errorMsg>
+		<message lang='en'>ERROR</message>
+		<message lang='ru'>OSHIBKA</message>
+		<message lang='am'>SKHAL</message>
+	</errorMsg>
+</config>

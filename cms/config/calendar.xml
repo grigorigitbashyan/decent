@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration [
+<!ELEMENT configuration (objClasses)>
+<!ELEMENT objClasses (objClass+)>
+<!ATTLIST objClass dirPath CDATA #REQUIRED>
+]>
+<configuration>
+	<objClasses>
+		<objClass dirPath="Extantions/Content/">ContentToCalendar</objClass>
+	</objClasses>
+</configuration>

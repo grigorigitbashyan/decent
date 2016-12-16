@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id='directories'>Директория</name>
+	<name id='securDirectories'>Защищённыe директории</name>
+	<name id='upload'>Загружать</name>
+	<name id='fileUpload'>Загружать фаил:</name>
+	<name id='createDirectory'>Создать директорию:</name>
+</names>

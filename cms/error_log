@@ -1,0 +1,1 @@
+[04-Nov-2016 23:37:55 Europe/Berlin] PHP Fatal error:  Call to a member function GetID() on a non-object in /home/brndhub/public_html/cms/login.php on line 22

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id="author">Author:</name>
+	<name id="post">Post</name>
+	<name id="comment">Comments:</name>
+	<name id="checkMessage">Your message must be checked!</name>
+	<name id="typeImage">Type the characters you see in the picture below.</name>
+</names>

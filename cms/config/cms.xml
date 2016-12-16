@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE cmsConfig [
+  <!ELEMENT cmsConfig (languages, modules)>
+  <!ELEMENT languages (language+)>
+  <!ATTLIST language id ID #REQUIRED>
+  <!ELEMENT modules (module+)>
+  <!ELEMENT module (helpPath, names, className, filePath, javascripts?)>
+  <!ATTLIST module menuID (1|2) '2'>
+  <!ATTLIST module linkID ID #REQUIRED>
+  <!ELEMENT names (name+)>
+  <!ATTLIST name langName CDATA #REQUIRED>
+  <!ELEMENT javascripts (jsfilePath+)>
+]>
+<cmsConfig>
+	<languages>
+		<language id='en'>English</language>
+		<language id='ru'>Russian</language>
+	</languages>
+	<modules>
+		<module menuID='1' linkID='controlpanel'>
+			<helpPath>control/</helpPath>
+			<names>
+				<name langName='en'>Control Panel</name>
+				<name langName='ru'>Пульт управления</name>
+			</names>
+			<className>ControlPanelCMS</className>
+			<filePath>Common/ControlPanelCMS.class.inc</filePath>
+		</module>
+		<module linkID='structure'>
+			<helpPath>structure/</helpPath>
+			<names>
+				<name langName='en'>Structure</name>
+				<name langName='ru'>Структура</name>
+			</names>
+			<className>ExCategoryCMS</className>
+			<filePath>Category/ExCategoryCMS.class.inc</filePath>
+			<javascripts>
+				<jsfilePath>js/tiny_mce/tiny_mce.js</jsfilePath>
+				<jsfilePath>js/initT.js</jsfilePath>
+			</javascripts>
+		</module>
+		<module linkID='content'>
+			<helpPath>structure/</helpPath>
+			<names>
+				<name langName='en'>Content</name>
+				<name langName='ru'>Cодержание</name>
+			</names>
+			<className>ContentTypeCMS</className>
+			<filePath>Content/ContentTypeCMS.class.inc</filePath>
+			<javascripts>
+				<jsfilePath>js/tiny_mce/tiny_mce.js</jsfilePath>
+				<jsfilePath>js/initT.js</jsfilePath>
+				<jsfilePath>http://www.google.com/uds/jsapi?key=internal</jsfilePath>
+				<jsfilePath>js/googleloader.js</jsfilePath>
+			</javascripts>
+		</module>
+		<module linkID='media'>
+			<helpPath>structure/</helpPath>
+			<names>
+				<name langName='en'>Media</name>
+				<name langName='ru'>Медия</name>
+			</names>
+			<className>SecurFolderListCMS</className>
+			<filePath>SecurFolder/SecurFolderListCMS.class.inc</filePath>
+		</module>    
+		<module linkID='boxmanag'>
+			<helpPath>structure/</helpPath>
+			<names>
+				<name langName='en'>Box</name>
+				<name langName='ru'>Бокс</name>
+			</names>
+			<className>BoxStructure</className>
+			<filePath>Box/BoxStructure.class.inc</filePath>
+		</module>
+		<module linkID="product" menuID="2">
+			<helpPath>help/product/</helpPath>
+			<names>
+				<name langName="en">Articles</name>
+				<name langName="ru">Articles</name>
+			</names>
+			<className>ProductManagement</className>
+			<filePath>Product/pr_main/ProductManagement.class.inc</filePath>
+			<javascripts>
+				<jsfilePath>js/tiny_mce/tiny_mce.js</jsfilePath>
+				<jsfilePath>js/initTP.js</jsfilePath>
+			</javascripts>
+		</module>
+		<module linkID="gallery" menuID="2">
+			<helpPath>gallery/</helpPath>
+			<names>
+				<name langName="en">Gallery</name>
+				<name langName="ru">Gallery</name>
+			</names>
+			<className>GalleryWithPattern</className>
+			<filePath>Gallery/GalleryWithPattern.class.inc</filePath>
+		</module>
+		<!--<module linkID="videogallery" menuID="2">
+			<helpPath>videogallery/</helpPath>
+			<names>
+				<name langName="en">Videogallery</name>
+				<name langName="ru">Videogallery</name>
+			</names>
+			<className>VideogalleryWithPattern</className>
+			<filePath>Videogallery/VideogalleryWithPattern.class.inc</filePath>
+		</module>-->
+        <module linkID='registration' menuID="2">
+			<helpPath>structure/</helpPath>
+			<names>
+				<name langName='en'>Registration</name>
+				<name langName='ru'>Registration</name>
+			</names>
+			<className>RegistrationCMS</className>
+			<filePath>Account/RegistrationCMS.class.inc</filePath>
+		</module>
+		<module linkID="recycleBin" menuID="1">
+			<helpPath>structure/</helpPath>
+			<names>
+				<name langName="en">RecycleBin</name>
+				<name langName="ru">RecycleBin</name>
+			</names>
+			<className>RecycleBinListCMS</className>
+			<filePath>RecycleBin/RecycleBinListCMS.class.inc</filePath>
+		</module>
+		<module linkID="rss" menuID="2">
+			<helpPath>structure/</helpPath>
+			<names>
+				<name langName="en">RSS</name>
+				<name langName="ru">RSS</name>
+			</names>
+			<className>RSSListCMS</className>
+			<filePath>RSS/RSSListCMS.class.inc</filePath>
+		</module>
+		<module linkID="access" menuID="1">
+			<helpPath>useraccess/</helpPath>
+			<names>
+				<name langName="en">Access</name>
+				<name langName="ru">Access</name>
+			</names>
+			<className>UsertypeAccessListCMS</className>
+			<filePath>UserManagement/Access/UsertypeAccessListCMS.class.inc</filePath>
+		</module>
+		<module menuID='1' linkID='statistics'>
+			<helpPath>control/</helpPath>
+			<names>
+				<name langName='en'>Statistics</name>
+				<name langName='ru'>Статистика</name>
+			</names>
+			<className>Statistics</className>
+			<filePath>Common/Statistics.class.inc</filePath>
+		</module>
+	</modules>
+</cmsConfig>

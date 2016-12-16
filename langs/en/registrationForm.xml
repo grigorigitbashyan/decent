@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id="nameLabel">Full name</name>
+	<name id="emailDesc">We will not share your e-mail. &lt;br /&gt; This will be used when logging into the site.</name>
+	<name id="emailLabel">E-mail</name>
+	<name id="passwordDesc">Password must be at least six characters long.</name>
+	<name id="passwordLabel">Password</name>
+	<name id="confirmPasswordLabel">Confirm Password</name>
+	<name id="captchaDesc">Type in the characters in the image. This allows us to prevent computers signing up with the site automatically.</name>
+	<name id="agreementLabel">Yes, you may use the information I provide on this form to send me newsletters and alerts.</name>
+	<name id="agreementDesc">Please, select the option below, in case you agree that we share the contact information you provide on this form to send you information via e-mail:</name>
+	<name id="signUpBtn">Create My Account</name>
+	<name id="warningAlert">Please check the selected fields.</name>
+</names>

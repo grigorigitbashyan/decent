@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id="regContent">Hello World1!</name>
+	<name id="fullName">Full name</name>
+	<name id="organization">Organization</name>
+	<name id="languageCenter">Language Center</name>
+	<name id="emailTitle">We will not share your e-mail. &lt;br /&gt; This will be used when logging into the site.</name>
+	<name id="email">E-mail Address</name>
+	<name id="passwordTitle">Password must be at least six characters long.</name>
+	<name id="password">Password</name>
+	<name id="confirmPassword">Confirm Password</name>
+	<name id="imageTitle">Type in the characters in the image. This allows us to prevent computers signing up with the site automatically.</name>
+	<name id="acceptTitle">ZF offers quarterly e-mail alerts and newsletters around our industry insights and updates. Please, select the option below, in case you agree that we share the contact information you provide on this form to send you information via e-mail:</name>
+	<name id="acceptContent">Yes, you may use the information I provide on this form to send me newsletters and alerts.</name>
+	<name id="submitTitle">Create My Account</name>
+	
+	<name id="login">Login</name>
+	<name id="logOut">Logout</name>
+	<name id="forget">Forget password?</name>
+	<name id="send">Send</name>
+	<name id="canLog">If you have registered with the ZF website you can log in below.</name>
+	<name id="cannotLog">If you cannot log in because you have forgotten your password, fill in the email address you used to register in the field below and click the "Send" link.</name>
+	<name id="shouldBe">This should be the email registered with the site.</name>
+	<name id="logToAcc">Register to gain access to all our materials.</name>
+	
+	<name id="welcome"></name>
+</names>

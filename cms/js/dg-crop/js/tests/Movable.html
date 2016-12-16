@@ -1,0 +1,262 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Movable unit tests</title>
+    <link rel="stylesheet" type="text/css" href="/jsunit/css/jsUnitStyle.css">    
+	 <link rel="stylesheet" type="text/css" href="../../css/effects.css">
+    <script language="JavaScript" type="text/javascript" src="/dhtmlgds/scripts/chess-api/js/tests/defaultIncludes.js"></script>
+	<script type="text/javascript" src="/dhtmlgds/scripts/chess-api/js/effects/effect-element.js"></script>
+	<script type="text/javascript" src="/dhtmlgds/scripts/chess-api/js/effects/movable.js"></script>
+	
+	<style type="text/css">
+		#movableDiv{
+			width:300px;
+			height:300px;
+			background-color:red;	
+			
+		}		
+		body{
+			width: 90%;
+			height: 100%;
+			overflow:hidden;
+		}
+	</style>
+	<script type="text/javascript">
+	var originalHTML;
+	
+	function setUp(){
+		if(!originalHTML) {
+			originalHTML = document.body.innerHTML;
+		}
+		document.body.innerHTML = originalHTML;	
+	}
+	function getMovable(config) {
+		var movable = new DG.Movable('movableDiv', $merge({
+			handleHeight : 20
+		}, config));
+		return movable;
+	}
+	function getBasicEventMock(movable) {		
+		return {
+			target : movable.handle,
+			page : {
+				x: 0,
+				y : 0
+			}
+		};
+	}
+	
+	function testShouldBeAbleToCreateHandle() {
+		// when
+		var movable = getMovable({
+			handleHeight : 20
+		});
+		
+		// then
+		assertNotNull(movable.handle);
+		assertEquals('absolute', movable.handle.getStyle('position'));
+		assertEquals('20px', movable.handle.getStyle('height'));
+		assertEquals('movableDiv', movable.handle.getParent().id);
+	}
+	
+	function testShouldBeAbleToAddConfigProperties() {
+		// when
+		var movable = getMovable({
+			handleHeight:30			
+		});
+		
+		// then
+		assertEquals(30, movable.handleHeight);
+		assertEquals('movableDiv', movable.el.id);	
+		
+	}
+	
+	function testShouldPositionDraggableElement() {
+		// when
+		var movable = getMovable({
+			handleHeight:30			
+		});
+		
+		// then
+		assertEquals('absolute', movable.el.getStyle('position'));		
+		
+	}
+	
+	function testShouldBeAbleToMoveElement() {
+		// given
+		var movable = getMovable();
+		var e = {
+			target : movable.handle,
+			page : {
+				x : 20,
+				y : 20
+			}			
+		}
+		var pos = movable.el.getPosition();
+		
+		// when
+		movable.handle.fireEvent('mousedown', e);
+		
+		e.page.x = 100;
+		e.page.y = 200;
+		
+		document.documentElement.fireEvent('mousemove', e);
+		document.documentElement.fireEvent('mouseup', e);
+		
+		// then		
+		assertEquals(pos.x + 80, movable.el.getPosition().x);
+		assertEquals(pos.y + 180, movable.el.getPosition().y);		
+	}
+	
+	function testShouldFireBeforeMoveEvent() {
+		// given
+		var eventFired = false;
+		var _beforeMoveFunction = function() {
+			eventFired = true;
+		}
+		var movable = getMovable({
+			listeners : {
+				beforemove : _beforeMoveFunction
+			}			
+		});
+		
+		// when
+		movable.handle.fireEvent('mousedown', getBasicEventMock(movable));
+		
+		// then
+		assertTrue(eventFired);		
+	}
+	
+	function testShouldFireAfterMoveEvent() {
+		// given
+		var eventFired = false;
+		var _beforeMoveFunction = function() {
+			eventFired = true;
+		}
+		var movable = getMovable({
+			listeners : {
+				aftermove : _beforeMoveFunction
+			}			
+		});
+		
+		// when
+		movable.handle.fireEvent('mousedown', getBasicEventMock(movable));
+		document.documentElement.fireEvent('mouseup', getBasicEventMock(movable));
+		
+		// then
+		assertTrue(eventFired);		
+	}
+		
+	function testShouldIncreaseZIndexWhenMoving(){	
+		// given
+		var movable = getMovable();
+		
+		// when		
+		movable.handle.fireEvent('mousedown', getBasicEventMock(movable));
+		
+		// then
+		assertTrue(movable.el.getStyle('z-index')/1 > 1000);
+	}
+	
+	function testShouldBeAbleToGetPosition() {
+		// given
+		var movable = getMovable();		
+		var e = getBasicEventMock(movable);
+		var pos = movable.el.getPosition();
+		
+		movable.handle.fireEvent('mousedown', e);	
+		
+		e.page.x = 100;
+		e.page.y = 300;
+		
+		// when			
+		
+		document.documentElement.fireEvent('mousemove', e);
+		document.documentElement.fireEvent('mouseup', e);
+
+		// Then
+		assertEquals('unable to get x position', pos.x + 100, movable.getPosition().x);
+		assertEquals('unable to get y position', pos.y + 300, movable.getPosition().y);		
+	}
+	
+	function testShouldBeAbleToUseShim() {
+		// given
+		var movable = getMovable({
+			shim : true
+		});
+		var e = getBasicEventMock(movable);
+		var pos = movable.el.getPosition();
+		var size = movable.el.getSize();
+		
+		movable.handle.fireEvent('mousedown', e);
+		
+
+		e.page.x = 55;
+		e.page.y = 55;
+		
+		// when
+		document.documentElement.fireEvent('mousemove', e);
+		
+		
+		// Then
+		assertEquals('Element has not been hidden', 'none', movable.el.getStyle('display'));
+		assertEquals('Shim element has not been displayed', 'block', movable.shim.getStyle('display'));
+		assertEquals('Size of shim is not correct', size.x, movable.shim.getSize().x);
+		assertEquals('Size of shim is not correct', size.y, movable.shim.getSize().y);
+		assertEquals('Pos x of shim is not correct', pos.x + 55, movable.shim.getPosition().x);
+		assertEquals('Pos y of shim is not correct', pos.y + 55, movable.shim.getPosition().y);
+		assertEquals('absolute', movable.shim.getStyle('position'));
+	}
+	
+	function testShouldOnlyMoveWhenMouseDownOnHandle() {
+		// given
+		var movable = getMovable( {
+			shim : true
+		});		
+		var e = getBasicEventMock(movable);
+		e.target = movable.el;
+		var pos = movable.el.getPosition();
+		
+		// when
+		movable.handle.fireEvent('mousedown', e);
+		e.page.x = 1000;
+		e.page.y = 500;
+		document.documentElement.fireEvent('mousemove', e);
+		
+		// then
+		assertEquals('Shim should not be displayed', 'none', movable.shim.getStyle('display'));
+		assertEquals('Element should still be displayed', 'block', movable.el.getStyle('display'))
+		assertEquals(pos.x, movable.el.getPosition().x);
+	}
+	
+	function testShouldBeAbleToMoveViaKeyboard(){
+		// given
+		var movable = getMovable();
+		var pos = movable.el.getPosition();
+		var e = getBasicEventMock(movable);
+		e.key = 'down';
+
+		// when
+
+		movable._keyNavigation(e);	
+		
+		// then
+		assertEquals(pos.y+1, movable.el.getPosition().y);				
+	
+	}
+	
+	</script>
+	
+</head>
+<body>
+	<div id="parentDiv" style="width:700px;height:700px;background-color:#CCC;border:1px solid #CCC;margin:10px"><div id="movableDiv">
+		<h1 style="width:100px;float:left">Heading</h1> Content of this box. More content Content of this box. More content Content of this box. More content
+		 Content of this box. More content Content of this box. More content Content of this box. More content
+		
+	</div></div>
+	<script type="text/javascript">
+	if(location.href == top.location.href) getMovable({shim : true, boundaryEl : 'parentDiv' });
+	</script>
+</body>

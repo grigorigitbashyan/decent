@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id="noresults">No results found for your search.</name>
+	<name id="name">Name</name>
+	<name id="email">Email</name>
+	<name id="phone">Phone</name>
+	<name id="company">Company</name>
+	<name id="subject">Subject</name>
+	<name id="text">Text</name>
+	<name id="send">Send</name>
+	<name id="sentmessage">Your message has been sent.</name>
+</names>

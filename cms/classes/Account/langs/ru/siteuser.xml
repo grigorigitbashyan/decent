@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id="siteUser">Site user</name>
+	<name id="createUser">Create user</name>
+	<name id="userType1">Registered</name>
+	<name id="userType2">Activated</name>
+	<name id="userType3">Confirmed</name>
+	<!-- options  -->
+	<name id="regOption">Registration Options</name>
+	<name id="activationType">Select actiovation type:</name>
+	<name id="actType2">Partial activation</name>
+	<name id="actType3">Full activation</name>
+	
+	<!-- Related content names  -->
+	<name id="regName1">registration - form</name>
+	<name id="regName2">registration - successful</name>
+	<name id="regName3">registration - unsuccessful</name>
+	<name id="regName4">registration - existent user(e-mail)</name>
+	<name id="regName29">registration - existent user(nickname)</name>
+	<name id="regName28">registration - incorrect captcha</name>
+	
+	<name id="regName5">activation - email</name>
+	<name id="regName6">activation - successful</name>
+	<name id="regName7">activation - unsuccessful</name>
+	
+	<name id="regName8">recover account - form</name>
+	<name id="regName9">recover account form - successful</name>
+	<name id="regName10">recover account form - unsuccessful</name>
+	<name id="regName11">recover account form - user does not exist</name>
+
+	<name id="regName12">recover account - email</name>
+
+	<name id="regName13">set password - form</name>
+	<name id="regName14">set password - successful</name>
+	<name id="regName15">set password - unsuccessful</name>
+	<name id="regName27">set password - less than 6 symbols</name>
+
+	<name id="regName16">authorization - form</name>
+	<name id="regName17">authorization form - user does not exist</name>
+	<name id="regName18">authorization form - wrong password</name>
+	<name id="regName19">authorization form - unconfirmed user</name>
+
+	<name id="regName20">change email - successfuly</name>
+	<name id="regName21">change email - existent user</name>
+	
+	<name id="regName22">deactivation - content</name>
+	<name id="regName23">deactivation - successful</name>
+	<name id="regName24">deactivation - unsuccessful</name>
+	
+	<name id="regName25">added by administrator - email</name>
+	
+	<name id="regName26">activated by administrator - email</name>
+</names>

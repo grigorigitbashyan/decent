@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id='pathname'>Path name</name>
+	<name id='move'>Move</name>
+	<name id='reposition'>Change position</name>
+	<name id='redirect'>Redirect</name>
+	<name id='visibility'>Visibility status</name>
+	<name id='contenttype'>Content type</name>
+	<name id='pageoptions'>Page options</name>
+	<name id='pagecontent'>Page content</name>
+	<name id='security'>Security Oprions</name>
+	<name id='subcategory'>Sub category</name>
+	<name id='selectDestination'>Choose the destination:</name>
+	<name id='singleContent'>Single content</name>
+	<name id='multiContent'>Multi content</name>
+	<name id='pageTitle'>Page title:</name>
+	<name id='contentTitle'>Content title:</name>
+	<name id='pageKeyword'>Page keywords:</name>
+	<name id='pageDesc'>Page description:</name>
+	<name id='contentText'>Content text:</name>
+	<name id='public'>public:</name>
+	<name id='private'>private:</name>
+	<name id='other'>Custom:</name>
+	<name id='defopt'>Default + Custom:</name>
+	<name id='contentRelation'>Content relation</name>
+	<name id='freeContents'>Free contents</name>
+	<name id='usedContents'>Used Contents</name>
+	<name id='donotRedirect'>Do not redirect</name>
+	<name id='firstRedirect'>Redirect to first sub</name>
+	<name id='lastRedirect'>Redirect to last sub</name>
+	<name id="relatedFiles">Related files</name>
+	<name id="cacheTitle">Cache options</name>
+	<name id="cashe">Allow caching</name>
+	<name id="nocashe">No cache</name>
+	<name id="first">First</name>
+	<name id="after">After</name>
+	<name id="fileBefore">File before content</name>
+	<name id="fileAfter">File after content</name>
+	<name id="menuManage">Menu management</name>
+	<name id="root">Root</name>
+	<name id="templateTab">Template</name>
+	<name id="teleportTab">Teleport</name>
+	<name id="adminControls">Admin controls</name>
+</names>

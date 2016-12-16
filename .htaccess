@@ -1,0 +1,15 @@
+RewriteEngine on
+
+RewriteRule ^(ru|en|cn)/?([^/]*)/?([^/]*)/?([^/]*)/?([^/]*)/?([^/]*)/?([^/]*)/?([^/]*)/?([^/]*)/? /index.php?lang=$1&p1=$2&p2=$3&p3=$4&p4=$5&p5=$6&p6=$7&p7=$8&p8=$9  [QSA,L]
+
+<Files ~ "\.inc$">
+Order Allow,Deny
+Deny from All
+</Files>
+
+<Files "sitemap.xml">
+     Order Deny,Allow
+     Allow from All
+</Files>
+
+ErrorDocument 404 http://decent.ctrlq.com/404.html
