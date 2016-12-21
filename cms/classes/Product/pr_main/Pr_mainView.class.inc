@@ -1,12 +1,5 @@
 <?php
-$includes = array (
-	'classes/Product/pr_main/Pr_main.class.inc', 
-	'classes/Product/pr_main/ProductList.class.inc', 
-	'classes/Product/pr_typefield/Pr_typefieldList.class.inc', 
-	'classes/Product/pr_picture/Pr_pictureList.class.inc', 
-	'classes/Product/pr_video/Pr_videoList.class.inc', 
-	'classes/Product/pr_type/Pr_typeList.class.inc'
-);
+$includes = array ('classes/Product/pr_main/Pr_main.class.inc', 'classes/Product/pr_main/ProductList.class.inc', 'classes/Product/pr_typefield/Pr_typefieldList.class.inc', 'classes/Product/pr_picture/Pr_pictureList.class.inc', 'classes/Product/pr_type/Pr_typeList.class.inc' );
 
 Site::IncludeFiles ( $includes );
 
@@ -50,8 +43,6 @@ class Pr_mainView extends View
 	 */
 	function Display()
 	{
-		$monthArr = array("01"=>"янв.", "02"=>"фев.", "03"=>"мар.", "04"=>"апр.", "05"=>"мая", "06"=>"июн.", "07"=>"июл.", "08"=>"авг.", "09"=>"сен.", "10"=>"окт.", "11"=>"ноя.", "12"=>"дек.");
-		
 		// read date format from xml
 		$config = simplexml_load_file('cms/config/product.xml');
 		
@@ -82,10 +73,9 @@ class Pr_mainView extends View
 		$fields = $typeFields->GetStructure ();
 		
 		// get patern
-		$cover = $this->m_product->GetCover ();
-        $pattern = $prType->GetPattern ( $this->m_displayLang );
+		$pattern = $prType->GetPattern ( $this->m_displayLang );
 		
-		// gallery pattern
+		// gallery patter
 		$gallPattern = $prType->GetPatternGallery ( $this->m_displayLang );
 		
 		$othersExIDs = array();
@@ -123,7 +113,7 @@ class Pr_mainView extends View
 					$value = $this->m_product->GetRandom();
 					break;
 				case 'name' :
-				    if ( $this->m_product->GetLang($this->m_displayLang) )
+                    if ( $this->m_product->GetLang($this->m_displayLang) )
                     {
                         $language = $this->m_displayLang;
                     }
@@ -137,7 +127,7 @@ class Pr_mainView extends View
                     }
                     $value = $this->m_product->GetName ( $language );
 					break;
-                case 'subtitle' :
+				case 'subtitle' :
                     if ( $this->m_product->GetLang($this->m_displayLang) )
                     {
                         $language = $this->m_displayLang;
@@ -151,7 +141,7 @@ class Pr_mainView extends View
                         }
                     }
                     $value = $this->m_product->GetSubtitle( $language );
-                    break;
+					break;
                 case 'language' :
                     if ( $this->m_product->GetLang($this->m_displayLang) )
                     {
@@ -181,7 +171,7 @@ class Pr_mainView extends View
                     }
                     $value = $this->m_product->GetDesc($language);
 					break;
-                case 'shortDesc' :
+                case 'short_desc' :
                     if ( $this->m_product->GetLang($this->m_displayLang) )
                     {
                         $language = $this->m_displayLang;
@@ -210,34 +200,12 @@ class Pr_mainView extends View
 						$value = "";
 					}
 					break;
-				case 'noCoverClass':
-					$value = "";
-					$cover = $this->m_product->GetCover ();
-					if ( $cover=="img/cover.gif" || $cover=="" )
-					{
-						$value = "heading-no-img";
-					}
-					
-					break;
-				case 'viewCount':
-					$value = $this->m_product->GetViewCount();
-					break;
-				case 'author':
-					$authorCat = new Category(122);
-					$value = "<a href='".$this->m_site->GetSiteURL().$authorCat->GetPath().$this->m_product->GetAuthorRandom()."' style='color:#fff;'>".$this->m_product->GetAuthorSiteName()."</a>";
-//					$value = $this->m_product->GetAuthorSiteName();
-					break;
-				case 'short_desc' :
-					$value = $this->m_product->GetDescShort ( $this->m_displayLang );
-					break;
+                case 'viewCount':
+                    $value = $this->m_product->GetViewCount();
+                    break;
 				case 'date':
-					$pDate = $this->m_product->GetPublishedDate();
-					$uDate = $this->m_product->GetUpdatedDate();
-					$value = "<span><i class='icon-uploaded'></i> ".ComputeDate($pDate)."</span>";
-					if ( strtotime($uDate)>strtotime($pDate) )
-					{
-						$value .= "<span><i class='icon-updated'></i> ".ComputeDate($uDate)."</span>";
-					}
+					$value = $this->m_product->GetDate();
+					$value = $this->m_site->GetDateTransformation($value, $this->m_displayLang, $datePattern);
 					break;
 				case 'gallery' :
 					$gallery = new Pr_pictureList ( $this->m_product->GetID () );
@@ -248,61 +216,6 @@ class Pr_mainView extends View
 					break;
 				case 'siteURL' :
 					$value = $this->m_site->GetSiteURL();
-					break;
-				case 'map':
-					$lat = $this->m_product->GetFieldValue(55, $this->m_displayLang, true);
-					$lng = $this->m_product->GetFieldValue(56, $this->m_displayLang, true);
-					if ( $lat && $lng )
-					{
-						$value = "<div style=\"width:100%;height:100%;\"><iframe src=\"mapSingle.php?id=".$this->m_product->GetID()."\" frameborder=\"0\" width=\"100%\" height=\"100%\"></iframe></div>";
-					}
-					break;
-				case 'prev-next-items':
-					$prOthers = $this->m_product->GetOthers(2, "random");
-					if ( is_array($prOthers) )
-					{
-						$othersExIDs[] = $prOthers[0]["ID"];
-						$othersExIDs[] = $prOthers[1]["ID"];
-						
-						$tempPr = new Pr_main($prOthers[0]["ID"]);
-						$value = '
-							<div class="content-wrap thumb-nav-b">
-								<div class="inner-wrap">
-									<div class="thumb-nav-wrap">
-										<h2 style="text-align:center;">Смотрите Также</h2>
-										
-										<div class="button-block prev-b">
-											<a href="'.$this->m_site->GetSiteURL().$this->m_displayLang.'/'.$tempPr->GetRandom().'">
-												<div>
-													<img src="'.$tempPr->GetCover().'" />
-													<div class="icon-holder"><i class="fa fa-angle-left"></i></div>
-													<h2>'.$tempPr->GetName($this->m_displayLang).'</h2>
-													<div class="bl-overlay"></div>
-												</div>
-												
-											</a>
-										</div>
-						';
-						
-						$tempPr = new Pr_main($prOthers[1]["ID"]);
-						$value .= '
-										<div class="button-block">
-											<a href="'.$this->m_site->GetSiteURL().$this->m_displayLang.'/'.$tempPr->GetRandom().'">
-												<div>
-													<img src="'.$tempPr->GetCover().'" />
-													<div class="icon-holder"><i class="fa fa-angle-right"></i></div>
-													<h2>'.$tempPr->GetName($this->m_displayLang).'</h2>
-												<div class="bl-overlay"></div>
-												</div>
-												
-											</a>
-										</div>
-										<br clear="all" />
-									</div>
-								</div>
-							</div>
-						';
-					}
 					break;
 				default :
 					$value = "";
@@ -330,6 +243,7 @@ class Pr_mainView extends View
 						$rPrPatternHeader = str_replace("@@lang@@", $this->m_displayLang, $relPr[0]["patternrelationheader_".$this->m_displayLang]);
 						$rPrPatternFooter = str_replace("@@lang@@", $this->m_displayLang, $relPr[0]["patternrelationfooter_".$this->m_displayLang]);
 						$rPrPatternMain = $relPr[0]["patternrelation_".$this->m_displayLang];
+						$rPrPatternGallery = $relPr[0]["patterngallery_".$this->m_displayLang];
 						
 						$prRelations = $this->m_product->GetRelations($showCount, $relPr[0]["ID"], $relField);
 						for ( $r=0; $r<count($prRelations); $r++ )
@@ -359,6 +273,7 @@ class Pr_mainView extends View
 										case 'name': $vvalue = $tempPr->GetName($this->m_displayLang); break;
 										case 'short_desc': $vvalue = $tempPr->GetDescShort($this->m_displayLang); break;
 										case 'picture': $vvalue = $tempPr->GetPicture(); break;
+										case 'cover': $vvalue = $tempPr->GetCover(); break;
 										case 'ID': $vvalue = $tempPr->GetID(); break;
 										case 'desc': $vvalue = $tempPr->GetDesc($this->m_displayLang); break;
 										case 'random': $vvalue = $tempPr->GetRandom(); break;
@@ -388,6 +303,11 @@ class Pr_mainView extends View
 								{
 									$vvalue = $this->m_displayLang;
 								}
+								elseif ( $kkey=='gallery' )
+								{
+									$gallery = new Pr_pictureList ( $tempPr->GetID() );
+									$vvalue = $gallery->GetPatternDesign ( $rPrPatternGallery );
+								}
 								else 
 								{
 									$pos = strpos($kkey, ':');
@@ -399,12 +319,157 @@ class Pr_mainView extends View
 										$kkey = substr($kkey, 0, $pos);
 									}
 									
-									foreach ( $fields as $field )
+									$typeFields1 = new Pr_typefieldList ( $tempPr->GetTypeID() );
+									$fields1 = $typeFields1->GetStructure ();
+									foreach ( $fields1 as $field )
 									{
 										if ( strcmp($field['name'], $kkey)==0 )
 										{
 											$vvalue = $tempPr->GetFieldValue ( $field['fieldID'], $this->m_displayLang, true, $param);
 											if ( ($field['fieldID']==42 || $field['fieldID']==43) && $vvalue!="" )
+											{
+												$vvalue = $this->m_site->GetDateTransformation($vvalue, $this->m_displayLang, $datePattern);
+											}
+											break;
+										}
+									}
+									
+									if( is_array($vvalue) )
+									{
+										$vvalue = implode($separator, $vvalue);
+									}
+								}
+								// replace
+								$rPrPattern = str_replace("@@$subKkey@@", $vvalue, $rPrPattern);
+								
+								if ( $vvalue )
+								{
+									$rPrPattern = str_replace("<!--$subKkey", "", $rPrPattern);
+									$rPrPattern = str_replace("$subKkey-->", "", $rPrPattern);
+								}
+							}
+							
+							$value .= $rPrPattern;
+						}
+						
+						if ( $value!="" )
+						{
+							$rPrPatternHeader = str_replace("@@lang@@", $this->m_displayLang, $rPrPatternHeader);
+							$rPrPatternHeader = str_replace("@@subRootPath@@", $tempPr->GetMainCategoryPath(), $rPrPatternHeader);
+							
+							$value = $rPrPatternHeader.$value.$rPrPatternFooter;
+						}
+					}
+					elseif ( substr($subKey, 0, 9)=="Products|" )		//	check if key belongs to product type
+					{
+						$prName = substr($subKey, 9);
+						$showCount = 1000;
+						if ( strpos($prName, "|") )
+						{
+							$prName = explode("|", $prName);
+							
+							$showCount = $prName[1];
+							$prName = $prName[0];
+						}
+						$relPr = $this->m_prTypeList->GetPrTypeByName($prName);
+						
+						$rPrPatternHeader = str_replace("@@lang@@", $this->m_displayLang, $relPr[0]["patternrelationheader_".$this->m_displayLang]);
+						$rPrPatternFooter = str_replace("@@lang@@", $this->m_displayLang, $relPr[0]["patternrelationfooter_".$this->m_displayLang]);
+						$rPrPatternMain = $relPr[0]["patternrelation_".$this->m_displayLang];
+						$rPrPatternGallery = $relPr[0]["patterngallery_".$this->m_displayLang];
+						
+						$prRelations = new ProductList();
+						$prRelations = $prRelations->GetAllProducts($relPr[0]["ID"], $showCount, "`date`");
+						for ( $r=0; $r<count($prRelations); $r++ )
+						{
+							$tempPr = new Pr_main($prRelations[$r]["ID"]);
+							
+							$rPrPattern = $rPrPatternMain;
+							while ( ($start = strpos($rPrPattern, '@@'))!==false )
+							{
+								$end = strpos($rPrPattern, '@@', $start + 1);
+								if ( !$end )
+								{
+									break;
+								}
+								
+								$kkey = substr($rPrPattern, $start, $end - $start + 2);
+								$kkey = substr($kkey, 2, strlen($kkey) - 4);
+								
+								$subKkey = $kkey;
+								
+								//TODO modified
+								$vvalue = null;
+								if ( $kkey=='ID' || $kkey=='typeID' || $kkey=='name' || $kkey=='subtitle' || $kkey=='desc' || $kkey=='short_desc' || $kkey=='picture' || $kkey=='cover' || $kkey=='date' || $kkey=='random' )
+								{
+									$vvalue = $prRelations[$r][$kkey];
+									if ( $kkey=="date" )
+									{
+										$vvalue = $this->m_site->GetDateTransformation($vvalue, $this->m_displayLang, $datePattern);
+									}
+								}
+								elseif ( $kkey=='categoryTitle' )
+								{
+									$vvalue = $tempPr->GetCategoryName();
+								}
+								elseif ( $kkey=='date-year' || $kkey=='date-month' || $kkey=='date-day' )
+								{
+									$date = explode("-", $prRelations[$r]["date"]);
+									switch ( $kkey )
+									{
+										case 'date-year': $vvalue = $date[0]; break;
+										case 'date-month': $vvalue = $date[1]; break;
+										case 'date-day': $vvalue = $date[2]; break;
+									}
+									
+									if ( $relPr[0]["ID"]==12 && $r<3 )
+									{
+										$vvalue = "Биография";
+									}
+								}
+								elseif ( strpos($kkey, "desc")!==false && strpos($kkey, "desc")==0 && strpos($kkey, "|")!==false )
+								{
+									$vvalue = $tempPr->GetDesc($this->m_displayLang);
+									$vvalue = str_replace("</p>", "</p> ", $vvalue);
+									$vvalue = strip_tags($vvalue);
+									$werbCount = intval(substr($kkey, strpos($kkey, "|")+1));
+									if ( strlen($vvalue)>$werbCount )
+									{
+										$vvalue = substr($vvalue, 0, strpos($vvalue, " ", $werbCount))."...";
+									}
+								}
+								elseif ( $kkey=='subRootPath' )
+								{
+									$vvalue = $tempPr->GetCategoryPath();
+								}
+								elseif ( $kkey=='lang' )
+								{
+									$vvalue = $this->m_displayLang;
+								}
+								elseif ( $kkey=='gallery' )
+								{
+									$gallery = new Pr_pictureList ( $tempPr->GetID() );
+									$vvalue = $gallery->GetPatternDesign ( $rPrPatternGallery );
+								}
+								else 
+								{
+									$pos = strpos($kkey, ':');
+									$separator = null;
+									$param = null;
+									if ( $pos > 0 )
+									{
+										$separator = $param = substr($kkey, $pos + 1);
+										$kkey = substr($kkey, 0, $pos);
+									}
+									
+									$typeFields1 = new Pr_typefieldList ( $tempPr->GetTypeID() );
+									$fields1 = $typeFields1->GetStructure ();
+									foreach ( $fields1 as $field )
+									{
+										if ( strcmp($field['name'], $kkey)==0 )
+										{
+											$vvalue = $tempPr->GetFieldValue ( $field['fieldID'], $this->m_displayLang, true, $param);
+											if ( ($field['fieldID']==18 || $field['fieldID']==19) && $vvalue!="" )
 											{
 												$vvalue = $this->m_site->GetDateTransformation($vvalue, $this->m_displayLang, $datePattern);
 											}
@@ -445,22 +510,28 @@ class Pr_mainView extends View
 						$othersFooterPattern = $prType->GetPatternOtherFooter($this->m_displayLang);
 						
 						$subKey = substr($subKey, 3);
-						if ( strpos($subKey, "|") )
+						
+						$tempKey = explode("|", $subKey);
+						
+						$showCount = intval($tempKey[0]);
+						if ( isset($tempKey[1]) && ($tempKey[1]=="date" || $tempKey[1]=="random" || $tempKey[1]=="popular") )
 						{
-							$showCount = intval(substr($subKey, 0, strpos($subKey, "|")));
-							$orderBy = strtolower(substr($subKey, strpos($subKey, "|")+1));
-							if ( $orderBy!="date" && $orderBy!="random" && $orderBy!="popular" && $orderBy!="recommended" )
-							{
-								$orderBy = "date";
-							}
+							$orderBy = $tempKey[1];
 						}
 						else 
 						{
-							$showCount = intval($subKey);
 							$orderBy = "date";
 						}
+						if ( isset($tempKey[2]) && $tempKey[2]=="true" )
+						{
+							$selectCurrent = true;
+						}
+						else 
+						{
+							$selectCurrent = false;
+						}
 						
-						$prOthers = $this->m_product->GetOthers($showCount, $orderBy, $othersExIDs);
+						$prOthers = $this->m_product->GetOthers($showCount, $orderBy, $othersExIDs, $selectCurrent);
 						for ( $r=0; $r<count($prOthers); $r++ )
 						{
 							$tempPr = new Pr_main($prOthers[$r]["ID"]);
@@ -480,6 +551,8 @@ class Pr_mainView extends View
 
 							$value .= $othersPattern;
 							$value = str_replace("@@name@@", $tempPr->GetName($language), $value);
+							$value = str_replace("@@subtitle@@", $tempPr->GetSubtitle($language), $value);
+							$value = str_replace("@@date@@", $this->m_site->GetDateTransformation($tempPr->GetDate(), $this->m_displayLang, $datePattern), $value);
 							$value = str_replace("@@random@@", $tempPr->GetRandom(), $value);
 							$value = str_replace("@@picture@@", $tempPr->GetPicture(), $value);
 							$value = str_replace("@@desc@@", $tempPr->GetDesc($language), $value);
@@ -527,65 +600,13 @@ class Pr_mainView extends View
 						// get from parimiter
 						foreach ( $fields as $field )
 						{
-							if (strcmp($field ['name'] , $subKey) == 0)
+							if (strcmp($field['name'], $subKey) == 0)
 							{
-								if ( $field['fieldType']==9 )
-								{
-									$tempField = new Pr_field($field['fieldID']);
-									$fieldFields = $tempField->GetFields();
-									$fieldFields = explode(",", $fieldFields);
-									$fieldPattern = $tempField->GetFieldPattern();
-									
-									$tField = new Pr_field ( $fieldFields[0] );
-									$fArr = $this->m_product->GetGFC($fieldFields[0], $tField->GetType());
-									
-									if ( is_array($fArr) && $fieldPattern )
-									{
-										if ( count($fArr)>1 )
-										{
-											$value .= "<div style=\"width:100%;height:100%;\"><iframe src=\"mapSingle.php?id=".$this->m_product->GetID()."&group=all\" frameborder=\"0\" width=\"100%\" height=\"100%\"></iframe></div>";
-										}
-										else 
-										{
-											for ( $i=0; $i<count($fArr); $i++ )
-											{
-												$fieldPatternTemp = $fieldPattern;
-												$group = $fArr[$i];
-												foreach ( $fieldFields as $fID )
-												{
-													$tField = new Pr_field($fID);
-													$fieldValue = $this->m_product->GetFieldValue ( $fID, $this->m_displayLang, true, "key", $group );
-													$fieldName = $tField->GetName($this->m_displayLang);
-													$fieldPatternTemp = str_replace("@@$fieldName@@", $fieldValue, $fieldPatternTemp);
-													if ( $fieldValue )
-													{
-														$fieldPatternTemp = str_replace("<!--$fieldName", "", $fieldPatternTemp);
-														$fieldPatternTemp = str_replace("$fieldName-->", "", $fieldPatternTemp);
-													}
-												}
-												
-												if ( strpos($fieldPatternTemp, "@@map@@")!==false )
-												{
-													$fieldPatternTemp = str_replace("@@map@@", "<div style=\"width:370px;height:260px;\"><iframe src=\"mapSingle.php?id=".$this->m_product->GetID()."&group=$group\" frameborder=\"0\" width=\"370\" height=\"260\"></iframe></div>", $fieldPatternTemp);
-												}
-												elseif ( strpos($fieldPatternTemp, "@@map")!==false )
-												{
-													$mapKeyS = strpos($fieldPatternTemp, "@@map") + 6;
-													$mapKeyE = strpos($fieldPatternTemp, "@@", $mapKeyS);
-													$mapKey = $mapKey1 = substr($fieldPatternTemp, $mapKeyS, $mapKeyE - $mapKeyS);
-													$mapKey = explode("|", $mapKey);
-													$fieldPatternTemp = str_replace("@@map|$mapKey1@@", "<div style=\"width:".$mapKey[0]."px;height:".$mapKey[1]."px;\"><iframe src=\"mapSingle.php?id=".$this->m_product->GetID()."&group=$group\" frameborder=\"0\" width=\"".$mapKey[0]."\" height=\"".$mapKey[1]."\"></iframe></div>", $fieldPatternTemp);
-												}
-												
-												$value .= $fieldPatternTemp;
-											}
-										}
-									}
-								}
-								else 
-								{
-									$value = $this->m_product->GetFieldValue ( $field['fieldID'], $this->m_displayLang, true, $param);
-								}
+                                $value = $this->m_product->GetFieldValue ( $field ['fieldID'], $this->m_displayLang, true , $param);
+                                if ( ($field['fieldID']==18 || $field['fieldID']==19) && $value!="" )
+                                {
+                                    $value = $this->m_site->GetDateTransformation($value, $this->m_displayLang, $datePattern);
+                                }
 								
 								break;
 							}
@@ -595,24 +616,9 @@ class Pr_mainView extends View
 					break;
 			}
 			
-			if ( is_array($value) )
+			if(is_array($value))
 			{
-				if ( $field['fieldID']==1 )
-				{
-					$articlesCat = new Category(124);
-					$valueT = $value;
-					$value = '';
-					foreach ( $valueT as $val )
-					{
-						$tempOD = new Optionsdata($val);
-						$value .= '<a href="'.$this->m_site->GetSiteURL().$articlesCat->GetPath().$tempOD->GetKey().'">'.$tempOD->GetName($this->m_displayLang).'</a>'.$param;
-					}
-					$value = substr($value, 0, strlen($value) - strlen($param));
-				}
-				else 
-				{
-					$value = implode($param, $value);
-				}
+				$value = implode($param, $value);
 			}
 			
 			// replace pattern value and destroy comments
@@ -699,26 +705,29 @@ class Pr_mainView extends View
 		$RelStr .= " )";
 		
 		$query = "
-					select 
-						PM.`ID`, 
-						PM.`random` as link, 
-						PM.`name_$this->m_displayLang` as name, 
-						PM.`short_desc_$this->m_displayLang` as short_desc, 
-						PM.`picture`, 
-						PM.`date`, 
-						S.`path` 
-					from 
-						`pr_main` PM 
-					join 
-						`pr_options` PO on (PM.`ID` = PO.`productID`)
-					join
-						`structure` S on (PO.`relatedID` = S.`ID`) 
-					where 
-						PO.`fieldID` = 13 and $RelStr and PM.`ID` <> ".$this->m_product->GetID()."
-					order by 
-						RAND()
-					limit 
-						$limit";
+			select 
+				PM.`ID`, 
+				PM.`random` as link, 
+				PM.`name_$this->m_displayLang` as name, 
+				PM.`subtitle_$this->m_displayLang` as subtitle, 
+				PM.`short_desc_$this->m_displayLang` as short_desc, 
+				PM.`picture`, 
+				PM.`cover`, 
+				PM.`date`, 
+				S.`path` 
+			from 
+				`pr_main` PM 
+			join 
+				`pr_options` PO on (PM.`ID` = PO.`productID`)
+			join
+				`structure` S on (PO.`relatedID` = S.`ID`) 
+			where 
+				PO.`fieldID` = 13 and $RelStr and PM.`ID` <> ".$this->m_product->GetID()."
+			order by 
+				RAND()
+			limit 
+				$limit
+		";
 		$ProdArr = DB::QueryToArray($query);
 		
 		return $ProdArr;

@@ -12,12 +12,11 @@
 	<name id="actType2">Partial activation</name>
 	<name id="actType3">Full activation</name>
 	
-	<!-- Related content names  -->
+	<!-- Realated content names  -->
 	<name id="regName1">registration - form</name>
 	<name id="regName2">registration - successful</name>
 	<name id="regName3">registration - unsuccessful</name>
-	<name id="regName4">registration - existent user(e-mail)</name>
-	<name id="regName29">registration - existent user(nickname)</name>
+	<name id="regName4">registration - existent user</name>
 	<name id="regName28">registration - incorrect captcha</name>
 	
 	<name id="regName5">activation - email</name>

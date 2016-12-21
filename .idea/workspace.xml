@@ -1,7 +1,308 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e3c20ec0-dd80-4394-b957-cdbd0fa427bd" name="Default" comment="" />
+    <list default="true" id="e3c20ec0-dd80-4394-b957-cdbd0fa427bd" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cms/classes/Common/langs/cn/controlPanel.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cms/classes/Common/langs/cn/globalnames.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cms/classes/Common/langs/cn/listNavigation.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cms/classes/Product/langs/en/shoppingCart___.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_video/Pr_video.class.inc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_video/Pr_videoList.class.inc" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Account/RegOption/RegOption.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Account/RegOption/RegOption.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Account/RegOption/RegOptionCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Account/RegOption/RegOptionCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Account/RegOption/RegOptionList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Account/RegOption/RegOptionList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Account/RegOption/RegOptionListCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Account/RegOption/RegOptionListCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Account/RegistrationCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Account/RegistrationCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Account/SiteUser/SiteUserList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Account/SiteUser/SiteUserList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Account/SiteUser/SiteUserListCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Account/SiteUser/SiteUserListCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Account/SiteUser/SiteUserView.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Account/SiteUser/SiteUserView.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Account/SiteUser/Site_user.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Account/SiteUser/Site_user.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Account/langs/am/siteuser.xml" afterPath="$PROJECT_DIR$/cms/classes/Account/langs/am/siteuser.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Account/langs/en/siteuser.xml" afterPath="$PROJECT_DIR$/cms/classes/Account/langs/en/siteuser.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Account/langs/ru/siteuser.xml" afterPath="$PROJECT_DIR$/cms/classes/Account/langs/ru/siteuser.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Box/Box.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Box/Box.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Box/BoxCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Box/BoxCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Box/BoxCollection.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Box/BoxCollection.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Box/BoxCollectionBox.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Box/BoxCollectionBox.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Box/BoxCollectionBoxCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Box/BoxCollectionBoxCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Box/BoxCollectionCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Box/BoxCollectionCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Box/BoxCollectionList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Box/BoxCollectionList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Box/BoxCollectionListCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Box/BoxCollectionListCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Box/BoxCollectionView.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Box/BoxCollectionView.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Box/BoxCollectionViewSite.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Box/BoxCollectionViewSite.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Box/BoxList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Box/BoxList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Box/BoxListCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Box/BoxListCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Box/BoxStructure.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Box/BoxStructure.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Box/BoxView.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Box/BoxView.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Box/SBRelation.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Box/SBRelation.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Box/SBRelationCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Box/SBRelationCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Box/StructureBoxCollectionCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Box/StructureBoxCollectionCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Box/langs/am/box.xml" afterPath="$PROJECT_DIR$/cms/classes/Box/langs/am/box.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Box/langs/en/box.xml" afterPath="$PROJECT_DIR$/cms/classes/Box/langs/en/box.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Box/langs/ru/box.xml" afterPath="$PROJECT_DIR$/cms/classes/Box/langs/ru/box.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Calendar/Calendar.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Calendar/Calendar.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Calendar/CalendarCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Calendar/CalendarCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Calendar/CalendarData.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Calendar/CalendarData.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Calendar/CalendarDataCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Calendar/CalendarDataCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Calendar/CalendarDataList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Calendar/CalendarDataList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Calendar/CalendarDataListCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Calendar/CalendarDataListCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Calendar/CalendarList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Calendar/CalendarList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Calendar/CalendarListCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Calendar/CalendarListCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Calendar/Extantions/CalendarExtantionCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Calendar/Extantions/CalendarExtantionCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Calendar/Extantions/Content/ContentToCalendarCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Calendar/Extantions/Content/ContentToCalendarCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Calendar/Extantions/Content/ContentToCalendarList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Calendar/Extantions/Content/ContentToCalendarList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Calendar/Extantions/Content/langs/en/content.xml" afterPath="$PROJECT_DIR$/cms/classes/Calendar/Extantions/Content/langs/en/content.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Calendar/Extantions/Product/ProductToCalendarCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Calendar/Extantions/Product/ProductToCalendarCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Calendar/HTML/CalendarDivStyle.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Calendar/HTML/CalendarDivStyle.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Calendar/HTML/CalendarHTML.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Calendar/HTML/CalendarHTML.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Calendar/langs/am/calendar.xml" afterPath="$PROJECT_DIR$/cms/classes/Calendar/langs/am/calendar.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Calendar/langs/am/calendar_data.xml" afterPath="$PROJECT_DIR$/cms/classes/Calendar/langs/am/calendar_data.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Calendar/langs/en/calendar.xml" afterPath="$PROJECT_DIR$/cms/classes/Calendar/langs/en/calendar.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Calendar/langs/en/calendar_data.xml" afterPath="$PROJECT_DIR$/cms/classes/Calendar/langs/en/calendar_data.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Calendar/langs/ru/calendar.xml" afterPath="$PROJECT_DIR$/cms/classes/Calendar/langs/ru/calendar.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Category/Autokeyword.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Category/Autokeyword.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Category/Category.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Category/Category.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Category/CategoryCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Category/CategoryCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Category/CategoryView.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Category/CategoryView.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Category/ExCategoryCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Category/ExCategoryCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Category/SCRelation.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Category/SCRelation.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Category/SCRelationCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Category/SCRelationCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Category/SFRelation.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Category/SFRelation.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Category/SFRelationCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Category/SFRelationCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Category/langs/am/category.xml" afterPath="$PROJECT_DIR$/cms/classes/Category/langs/am/category.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Category/langs/en/category.xml" afterPath="$PROJECT_DIR$/cms/classes/Category/langs/en/category.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Category/langs/ru/category.xml" afterPath="$PROJECT_DIR$/cms/classes/Category/langs/ru/category.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/ActionController.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/ActionController.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/ActionResult.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/ActionResult.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/AddExtension.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/AddExtension.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/CMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/CMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/CMSHome.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/CMSHome.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/CMSInterface.interface.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/CMSInterface.interface.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/CMSListObject.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/CMSListObject.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/CMSObject.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/CMSObject.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/CMSUserController.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/CMSUserController.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/CmsXMLParser.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/CmsXMLParser.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/ContentCaching.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/ContentCaching.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/ControlPanelCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/ControlPanelCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/ControllerBase.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/ControllerBase.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/DB.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/DB.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/DBxp.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/DBxp.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/ErrorHandler.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/ErrorHandler.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/Form.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/Form.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/HTML.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/HTML.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/Image.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/Image.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/Image_.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/Image_.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/MergingModules.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/MergingModules.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/MyScript.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/MyScript.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/NamedRecord.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/NamedRecord.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/Record.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/Record.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/RecordFlexible.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/RecordFlexible.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/Site.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/Site.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/Statistics.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/Statistics.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/Table.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/Table.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/TableFlexible.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/TableFlexible.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/TemplateVew.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/TemplateVew.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/TemplateView.interface.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/TemplateView.interface.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/TreeView.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/TreeView.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/TreeViewNavigation.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/TreeViewNavigation.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/TreeViewNavigationOpt.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/TreeViewNavigationOpt.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/TreeViewNavigation_.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/TreeViewNavigation_.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/Value.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/Value.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/ValueCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/ValueCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/View.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/View.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/functions.inc" afterPath="$PROJECT_DIR$/cms/classes/Common/functions.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/langs/en/controlPanel.xml" afterPath="$PROJECT_DIR$/cms/classes/Common/langs/en/controlPanel.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/langs/en/globalnames.xml" afterPath="$PROJECT_DIR$/cms/classes/Common/langs/en/globalnames.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/langs/en/listNavigation.xml" afterPath="$PROJECT_DIR$/cms/classes/Common/langs/en/listNavigation.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/langs/ru/controlPanel.xml" afterPath="$PROJECT_DIR$/cms/classes/Common/langs/ru/controlPanel.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/langs/ru/globalnames.xml" afterPath="$PROJECT_DIR$/cms/classes/Common/langs/ru/globalnames.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Common/langs/ru/listNavigation.xml" afterPath="$PROJECT_DIR$/cms/classes/Common/langs/ru/listNavigation.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Content/Content.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Content/Content.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Content/ContentCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Content/ContentCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Content/ContentListView.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Content/ContentListView.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Content/ContentType.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Content/ContentType.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Content/ContentTypeCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Content/ContentTypeCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Content/ContentTypeList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Content/ContentTypeList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Content/langs/am/content.xml" afterPath="$PROJECT_DIR$/cms/classes/Content/langs/am/content.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Content/langs/en/content.xml" afterPath="$PROJECT_DIR$/cms/classes/Content/langs/en/content.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Content/langs/ru/content.xml" afterPath="$PROJECT_DIR$/cms/classes/Content/langs/ru/content.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/ControlPanel/ControlPanelMargeCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/ControlPanel/ControlPanelMargeCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/ControlPanel/langs/am/controlPanel.xml" afterPath="$PROJECT_DIR$/cms/classes/ControlPanel/langs/am/controlPanel.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/ControlPanel/langs/en/controlPanel.xml" afterPath="$PROJECT_DIR$/cms/classes/ControlPanel/langs/en/controlPanel.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/ControlPanel/langs/ru/controlPanel.xml" afterPath="$PROJECT_DIR$/cms/classes/ControlPanel/langs/ru/controlPanel.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/FileChecker/ExceptionMissFile.class.inc" afterPath="$PROJECT_DIR$/cms/classes/FileChecker/ExceptionMissFile.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/FileChecker/FileUpdater.class.inc" afterPath="$PROJECT_DIR$/cms/classes/FileChecker/FileUpdater.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Folder/FileList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Folder/FileList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Folder/Folder.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Folder/Folder.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Folder/FolderCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Folder/FolderCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Folder/FolderStructure.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Folder/FolderStructure.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Folder/FolderTree.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Folder/FolderTree.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Folder/FolderTreeCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Folder/FolderTreeCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Folder/FolderXP.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Folder/FolderXP.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Folder/langs/am/media.xml" afterPath="$PROJECT_DIR$/cms/classes/Folder/langs/am/media.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Folder/langs/en/media.xml" afterPath="$PROJECT_DIR$/cms/classes/Folder/langs/en/media.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Folder/langs/ru/media.xml" afterPath="$PROJECT_DIR$/cms/classes/Folder/langs/ru/media.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Form/FormField.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Form/FormField.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/Gallery.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Gallery/Gallery.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/GalleryCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Gallery/GalleryCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/GalleryList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Gallery/GalleryList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/GalleryListCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Gallery/GalleryListCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/GallerySite.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Gallery/GallerySite.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/GalleryView.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Gallery/GalleryView.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/GalleryViewSite.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Gallery/GalleryViewSite.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/GalleryWithPattern.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Gallery/GalleryWithPattern.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/Item/GalleryItem.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Gallery/Item/GalleryItem.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/Item/GalleryItemCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Gallery/Item/GalleryItemCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/Item/GalleryItemList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Gallery/Item/GalleryItemList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/Item/GalleryItemListCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Gallery/Item/GalleryItemListCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/Pattern/GalleryPattern.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Gallery/Pattern/GalleryPattern.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/Pattern/GalleryPatternCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Gallery/Pattern/GalleryPatternCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/Pattern/GalleryPatternList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Gallery/Pattern/GalleryPatternList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/Pattern/GalleryPatternListCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Gallery/Pattern/GalleryPatternListCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/Structure/SGRelation.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Gallery/Structure/SGRelation.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/Structure/SGRelationCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Gallery/Structure/SGRelationCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/langs/am/gallery.xml" afterPath="$PROJECT_DIR$/cms/classes/Gallery/langs/am/gallery.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/langs/am/gallery_item.xml" afterPath="$PROJECT_DIR$/cms/classes/Gallery/langs/am/gallery_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/langs/am/gallery_pattern.xml" afterPath="$PROJECT_DIR$/cms/classes/Gallery/langs/am/gallery_pattern.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/langs/en/gallery.xml" afterPath="$PROJECT_DIR$/cms/classes/Gallery/langs/en/gallery.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/langs/en/gallery_item.xml" afterPath="$PROJECT_DIR$/cms/classes/Gallery/langs/en/gallery_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/langs/en/gallery_pattern.xml" afterPath="$PROJECT_DIR$/cms/classes/Gallery/langs/en/gallery_pattern.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/langs/ru/gallery.xml" afterPath="$PROJECT_DIR$/cms/classes/Gallery/langs/ru/gallery.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/langs/ru/gallery_item.xml" afterPath="$PROJECT_DIR$/cms/classes/Gallery/langs/ru/gallery_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Gallery/langs/ru/gallery_pattern.xml" afterPath="$PROJECT_DIR$/cms/classes/Gallery/langs/ru/gallery_pattern.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/ItemOptions/OprionsToOptionsdataCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/ItemOptions/OprionsToOptionsdataCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/ItemOptions/Options.class.inc" afterPath="$PROJECT_DIR$/cms/classes/ItemOptions/Options.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/ItemOptions/OptionsCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/ItemOptions/OptionsCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/ItemOptions/OptionsList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/ItemOptions/OptionsList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/ItemOptions/OptionsListCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/ItemOptions/OptionsListCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/ItemOptions/Optionsdata.class.inc" afterPath="$PROJECT_DIR$/cms/classes/ItemOptions/Optionsdata.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/ItemOptions/OptionsdataCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/ItemOptions/OptionsdataCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/ItemOptions/OptionsdataList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/ItemOptions/OptionsdataList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/ItemOptions/OptionsdataListCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/ItemOptions/OptionsdataListCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/ItemOptions/langs/am/items.xml" afterPath="$PROJECT_DIR$/cms/classes/ItemOptions/langs/am/items.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/ItemOptions/langs/en/items.xml" afterPath="$PROJECT_DIR$/cms/classes/ItemOptions/langs/en/items.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/ItemOptions/langs/ru/items.xml" afterPath="$PROJECT_DIR$/cms/classes/ItemOptions/langs/ru/items.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Menu/Menu.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Menu/Menu.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Menu/MenuCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Menu/MenuCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Menu/MenuList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Menu/MenuList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Menu/MenuListCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Menu/MenuListCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Menu/MenuView.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Menu/MenuView.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Menu/MenuViewSite.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Menu/MenuViewSite.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Menu/MenuView_.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Menu/MenuView_.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Menu/langs/am/menu.xml" afterPath="$PROJECT_DIR$/cms/classes/Menu/langs/am/menu.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Menu/langs/en/menu.xml" afterPath="$PROJECT_DIR$/cms/classes/Menu/langs/en/menu.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Menu/langs/ru/menu.xml" afterPath="$PROJECT_DIR$/cms/classes/Menu/langs/ru/menu.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Pattern/Pattern.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Pattern/Pattern.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Pattern/PatternCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Pattern/PatternCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Pattern/langs/am/pattern.xml" afterPath="$PROJECT_DIR$/cms/classes/Pattern/langs/am/pattern.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Pattern/langs/en/pattern.xml" afterPath="$PROJECT_DIR$/cms/classes/Pattern/langs/en/pattern.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Pattern/langs/ru/pattern.xml" afterPath="$PROJECT_DIR$/cms/classes/Pattern/langs/ru/pattern.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/ProductAll.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/ProductAll.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/ProductSearch.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/ProductSearch.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/ProductViewSite.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/ProductViewSite.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/cc_class.php" afterPath="$PROJECT_DIR$/cms/classes/Product/cc_class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/langs/en/field.xml" afterPath="$PROJECT_DIR$/cms/classes/Product/langs/en/field.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/langs/en/picture.xml" afterPath="$PROJECT_DIR$/cms/classes/Product/langs/en/picture.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/langs/en/product.xml" afterPath="$PROJECT_DIR$/cms/classes/Product/langs/en/product.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/langs/en/shoppingCart.xml" afterPath="$PROJECT_DIR$/cms/classes/Product/langs/en/shoppingCart.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/langs/en/type.xml" afterPath="$PROJECT_DIR$/cms/classes/Product/langs/en/type.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/langs/ge/field.xml" afterPath="$PROJECT_DIR$/cms/classes/Product/langs/ge/field.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/langs/ge/picture.xml" afterPath="$PROJECT_DIR$/cms/classes/Product/langs/ge/picture.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/langs/ge/product.xml" afterPath="$PROJECT_DIR$/cms/classes/Product/langs/ge/product.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/langs/ge/shoppingCart.xml" afterPath="$PROJECT_DIR$/cms/classes/Product/langs/ge/shoppingCart.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/langs/ge/type.xml" afterPath="$PROJECT_DIR$/cms/classes/Product/langs/ge/type.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/langs/ru/field.xml" afterPath="$PROJECT_DIR$/cms/classes/Product/langs/ru/field.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/langs/ru/picture.xml" afterPath="$PROJECT_DIR$/cms/classes/Product/langs/ru/picture.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/langs/ru/product.xml" afterPath="$PROJECT_DIR$/cms/classes/Product/langs/ru/product.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/langs/ru/shoppingCart.xml" afterPath="$PROJECT_DIR$/cms/classes/Product/langs/ru/shoppingCart.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/langs/ru/type.xml" afterPath="$PROJECT_DIR$/cms/classes/Product/langs/ru/type.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_char/Pr_char.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_char/Pr_char.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_char/Pr_charCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_char/Pr_charCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_double/Pr_double.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_double/Pr_double.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_double/Pr_doubleCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_double/Pr_doubleCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_field/Pr_field.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_field/Pr_field.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_field/Pr_fieldCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_field/Pr_fieldCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_field/Pr_fieldList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_field/Pr_fieldList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_field/Pr_fieldListCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_field/Pr_fieldListCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_int/Pr_ListMan.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_int/Pr_ListMan.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_int/Pr_int.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_int/Pr_int.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_int/Pr_intCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_int/Pr_intCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_main/MergeCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_main/MergeCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_main/Pr_main.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_main/Pr_main.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_main/Pr_mainCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_main/Pr_mainCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_main/Pr_mainList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_main/Pr_mainList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_main/Pr_mainListCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_main/Pr_mainListCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_main/Pr_mainListView.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_main/Pr_mainListView.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_main/Pr_mainView.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_main/Pr_mainView.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_main/Pr_options.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_main/Pr_options.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_main/Pr_optionsCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_main/Pr_optionsCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_main/Pr_optionsList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_main/Pr_optionsList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_main/ProductCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_main/ProductCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_main/ProductExtentions.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_main/ProductExtentions.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_main/ProductList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_main/ProductList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_main/ProductManagement.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_main/ProductManagement.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_picture/Pr_picture.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_picture/Pr_picture.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_picture/Pr_pictureCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_picture/Pr_pictureCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_picture/Pr_pictureList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_picture/Pr_pictureList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_picture/Pr_pictureListCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_picture/Pr_pictureListCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_text/Pr_text.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_text/Pr_text.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_text/Pr_textCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_text/Pr_textCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_type/Pr_type.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_type/Pr_type.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_type/Pr_typeCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_type/Pr_typeCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_type/Pr_typeList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_type/Pr_typeList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_type/Pr_typeListCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_type/Pr_typeListCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_type/Pr_typeView.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_type/Pr_typeView.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_type/TypeWithFields.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_type/TypeWithFields.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_typefield/Pr_typefield.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_typefield/Pr_typefield.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_typefield/Pr_typefieldCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_typefield/Pr_typefieldCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_typefield/Pr_typefieldList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_typefield/Pr_typefieldList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Product/pr_typefield/Pr_typefieldListCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Product/pr_typefield/Pr_typefieldListCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/RSS/RSS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/RSS/RSS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/RSS/RSSCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/RSS/RSSCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/RSS/RSSList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/RSS/RSSList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/RSS/RSSListCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/RSS/RSSListCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/RSS/langs/am/rss.xml" afterPath="$PROJECT_DIR$/cms/classes/RSS/langs/am/rss.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/RSS/langs/en/rss.xml" afterPath="$PROJECT_DIR$/cms/classes/RSS/langs/en/rss.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/RSS/langs/ru/rss.xml" afterPath="$PROJECT_DIR$/cms/classes/RSS/langs/ru/rss.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/RecycleBin/RecycleBin.class.inc" afterPath="$PROJECT_DIR$/cms/classes/RecycleBin/RecycleBin.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/RecycleBin/RecycleBinList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/RecycleBin/RecycleBinList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/RecycleBin/RecycleBinListCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/RecycleBin/RecycleBinListCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/SecurFolder/SecurFolderListCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/SecurFolder/SecurFolderListCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Session/Session.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Session/Session.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Subscribe/MergeSubscribe.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Subscribe/MergeSubscribe.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Subscribe/SURelation.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Subscribe/SURelation.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Subscribe/SURelationCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Subscribe/SURelationCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Subscribe/Subscribe.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Subscribe/Subscribe.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Subscribe/SubscribeCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Subscribe/SubscribeCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Subscribe/SubscribeList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Subscribe/SubscribeList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Subscribe/SubscribeListCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Subscribe/SubscribeListCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Subscribe/Subscriber/SiteSubscriber.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Subscribe/Subscriber/SiteSubscriber.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Subscribe/Subscriber/Subscriber.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Subscribe/Subscriber/Subscriber.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Subscribe/Subscriber/SubscriberList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Subscribe/Subscriber/SubscriberList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Subscribe/Subscriber/SubscriberListCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/Subscribe/Subscriber/SubscriberListCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Subscribe/langs/am/subscribe.xml" afterPath="$PROJECT_DIR$/cms/classes/Subscribe/langs/am/subscribe.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Subscribe/langs/en/subscribe.xml" afterPath="$PROJECT_DIR$/cms/classes/Subscribe/langs/en/subscribe.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/Subscribe/langs/ru/subscribe.xml" afterPath="$PROJECT_DIR$/cms/classes/Subscribe/langs/ru/subscribe.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/UserManagement/Access/UserTypeAccess.class.inc" afterPath="$PROJECT_DIR$/cms/classes/UserManagement/Access/UserTypeAccess.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/UserManagement/Access/UsertypeAccessCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/UserManagement/Access/UsertypeAccessCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/UserManagement/Access/UsertypeAccessListCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/UserManagement/Access/UsertypeAccessListCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/UserManagement/ModuleAccess/ModuleAccess.class.inc" afterPath="$PROJECT_DIR$/cms/classes/UserManagement/ModuleAccess/ModuleAccess.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/UserManagement/ModuleAccess/ModuleAccessList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/UserManagement/ModuleAccess/ModuleAccessList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/UserManagement/ModuleAccess/ModuleAccessListCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/UserManagement/ModuleAccess/ModuleAccessListCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/UserManagement/UserList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/UserManagement/UserList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/UserManagement/UserManagement.class.inc" afterPath="$PROJECT_DIR$/cms/classes/UserManagement/UserManagement.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/UserManagement/UserManagementCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/UserManagement/UserManagementCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/UserManagement/UserStatisticsCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/UserManagement/UserStatisticsCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/UserManagement/UserStatisticsCMS_.class.inc" afterPath="$PROJECT_DIR$/cms/classes/UserManagement/UserStatisticsCMS_.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/UserManagement/UserType.class.inc" afterPath="$PROJECT_DIR$/cms/classes/UserManagement/UserType.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/UserManagement/UserTypeCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/UserManagement/UserTypeCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/UserManagement/UserTypeList.class.inc" afterPath="$PROJECT_DIR$/cms/classes/UserManagement/UserTypeList.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/UserManagement/UserTypeListCMS.class.inc" afterPath="$PROJECT_DIR$/cms/classes/UserManagement/UserTypeListCMS.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/UserManagement/langs/am/user.xml" afterPath="$PROJECT_DIR$/cms/classes/UserManagement/langs/am/user.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/UserManagement/langs/en/user.xml" afterPath="$PROJECT_DIR$/cms/classes/UserManagement/langs/en/user.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/classes/UserManagement/langs/ru/user.xml" afterPath="$PROJECT_DIR$/cms/classes/UserManagement/langs/ru/user.xml" />
+    </list>
     <ignored path="decent.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -20,64 +321,101 @@
     <favorites_list name="decent" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="db.inc" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cms/files/db.inc">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ProductViewSite.class.inc" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cms/classes/Product/ProductViewSite.class.inc">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="2" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="db.inc" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/files/db.inc">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="55" selection-start-line="2" selection-start-column="55" selection-end-line="2" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="581">
-              <caret line="196" column="65" selection-start-line="196" selection-start-column="65" selection-end-line="196" selection-end-column="65" />
+            <state relative-caret-position="2175">
+              <caret line="145" column="43" selection-start-line="145" selection-start-column="43" selection-end-line="145" selection-end-column="43" />
               <folding>
-                <element signature="e#5728#5785#0#HTML" expanded="true" />
+                <marker date="1482240520000" expanded="true" signature="11888:11937" ph="select `ID` options" />
+                <marker date="1482240520000" expanded="true" signature="12043:12307" ph="SELECT OD.* optionsdata" />
+                <marker date="1482240520000" expanded="true" signature="12432:12932" ph="SELECT PM.`I... pr_main" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SiteUserListCMS.class.inc" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/cms/classes/Account/SiteUser/SiteUserListCMS.class.inc">
+      <file leaf-file-name="SiteUserView.class.inc" pinned="false" current-in-tab="true">
+        <entry file="file://$USER_HOME$/projects/israel-learning.ru/SiteUserView.class.inc">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="206" column="20" selection-start-line="206" selection-start-column="20" selection-end-line="206" selection-end-column="20" />
+            <state relative-caret-position="15">
+              <caret line="367" column="113" selection-start-line="367" selection-start-column="113" selection-end-line="367" selection-end-column="113" />
               <folding>
-                <marker date="1481727910000" expanded="true" signature="4383:4394" ph="..." />
-                <marker date="1481727910000" expanded="true" signature="4460:4472" ph="..." />
-                <marker date="1481727910000" expanded="true" signature="4689:4701" ph="..." />
-                <marker date="1481727910000" expanded="true" signature="4881:4893" ph="..." />
-                <marker date="1481727910000" expanded="true" signature="5273:5284" ph="..." />
-                <marker date="1481727910000" expanded="false" signature="5537:5548" ph="..." />
-                <marker date="1481727910000" expanded="false" signature="5670:5682" ph="..." />
-                <marker date="1481727910000" expanded="false" signature="5745:5757" ph="..." />
-                <marker date="1481727910000" expanded="false" signature="5810:5821" ph="..." />
-                <marker date="1481727910000" expanded="true" signature="18831:18881" ph="select * fro... site_user" />
-                <marker date="1481727910000" expanded="true" signature="19087:19143" ph="select * fro... invited_authors" />
-                <marker date="1481727910000" expanded="true" signature="20557:20651" ph="insert into `invited_authors`... " />
-                <marker date="1481727910000" expanded="true" signature="21012:21503" ph="CREATE TABLE... site_user" />
+                <marker date="1482308297000" expanded="true" signature="1275:1326" ph="SELECT * FRO... site_user" />
+                <marker date="1482308297000" expanded="true" signature="2009:2088" ph="SELECT * FRO... site_user" />
+                <marker date="1482308297000" expanded="true" signature="2445:2495" ph="SELECT * FRO... site_user" />
+                <marker date="1482308297000" expanded="true" signature="11993:12050" ph="SELECT count... site_user" />
+                <marker date="1482308297000" expanded="true" signature="12673:12723" ph="SELECT * FRO... site_user" />
+                <marker date="1482308297000" expanded="true" signature="15597:15674" ph="SELECT * FRO... site_user" />
+                <marker date="1482308297000" expanded="true" signature="45368:45468" ph="SELECT * FRO... tests" />
+                <marker date="1482308297000" expanded="true" signature="46723:46845" ph="select * fro... tests" />
+                <marker date="1482308297000" expanded="true" signature="55787:56016" ph="..." />
+                <marker date="1482308297000" expanded="true" signature="55813:56004" ph="..." />
+                <marker date="1482308297000" expanded="true" signature="55915:55991" ph="..." />
+                <marker date="1482308297000" expanded="true" signature="57451:57505" ph="SELECT * FRO... site_user" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Pr_pictureListCMS.class.inc" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cms/classes/Product/pr_picture/Pr_pictureListCMS.class.inc">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="123" column="43" selection-start-line="123" selection-start-column="43" selection-end-line="123" selection-end-column="43" />
+              <folding>
+                <marker date="1482305936000" expanded="true" signature="14270:14428" ph="..." />
+                <marker date="1482305936000" expanded="true" signature="14846:15432" ph="..." />
+                <marker date="1482305936000" expanded="true" signature="14895:15154" ph="..." />
+                <marker date="1482305936000" expanded="true" signature="15025:15134" ph="..." />
+                <marker date="1482305936000" expanded="true" signature="15207:15329" ph="..." />
+                <marker date="1482305936000" expanded="true" signature="15827:15941" ph="..." />
+                <marker date="1482305936000" expanded="true" signature="16386:16502" ph="..." />
+                <marker date="1482305936000" expanded="true" signature="16841:16924" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Pr_pictureList.class.inc" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cms/classes/Product/pr_picture/Pr_pictureList.class.inc">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="91" selection-start-line="19" selection-start-column="91" selection-end-line="19" selection-end-column="91" />
+              <folding>
+                <marker date="1482306130000" expanded="true" signature="359:542" ph="SELECT `ID`,... pr_picture" />
+                <marker date="1482306130000" expanded="true" signature="580:738" ph="SELECT `ID`,... pr_picture" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProductViewSite.class.inc" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cms/classes_/Product/ProductViewSite.class.inc">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1481720085000" expanded="true" signature="12914:12963" ph="select `ID` options" />
+                <marker date="1481720085000" expanded="true" signature="13069:13333" ph="SELECT OD.* optionsdata" />
+                <marker date="1481720085000" expanded="true" signature="13458:13958" ph="SELECT PM.`I... pr_main" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -91,6 +429,20 @@
         <option value="$PROJECT_DIR$/.htaccess" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/cms/classes/Account/SiteUser/SiteUserListCMS.class.inc" />
+        <option value="$PROJECT_DIR$/scroll.html" />
+        <option value="$PROJECT_DIR$/js/main.js" />
+        <option value="$PROJECT_DIR$/cms/classes_/Product/pr_main/Pr_main.class.inc" />
+        <option value="$PROJECT_DIR$/cms/classes/Product/pr_main/Pr_main.class.inc" />
+        <option value="$PROJECT_DIR$/cms/classes_/Product/pr_main/Pr_mainCMS.class.inc" />
+        <option value="$PROJECT_DIR$/cms/classes/Product/pr_main/Pr_mainCMS.class.inc" />
+        <option value="$PROJECT_DIR$/cms/classes/Product/pr_main/ProductList.class.inc" />
+        <option value="$PROJECT_DIR$/cms/classes/Product/pr_main/Pr_mainView.class.inc" />
+        <option value="$PROJECT_DIR$/cms/classes_/Product/pr_main/Pr_mainListView.class.inc" />
+        <option value="$PROJECT_DIR$/cms/classes/Product/pr_main/Pr_mainListView.class.inc" />
+        <option value="$PROJECT_DIR$/cms/classes/Product/ProductViewSite.class.inc" />
+        <option value="$PROJECT_DIR$/cms/classes/Product/pr_picture/Pr_pictureListCMS.class.inc" />
+        <option value="$PROJECT_DIR$/cms/classes/Product/pr_picture/Pr_pictureList.class.inc" />
+        <option value="$USER_HOME$/projects/israel-learning.ru/SiteUserView.class.inc" />
       </list>
     </option>
   </component>
@@ -131,8 +483,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -201,7 +551,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Account" />
+              <option name="myItemId" value="Product" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -223,20 +573,23 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Account" />
+              <option name="myItemId" value="Product" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SiteUser" />
+              <option name="myItemId" value="pr_picture" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -249,31 +602,34 @@
       <option name="presentableId" value="Default" />
       <updated>1481720001071</updated>
       <workItem from="1481720002300" duration="1223000" />
+      <workItem from="1481883342523" duration="3603000" />
+      <workItem from="1482227702752" duration="7027000" />
+      <workItem from="1482305218518" duration="1430000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1223000" />
+    <option name="totallyTimeSpent" value="13283000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1002" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18645833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -294,11 +650,99 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/cms/classes/Product/ProductViewSite.class.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2175">
+          <caret line="145" column="43" selection-start-line="145" selection-start-column="43" selection-end-line="145" selection-end-column="43" />
+          <folding>
+            <marker date="1482240520000" expanded="true" signature="11888:11937" ph="select `ID` options" />
+            <marker date="1482240520000" expanded="true" signature="12043:12307" ph="SELECT OD.* optionsdata" />
+            <marker date="1482240520000" expanded="true" signature="12432:12932" ph="SELECT PM.`I... pr_main" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/projects/israel-learning.ru/SiteUserView.class.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1482308297000" expanded="true" signature="1275:1326" ph="SELECT * FRO... site_user" />
+            <marker date="1482308297000" expanded="true" signature="2009:2088" ph="SELECT * FRO... site_user" />
+            <marker date="1482308297000" expanded="true" signature="2445:2495" ph="SELECT * FRO... site_user" />
+            <marker date="1482308297000" expanded="true" signature="11993:12050" ph="SELECT count... site_user" />
+            <marker date="1482308297000" expanded="true" signature="12673:12723" ph="SELECT * FRO... site_user" />
+            <marker date="1482308297000" expanded="true" signature="15597:15674" ph="SELECT * FRO... site_user" />
+            <marker date="1482308297000" expanded="true" signature="45368:45468" ph="SELECT * FRO... tests" />
+            <marker date="1482308297000" expanded="true" signature="46723:46845" ph="select * fro... tests" />
+            <marker date="1482308297000" expanded="true" signature="55787:56016" ph="..." />
+            <marker date="1482308297000" expanded="true" signature="55813:56004" ph="..." />
+            <marker date="1482308297000" expanded="true" signature="55915:55991" ph="..." />
+            <marker date="1482308297000" expanded="true" signature="57451:57505" ph="SELECT * FRO... site_user" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cms/classes_/Product/ProductViewSite.class.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1481720085000" expanded="true" signature="12914:12963" ph="select `ID` options" />
+            <marker date="1481720085000" expanded="true" signature="13069:13333" ph="SELECT OD.* optionsdata" />
+            <marker date="1481720085000" expanded="true" signature="13458:13958" ph="SELECT PM.`I... pr_main" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2655">
+          <caret line="177" column="23" selection-start-line="177" selection-start-column="23" selection-end-line="177" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scroll.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="7" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cms/files/db.inc">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="2" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/db.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="55" selection-start-line="2" selection-start-column="55" selection-end-line="2" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2940">
+          <caret line="196" column="65" selection-start-line="196" selection-start-column="65" selection-end-line="196" selection-end-column="65" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cms/classes/Account/SiteUser/SiteUserListCMS.class.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -314,9 +758,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
           <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
-          <folding>
-            <element signature="n#style#0;n#h2#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -324,7 +765,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
           <caret line="33" column="51" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -332,7 +772,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -340,7 +779,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -348,17 +786,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="55" selection-start-line="2" selection-start-column="55" selection-end-line="2" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
+    <entry file="file://$PROJECT_DIR$/cms/files/db.inc">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="581">
-          <caret line="196" column="65" selection-start-line="196" selection-start-column="65" selection-end-line="196" selection-end-column="65" />
-          <folding>
-            <element signature="e#5728#5785#0#HTML" expanded="true" />
-          </folding>
+        <state relative-caret-position="45">
+          <caret line="3" column="2" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -366,20 +800,191 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="206" column="20" selection-start-line="206" selection-start-column="20" selection-end-line="206" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scroll.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="7" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="177" column="23" selection-start-line="177" selection-start-column="23" selection-end-line="177" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cms/classes_/Product/pr_main/Pr_main.class.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="746">
+          <caret line="1270" column="5" selection-start-line="1270" selection-start-column="5" selection-end-line="1270" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cms/classes_/Product/pr_main/Pr_mainCMS.class.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6465">
+          <caret line="1350" column="8" selection-start-line="1350" selection-start-column="8" selection-end-line="1390" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cms/classes/Product/pr_main/Pr_mainCMS.class.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="1133" column="51" selection-start-line="1133" selection-start-column="51" selection-end-line="1133" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cms/classes/Product/pr_main/Pr_main.class.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="761">
+          <caret line="1271" column="5" selection-start-line="1271" selection-start-column="5" selection-end-line="1271" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cms/classes_/Product/pr_main/ProductList.class.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="150" column="31" selection-start-line="150" selection-start-column="31" selection-end-line="150" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cms/classes_/Product/pr_main/Pr_mainView.class.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2959">
+          <caret line="476" column="45" selection-start-line="476" selection-start-column="36" selection-end-line="476" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../blockchainrndhub/cms/classes/Product/pr_main/Pr_mainListView.class.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2235">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cms/classes_/Product/pr_main/Pr_mainListView.class.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3469">
+          <caret line="179" column="100" selection-start-line="179" selection-start-column="100" selection-end-line="179" selection-end-column="121" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../blockchainrndhub/cms/classes/Product/pr_main/ProductList.class.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1245">
+          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cms/classes/Product/pr_main/Pr_mainListView.class.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="311" column="42" selection-start-line="311" selection-start-column="42" selection-end-line="311" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cms/classes/Product/pr_main/Pr_mainView.class.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7560">
+          <caret line="608" column="33" selection-start-line="608" selection-start-column="33" selection-end-line="608" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cms/classes_/Product/ProductViewSite.class.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1481727910000" expanded="true" signature="4383:4394" ph="..." />
-            <marker date="1481727910000" expanded="true" signature="4460:4472" ph="..." />
-            <marker date="1481727910000" expanded="true" signature="4689:4701" ph="..." />
-            <marker date="1481727910000" expanded="true" signature="4881:4893" ph="..." />
-            <marker date="1481727910000" expanded="true" signature="5273:5284" ph="..." />
-            <marker date="1481727910000" expanded="false" signature="5537:5548" ph="..." />
-            <marker date="1481727910000" expanded="false" signature="5670:5682" ph="..." />
-            <marker date="1481727910000" expanded="false" signature="5745:5757" ph="..." />
-            <marker date="1481727910000" expanded="false" signature="5810:5821" ph="..." />
-            <marker date="1481727910000" expanded="true" signature="18831:18881" ph="select * fro... site_user" />
-            <marker date="1481727910000" expanded="true" signature="19087:19143" ph="select * fro... invited_authors" />
-            <marker date="1481727910000" expanded="true" signature="20557:20651" ph="insert into `invited_authors`... " />
-            <marker date="1481727910000" expanded="true" signature="21012:21503" ph="CREATE TABLE... site_user" />
+            <marker date="1481720085000" expanded="true" signature="12914:12963" ph="select `ID` options" />
+            <marker date="1481720085000" expanded="true" signature="13069:13333" ph="SELECT OD.* optionsdata" />
+            <marker date="1481720085000" expanded="true" signature="13458:13958" ph="SELECT PM.`I... pr_main" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cms/classes/Product/pr_main/ProductList.class.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="130" column="19" selection-start-line="130" selection-start-column="19" selection-end-line="130" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cms/classes/Common/TreeViewNavigation.class.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="149" column="13" selection-start-line="149" selection-start-column="13" selection-end-line="149" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cms/classes/Product/ProductViewSite.class.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2175">
+          <caret line="145" column="43" selection-start-line="145" selection-start-column="43" selection-end-line="145" selection-end-column="43" />
+          <folding>
+            <marker date="1482240520000" expanded="true" signature="11888:11937" ph="select `ID` options" />
+            <marker date="1482240520000" expanded="true" signature="12043:12307" ph="SELECT OD.* optionsdata" />
+            <marker date="1482240520000" expanded="true" signature="12432:12932" ph="SELECT PM.`I... pr_main" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cms/classes/Product/pr_picture/Pr_pictureList.class.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="91" selection-start-line="19" selection-start-column="91" selection-end-line="19" selection-end-column="91" />
+          <folding>
+            <marker date="1482306130000" expanded="true" signature="359:542" ph="SELECT `ID`,... pr_picture" />
+            <marker date="1482306130000" expanded="true" signature="580:738" ph="SELECT `ID`,... pr_picture" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cms/classes/Product/pr_picture/Pr_pictureListCMS.class.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="123" column="43" selection-start-line="123" selection-start-column="43" selection-end-line="123" selection-end-column="43" />
+          <folding>
+            <marker date="1482305936000" expanded="true" signature="14270:14428" ph="..." />
+            <marker date="1482305936000" expanded="true" signature="14846:15432" ph="..." />
+            <marker date="1482305936000" expanded="true" signature="14895:15154" ph="..." />
+            <marker date="1482305936000" expanded="true" signature="15025:15134" ph="..." />
+            <marker date="1482305936000" expanded="true" signature="15207:15329" ph="..." />
+            <marker date="1482305936000" expanded="true" signature="15827:15941" ph="..." />
+            <marker date="1482305936000" expanded="true" signature="16386:16502" ph="..." />
+            <marker date="1482305936000" expanded="true" signature="16841:16924" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/projects/israel-learning.ru/SiteUserView.class.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="367" column="113" selection-start-line="367" selection-start-column="113" selection-end-line="367" selection-end-column="113" />
+          <folding>
+            <marker date="1482308297000" expanded="true" signature="1275:1326" ph="SELECT * FRO... site_user" />
+            <marker date="1482308297000" expanded="true" signature="2009:2088" ph="SELECT * FRO... site_user" />
+            <marker date="1482308297000" expanded="true" signature="2445:2495" ph="SELECT * FRO... site_user" />
+            <marker date="1482308297000" expanded="true" signature="11993:12050" ph="SELECT count... site_user" />
+            <marker date="1482308297000" expanded="true" signature="12673:12723" ph="SELECT * FRO... site_user" />
+            <marker date="1482308297000" expanded="true" signature="15597:15674" ph="SELECT * FRO... site_user" />
+            <marker date="1482308297000" expanded="true" signature="45368:45468" ph="SELECT * FRO... tests" />
+            <marker date="1482308297000" expanded="true" signature="46723:46845" ph="select * fro... tests" />
+            <marker date="1482308297000" expanded="true" signature="55787:56016" ph="..." />
+            <marker date="1482308297000" expanded="true" signature="55813:56004" ph="..." />
+            <marker date="1482308297000" expanded="true" signature="55915:55991" ph="..." />
+            <marker date="1482308297000" expanded="true" signature="57451:57505" ph="SELECT * FRO... site_user" />
           </folding>
         </state>
       </provider>

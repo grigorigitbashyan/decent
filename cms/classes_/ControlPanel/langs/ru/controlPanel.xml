@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "../../../Common/langs/name.dtd">
+<names>
+	<name id='cmsUsers'>User accounts</name>
+	<name id='siteOptions'>Website options</name>
+</names>
+

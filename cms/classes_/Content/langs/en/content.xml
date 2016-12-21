@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id='directories'>Directories</name>
+	<name id='createDirectories'>Create directories: </name>
+	<name id='createContent'>Create content: </name>
+	<name id='move'>Move</name>
+	<name id='title'>Title</name>
+	<name id='date'>Date</name>
+	<name id='titleStatus'>Title visibility status</name>
+	<name id='shortContent'>Short content</name>
+</names>

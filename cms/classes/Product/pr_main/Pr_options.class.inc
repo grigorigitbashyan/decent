@@ -41,20 +41,13 @@ class Pr_options extends Record
 	 * @param int $productID
 	 * @param int $fieldID
 	 */
-	function __construct($ID = null, $productID = null, $fieldID = null, $group = 0, $relatedID = 0)
+	function __construct($ID = null, $productID = null, $fieldID = null, $group = 0)
 	{
 		if ($ID == null && $productID && $fieldID)
 		{
 			// get according ID
-			if ( $relatedID )
-			{
-				$sql = "SELECT `ID` FROM `pr_options` WHERE `productID` = $productID AND `fieldID` = $fieldID AND `group` = $group AND `relatedID` = $relatedID";
-			}
-			else 
-			{
-				$sql = "SELECT `ID` FROM `pr_options` WHERE `productID` = $productID AND `fieldID` = $fieldID AND `group` = $group";
-			}
-			$result = DB::QueryToArray($sql);
+			$sql = "SELECT `ID` FROM `pr_options` WHERE `productID` = $productID AND `fieldID` = $fieldID AND `group` = $group";
+			$result = DB::QueryToArray ( $sql );
 			
 			$ID = $result['0']['ID'];
 		}

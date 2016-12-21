@@ -11,28 +11,8 @@ class Site_user extends NamedRecord
 	*
 	* @protected string
 	*/
-	protected $m_random;
 	
-	/**
-	* Enter description here...
-	*
-	* @protected string
-	*/
-	protected $m_name;
-	
-	/**
-	* Enter description here...
-	*
-	* @protected string
-	*/
-	protected $m_lname;
-	
-	/**
-	* Enter description here...
-	*
-	* @protected string
-	*/
-	protected $m_url;
+	protected $m_company;
 
 	/**
 	* Enter description here...
@@ -75,60 +55,17 @@ class Site_user extends NamedRecord
 	 * @var string
 	 */
 	protected $m_logcode;
-	
-	/**
-	 * Enter description here...
-	 *
-	 * @var string
-	 */
-	protected $m_image;
-	
-	/**
-	 * Enter description here...
-	 *
-	 * @var boolean
-	 */
-	protected $m_notifications;
-	
-	/**
-	 * Enter description here...
-	 *
-	 * @var boolean
-	 */
-	protected $m_follow;
-	
-	/**
-	 * Enter description here...
-	 *
-	 * @var boolean
-	 */
-	protected $m_mention;
-	
-	/**
-	 * Enter description here...
-	 *
-	 * @var boolean
-	 */
-	protected $m_recommend;
-	
-	/**
-	 * Enter description here...
-	 *
-	 * @var boolean
-	 */
-	protected $m_share;
-	
 	/**
 	* Enter description here...
 	*
 	* @param int $ID
 	* @return Site_user
 	*/
-	function __construct($ID = null, $field = "ID")
+	function __construct($ID = null)
 	{
-		parent::__construct($ID, 'site_user', $field);
-		
-		$this->Read();
+		 parent::__construct($ID, 'site_user');
+
+		 $this->Read();
 	}
 
 	/**
@@ -140,7 +77,6 @@ class Site_user extends NamedRecord
 	{
 		 return $this->DeleteRecord(false);
 	}
-	
 	/**
 	* Update record
 	*
@@ -151,16 +87,15 @@ class Site_user extends NamedRecord
 	{
 		 return $this->UpdateValues($properties);
 	}
-	
 	/**
 	* Insert new record
 	*
 	* @param array $properties
 	* @return bool
 	*/
-	function Insert($fullname, $url, $email, $password, $status = 1)
+	function Insert($fullName, $password, $email, $company, $status = 1)
 	{
-		// get delay days from configuration
+		// get delay days from configuration //////////////////
 		$fileRoot = Site::GetStructureToFileRoot();
 		
 		if($fileRoot == 'files/')
@@ -174,7 +109,7 @@ class Site_user extends NamedRecord
 
 		$filePath = $_SERVER['DOCUMENT_ROOT'].'/'.$fileRoot.'cms/config/userConfig.xml';
 		
-		if ( !file_exists($filePath) )
+		if(!file_exists($filePath))
 		{
 			die("The configuration file ($filePath) does not exist!");
 		}
@@ -183,6 +118,8 @@ class Site_user extends NamedRecord
 		$activationDelay = (int) ($xml->activationWaitTerm) ? $xml->activationWaitTerm : 1;
 		 
 		$this->DeleteOlds($activationDelay);
+		///////////////////////////////////////////////////////
+		$fullName = trim($fullName);
 		
 		$password = trim($password);
 		$email = trim($email);
@@ -191,26 +128,27 @@ class Site_user extends NamedRecord
 		$sql = "SELECT count(*) FROM `site_user` WHERE `email` = '$email'";
 		$res = DB::QueryToValue($sql);
 		
-		if ( $res )
+		if($res)
 		{
 			return null;
 		}
 		
-		$properties['name'] = $fullname;
-		$properties['url'] = $url;
+		////////////////////////////
+		$properties['name'] = $fullName;
+		$properties['company'] = $company;
+		
 		$properties['password'] = md5($password);
 		$properties['email'] = $email;
 		$properties['activation_code'] = GetRandCode(32);
 		$properties['date'] = date('Y-m-d');
 		$properties['status'] = $status;
 		$properties['logcode'] = GetRandCode(16);
-		$properties['random'] = GetRandCode(6);
 		
 		return $this->InsertRecord($properties);
 	}
-	
+
 	/**
-	 * Delete all registrated users that has not activated
+	 * Delete all registrrated users, that has not activated
 	 *
 	 */
 	function DeleteOlds($day = 1)
@@ -224,32 +162,29 @@ class Site_user extends NamedRecord
 	}
 
 	/**
-	* Return value of m_random
+	* Return value of m_username
 	*
 	* @return string
 	*/
-	function GetRandom()
+	function GetLastName()
 	{
-		return $this->m_random;
+		// split name and return second element
+		$flName = split('&nbsp;', $this->m_name);
+		return $flName[1];
 	}
-	
+
 	/**
-	* Return value of m_name
+	* Return value of m_username
 	*
 	* @return string
 	*/
-	function GetFullName()
+	function GetFirstName()
 	{
+		// split name and return first element
+//		$flName = split('&nbsp;', $this->m_name);
+//		return $flName[0];
+
 		return $this->m_name;
-	}
-	/**
-	* Return value of m_url
-	*
-	* @return string
-	*/
-	function GetURL()
-	{
-		return $this->m_url;
 	}
 	
 	/**
@@ -261,7 +196,7 @@ class Site_user extends NamedRecord
 	{
 		return $this->m_password;
 	}
-	
+
 	/**
 	* Return value of m_email
 	*
@@ -271,7 +206,7 @@ class Site_user extends NamedRecord
 	{
 		return $this->m_email;
 	}
-	
+
 	/**
 	* Return value of m_activation_code
 	*
@@ -312,89 +247,24 @@ class Site_user extends NamedRecord
 		return $this->m_logcode;
 	}
 	
-	/**
-	* Return value of m_image
-	*
-	* @return string
-	*/
-	function GetImage()
-	{
-		return $this->m_image;
-	}
-	
-	/**
-	* Return value of m_notifications
-	*
-	* @return boolean
-	*/
-	function GetNotificationsSetting()
-	{
-		return $this->m_notifications;
-	}
-	
-	/**
-	* Return value of m_follow
-	*
-	* @return boolean
-	*/
-	function GetFollowSetting()
-	{
-		return $this->m_follow;
-	}
-	
-	/**
-	* Return value of m_mention
-	*
-	* @return boolean
-	*/
-	function GetMentionSetting()
-	{
-		return $this->m_mention;
-	}
-	
-	/**
-	* Return value of m_recommend
-	*
-	* @return boolean
-	*/
-	function GetRecommendSetting()
-	{
-		return $this->m_recommend;
-	}
-	
-	/**
-	* Return value of m_share
-	*
-	* @return boolean
-	*/
-	function GetShareSetting()
-	{
-		return $this->m_share;
-	}
-	
 	// Set functions ////////////////////////////////////////////////////
+
+
 	/**
-	* Set value to m_name
+	* Set value to m_username  
 	*
-	* @param string $fullname
+	* @param string $username
 	* @param bool $dbupdate
 	* @return bool
 	*/
-	function SetFullName($fullname, $dbupdate = true)
+	function SetFirstName($username, $dbupdate = true)
 	{
-		return $this->UpdateValue('name', $fullname, $dbupdate);
+		return $this->UpdateValue('name', $username, $dbupdate);
 	}
-	
-	/**
-	* Set value to m_url
-	*
-	* @param string $url
-	* @param bool $dbupdate
-	* @return bool
-	*/
-	function SetURL($url, $dbupdate = true)
+
+	function SetLastName($username, $dbupdate = true)
 	{
-		return $this->UpdateValue('url', $url, $dbupdate);
+		return $this->UpdateValue('lname', $username, $dbupdate);
 	}
 	
 	/**
@@ -473,79 +343,7 @@ class Site_user extends NamedRecord
 		return $this->UpdateValue('logcode', $logcode, $dbupdate);
 	}
 	
-	/**
-	* Set value to m_image
-	*
-	* @param int $image
-	* @param bool $dbupdate
-	* @return bool
-	*/
-	function SetImage($image, $dbupdate = true)
-	{
-		return $this->UpdateValue('image', $image, $dbupdate);
-	}
-	
-	/**
-	* Set value to m_notifications
-	*
-	* @param int $value
-	* @param bool $dbupdate
-	* @return bool
-	*/
-	function SetNotificationsSetting($value, $dbupdate = true)
-	{
-		return $this->UpdateValue('notifications', $value, $dbupdate);
-	}
-	
-	/**
-	* Set value to m_follow
-	*
-	* @param int $value
-	* @param bool $dbupdate
-	* @return bool
-	*/
-	function SetFollowSetting($value, $dbupdate = true)
-	{
-		return $this->UpdateValue('follow', $value, $dbupdate);
-	}
-	
-	/**
-	* Set value to m_mention
-	*
-	* @param int $value
-	* @param bool $dbupdate
-	* @return bool
-	*/
-	function SetMentionSetting($value, $dbupdate = true)
-	{
-		return $this->UpdateValue('mention', $value, $dbupdate);
-	}
-	
-	/**
-	* Set value to m_recommend
-	*
-	* @param int $value
-	* @param bool $dbupdate
-	* @return bool
-	*/
-	function SetRecommendSetting($value, $dbupdate = true)
-	{
-		return $this->UpdateValue('recommend', $value, $dbupdate);
-	}
-	
-	/**
-	* Set value to m_share
-	*
-	* @param int $value
-	* @param bool $dbupdate
-	* @return bool
-	*/
-	function SetShareSetting($value, $dbupdate = true)
-	{
-		return $this->UpdateValue('share', $value, $dbupdate);
-	}
-	
-	/**
+/**
      * Enter description here...
      *
      * @param string $logId
@@ -557,68 +355,14 @@ class Site_user extends NamedRecord
     	return DB::QueryToValue($sql);
     }
     
-    function CheckEmail($email)
+    function GetCompany()
     {
-    	$sql = "SELECT * FROM `site_user` WHERE `email` = '$email'";
-		$res = DB::QueryToArray($sql);
-		if ( is_array($res) )
-		{
-			return $res;
-		}
-		else 
-		{
-			return false;
-		}
+    	return $this->m_company;
     }
     
-    function GetMyArticles($status=10, $private=10, $limit=null)
+    function SetCompany($company, $dbupdate = true)
     {
-    	$statusStr = "";
-    	if ( $status==0 || $status==1 )
-    	{
-    		$statusStr = " and `status` = ".$status;
-    	}
-    	
-    	$privateStr = "";
-    	if ( $private==0 || $private==1 )
-    	{
-    		$privateStr = " and `private` = ".$private;
-    	}
-    	
-    	$limitStr = "";
-    	if ( $limit!=null )
-    	{
-    		$limitStr = " limit ".$limit;
-    	}
-    	
-    	$sql = "SELECT * FROM `pr_main` WHERE `userID` = ".$this->GetID().$statusStr.$privateStr." and `typeID` = 1 order by `date` DESC, `ID` DESC".$limitStr;
-		$res = DB::QueryToArray($sql);
-		
-		return $res;
-    }
-    
-    function GetMyFollowers()
-    {
-    	$query = "select * from `user_tags` where `tagID` = ".$this->m_ID." and `tagType` = 'author' and `follow` = 1 and `userID` in (select `ID` from `site_user`) order by `count` DESC";
-    	$retArr = DB::QueryToArray($query);
-    	
-    	return $retArr;
-    }
-    
-    function Signin($email, $password)
-    {
-    	$password = md5($password);
-    	
-    	$sql = "SELECT * FROM `site_user` WHERE `email` = '$email' and `password` = '$password'";
-		$res = DB::QueryToRow($sql);
-		if ( is_array($res) )
-		{
-			return $res;
-		}
-		else 
-		{
-			return false;
-		}
+    	$this->UpdateValue('company', $company, $dbupdate);
     }
 }
 ?>

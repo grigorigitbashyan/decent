@@ -170,9 +170,6 @@ class UserStatisticsCMS extends CMSObject implements CMSInterface
 		// if it is not new user then get name and email
 		if ( $username )
 		{
-			$usersRatings = $this->UsersRatings();
-			$usersTotalRating = $this->UsersTotalRating();
-			
 			$user = new UserManagement ( $username, false );
 			
 			$name = $user->GetName ();
@@ -288,15 +285,6 @@ class UserStatisticsCMS extends CMSObject implements CMSInterface
 								<?php
 								if ( is_array($stats) )
 								{
-									$query = "select SUM(`viewCount`) as `av` from `pr_main` where `userID` = ".$userID;
-									$articlesViews = DB::QueryToValue($query);
-									
-									$query = "select SUM(TIMESTAMPDIFF(DAY, `date`, NOW())) as `av` from `pr_main` where `userID` = ".$userID;
-									$days = DB::QueryToValue($query);
-									
-									$authorRating = $articlesViews/$stats["totalArticles"];
-									$authorRating = $authorRating/$days;
-									$authorRating = ceil($authorRating*(($stats["totalArticles"] - $stats["rejectedArticles"])/$stats["totalArticles"])*1000000);
 									?>
 									<div class="tableEven" style="border-top:1px solid #777;">
 										<div class="tableCHB" style="width:20px;">&nbsp;</div>
@@ -310,16 +298,10 @@ class UserStatisticsCMS extends CMSObject implements CMSInterface
 										<div class="tableD" style="width:100px;"><?php echo $stats["publishedArticles"];?></div>
 									</div>
 									<br class="clearFloat" />
-									<div class="tableEven">
+									<div class="tableEven" style="border-bottom:0px;">
 										<div class="tableCHB" style="width:20px;">&nbsp;</div>
 										<div class="tableT">Rejected articles count</div>
 										<div class="tableD" style="width:100px;"><?php echo $stats["rejectedArticles"];?></div>
-									</div>
-									<br class="clearFloat" />
-									<div class="tableUneven" style="border-bottom:0px;">
-										<div class="tableCHB" style="width:20px;">&nbsp;</div>
-										<div class="tableT">Rating</div>
-										<div class="tableD" style="width:100px;"><?php echo $authorRating;?> (<?php echo round($authorRating*100/$usersTotalRating, 2);?>%)</div>
 									</div>
 									<br class="clearFloat" />
 									
@@ -376,7 +358,7 @@ class UserStatisticsCMS extends CMSObject implements CMSInterface
 		$query = "select * from `pr_main` where `userID` = ".$userID.$statusStr.$pageStr;
 		$userArticles = DB::QueryToArray($query);
 		?>
-		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+		<script type="text/javascript" src="../tools/jquery/jquery-1.7.1.min.js"></script>
 		<script type="text/javascript">
 		$(document).ready(function(){
 			$("#status").change(function(){
@@ -471,63 +453,6 @@ class UserStatisticsCMS extends CMSObject implements CMSInterface
 		</form>
 		<br clear="all">
 		<?php
-	}
-	
-	public function UsersRatings()
-	{
-		$userList = new UserList(12);
-		$userListArr = $userList->GetStructure();
-		
-		$retArr = array();
-		for ( $i=0; $i<count($userListArr); $i++ )
-		{
-			$userID = $userListArr[$i]["ID"];
-			$user = new UserManagement ( $userListArr[$i]["username"], false );
-			
-			$stats = $user->GetStatistics();
-			
-			$query = "select SUM(`viewCount`) as `av` from `pr_main` where `userID` = ".$userID;
-			$articlesViews = DB::QueryToValue($query);
-			
-			$query = "select SUM(TIMESTAMPDIFF(DAY, `date`, NOW())) as `av` from `pr_main` where `userID` = ".$userID;
-			$days = DB::QueryToValue($query);
-			
-			$authorRating = $articlesViews/$stats["totalArticles"];
-			$authorRating = $authorRating/$days;
-			$authorRating = ceil($authorRating*(($stats["totalArticles"] - $stats["rejectedArticles"])/$stats["totalArticles"])*1000000);
-			
-			$retArr[$userID] = $authorRating;
-		}
-		
-		return $retArr;
-	}
-	public function UsersTotalRating()
-	{
-		$userList = new UserList(12);
-		$userListArr = $userList->GetStructure();
-		
-		$retArr = 0;
-		for ( $i=0; $i<count($userListArr); $i++ )
-		{
-			$userID = $userListArr[$i]["ID"];
-			$user = new UserManagement ( $userListArr[$i]["username"], false );
-			
-			$stats = $user->GetStatistics();
-			
-			$query = "select SUM(`viewCount`) as `av` from `pr_main` where `userID` = ".$userID;
-			$articlesViews = DB::QueryToValue($query);
-			
-			$query = "select SUM(TIMESTAMPDIFF(DAY, `date`, NOW())) as `av` from `pr_main` where `userID` = ".$userID;
-			$days = DB::QueryToValue($query);
-			
-			$authorRating = $articlesViews/$stats["totalArticles"];
-			$authorRating = $authorRating/$days;
-			$authorRating = ceil($authorRating*(($stats["totalArticles"] - $stats["rejectedArticles"])/$stats["totalArticles"])*1000000);
-			
-			$retArr += $authorRating;
-		}
-		
-		return $retArr;
 	}
 	
 	/**

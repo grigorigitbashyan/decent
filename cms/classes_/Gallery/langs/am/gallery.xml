@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id="thumbnail">Thumbnail</name>
+	<name id="rmvThumbnail">Remove Thumbnail</name>
+	<name id="mkThumbnail">Make Thumbnail from:</name>
+	<name id="exFileURL">External File URL:</name>
+	<name id="upload">Upload</name>
+	<name id="uploadFile">File Upload:</name>
+</names>

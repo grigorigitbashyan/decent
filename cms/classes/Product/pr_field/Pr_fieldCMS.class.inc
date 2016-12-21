@@ -104,6 +104,10 @@ class Pr_fieldCMS extends CMSObject implements CMSInterface
 				$editor = DB::POST ( 'editor' );
 				$this->m_pr_field->SetEditor ( $editor );
 				break;
+			case 'subtype':
+				$subtype = DB::POST ( 'subtype' );
+				$this->m_pr_field->SetSubtype ( $subtype );
+				break;
 			case 'selecttypefields':
 				$fields = DB::POST('fields');
 				$pattern = $_POST['pattern'];
@@ -290,6 +294,32 @@ class Pr_fieldCMS extends CMSObject implements CMSInterface
 					break;
 				case 5 :
 					print ( '<h2>Short Text Field (255 chars)</h2>' );
+					
+					$subtype = $this->m_pr_field->GetSubtype();
+					print ( '<table width="100%" border="0" cellspacing="0" cellpadding="0" class="titleBox">
+			          <tr>
+			            <td>
+			                <div class="titleColL">' );
+					$this->DisplayFormHeadr ( 'subtype' );
+					$this->DisplayHidden ( $overLink, $ID );
+					?>
+					<select name="subtype">
+						<option value="">---</option>
+						<option value="url"<?php echo ($subtype=="url" ? " selected": "");?>>URL</option>
+						<option value="datefield"<?php echo ($subtype=="datefield" ? " selected": "");?>>Datefield</option>
+					</select>
+					<?php
+					print ( '<br />' );
+					print ( '</div>
+			                <div class="titleColR">' );
+					$this->DisplayFormFooter ();
+					print ( '</div>
+		             <br class="clearFloat" />
+		             
+			        	</td>
+			          </tr>
+			        </table>
+			        </form>' );
 					break;
 				case 6 :
 					print ( '<h2>Short Text Field (255 chars multy languages)</h2>' );

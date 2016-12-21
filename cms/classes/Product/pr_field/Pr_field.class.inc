@@ -47,6 +47,13 @@ class Pr_field extends NamedRecord
 	* @protected text
 	*/
 	protected $m_pattern;
+	
+	/**
+	* Enter description here...
+	*
+	* @protected string
+	*/
+	protected $m_subtype;
 
 	/**
 	* Enter description here...
@@ -142,6 +149,16 @@ class Pr_field extends NamedRecord
 	{
 		return $this->m_pattern;
 	}
+	
+	/**
+	* Return value of m_subtype
+	*
+	* @return text
+	*/
+	function GetSubtype()
+	{
+		return $this->m_subtype;
+	}
 
 	// Set functions ////////////////////////////////////////////////////
 	/**
@@ -213,13 +230,25 @@ class Pr_field extends NamedRecord
 	/**
 	* Set value to m_pattern
 	*
-	* @param int $editor
+	* @param text $pattern
 	* @param bool $dbupdate
 	* @return bool
 	*/
 	function SetFieldPattern($pattern, $dbupdate = true)
 	{
 		return $this->UpdateValue('pattern', $pattern, $dbupdate);
+	}
+	
+	/**
+	* Set value to m_subtype
+	*
+	* @param string $subtype
+	* @param bool $dbupdate
+	* @return bool
+	*/
+	function SetSubtype($subtype, $dbupdate = true)
+	{
+		return $this->UpdateValue('subtype', $subtype, $dbupdate);
 	}
 }
 ?>

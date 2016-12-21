@@ -26,11 +26,11 @@ class Optionsdata extends NamedRecord
 	* @param int $ID
 	* @return Optionsdata
 	*/
-	function __construct($ID = null, $field = "ID")
+	function __construct($ID = null)
 	{
-		parent::__construct($ID, 'optionsdata', $field);
-		
-		$this->Read();
+		 parent::__construct($ID, 'optionsdata');
+
+		 $this->Read();
 	}
 
 	/**

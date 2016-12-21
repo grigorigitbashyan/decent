@@ -16,24 +16,9 @@ class SiteUserList extends TreeViewNavigation
 	 * @param int $page
 	 * @param int $currID
 	 */
-	function __construct($status = 1, $limit = 100, $page = null, $currID = null, $lang = 'en', $author = 'all')
+	function __construct($status = 1, $limit = 100, $page = null, $currID = null, $lang = 'en')
 	{
-		if ( $status==3 )
-		{
-			if ( $author=="1" || $author=="0" )
-			{
-				$author = intval($author);
-				$sql = "SELECT * FROM `site_user` WHERE `status` = $status and `author` = $author";
-			}
-			else 
-			{
-				$sql = "SELECT * FROM `site_user` WHERE `status` = $status";
-			}
-		}
-		else 
-		{
-			$sql = "SELECT * FROM `site_user` WHERE `status` = $status";
-		}
+		$sql = "SELECT * FROM `site_user` WHERE `status` = $status";
 		
 		parent::__construct ( $sql, 'siteuser', $limit, $page, 'username', $currID, $lang );
 	}

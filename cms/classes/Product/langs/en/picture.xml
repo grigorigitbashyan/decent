@@ -3,4 +3,6 @@
 <names>
 	<name id="back">Back</name>
 	<name id="desc">Description</name>
+	<name id="title">Title</name>
+	<name id="gallery">Gallery</name>
 </names>

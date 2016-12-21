@@ -83,7 +83,7 @@ class Pr_mainCMS extends CMSObject implements CMSInterface
 			case 'updateFields' :
 				$special = isset ( $_POST ['special'] );
 				$this->m_pr_main->SetSpecial( $special);
-				
+
 				// get types
 				$typeID = $this->m_pr_main->GetTypeID ();
 				$productTypeFields = new Pr_typefieldList ( $typeID );
@@ -189,71 +189,6 @@ class Pr_mainCMS extends CMSObject implements CMSInterface
 							break;
 						case 4: // double
 							$productDouble = new Pr_double ( null, $productID, $fieldID );
-							if ( ($fieldID==55 || $fieldID==56) && ($value=="" || $value==0) )
-							{
-								if ( $field55V=="" )
-								{
-									$field55V = "app";
-									$field56V = "app";
-									
-									$address = trim($this->m_pr_main->GetFieldValue(28));
-									$zip = trim($this->m_pr_main->GetFieldValue(29));
-									$city = trim($this->m_pr_main->GetFieldValue(18, 'ru', true, "key"));
-									if ( $city)
-									{
-										$address = str_replace(" ", "+", $address);
-										
-										$ch = curl_init();
-										$timeout = 5;
-										$userAgent = 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322)';
-										
-										if ( $address )
-										{
-											if ( $zip )
-											{
-												curl_setopt($ch,CURLOPT_URL,'http://maps.googleapis.com/maps/api/geocode/json?address='.$address.',+'.$zip.',+'.$city.',+Italy&sensor=false');
-											}
-											else 
-											{
-												curl_setopt($ch,CURLOPT_URL,'http://maps.googleapis.com/maps/api/geocode/json?address='.$address.',+'.$city.',+Italy&sensor=false');
-											}
-										}
-										else 
-										{
-											curl_setopt($ch,CURLOPT_URL,'http://maps.googleapis.com/maps/api/geocode/json?address='.$city.',+Italy&sensor=false');
-										}
-										curl_setopt($ch,CURLOPT_USERAGENT, $userAgent);
-										curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
-										curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,$timeout);
-										curl_setopt($ch,CURLOPT_FAILONERROR, true);
-										curl_setopt($ch,CURLOPT_FOLLOWLOCATION, true);
-										curl_setopt($ch,CURLOPT_AUTOREFERER, true);
-										curl_setopt($ch,CURLOPT_TIMEOUT, 10);
-										$data = curl_exec($ch);
-										curl_close($ch);
-										
-										$data = json_decode($data);
-										if ( $data->status == "OK" && $data->results[0]->geometry->location_type == "ROOFTOP" )
-										{
-											$field55V = $data->results[0]->geometry->location->lat;
-											$field56V = $data->results[0]->geometry->location->lng;
-										}
-									}
-								}
-								
-								if ( $field55V != "app" )
-								{
-									if ( $fieldID==55 )
-									{
-										$value = $field55V;
-									}
-									else 
-									{
-										$value = $field56V;
-									}
-								}
-							}
-							
 							if ($productDouble->GetID ()) // in exist
 							{
 								$ar = $productDouble->SetValue ( $value );
@@ -303,7 +238,6 @@ class Pr_mainCMS extends CMSObject implements CMSInterface
 							break;
 						case 7: // text multi lang
 							$productText = new Pr_text ( null, $productID, $fieldID, $this->m_displayLang );
-							
 							if ($productText->GetID ()) // in exist
 							{
 								$ar = $productText->SetValue ( $value );
@@ -504,70 +438,6 @@ class Pr_mainCMS extends CMSObject implements CMSInterface
 													break;
 												case 4: // double
 													$productDouble = new Pr_double ( null, $productID, $fieldID, $group );
-													if ( ($fieldID==55 || $fieldID==56) && ($value=="" || $value==0) )
-													{
-														if ( $field55V=="" )
-														{
-															$field55V = "app";
-															$field56V = "app";
-															
-															$address = trim($this->m_pr_main->GetFieldValue(28));
-															$zip = trim($this->m_pr_main->GetFieldValue(29));
-															$city = trim($this->m_pr_main->GetFieldValue(18, 'ru', true, "key"));
-															if ( $city)
-															{
-																$address = str_replace(" ", "+", $address);
-																
-																$ch = curl_init();
-																$timeout = 5;
-																$userAgent = 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322)';
-																
-																if ( $address )
-																{
-																	if ( $zip )
-																	{
-																		curl_setopt($ch,CURLOPT_URL,'http://maps.googleapis.com/maps/api/geocode/json?address='.$address.',+'.$zip.',+'.$city.',+Italy&sensor=false');
-																	}
-																	else 
-																	{
-																		curl_setopt($ch,CURLOPT_URL,'http://maps.googleapis.com/maps/api/geocode/json?address='.$address.',+'.$city.',+Italy&sensor=false');
-																	}
-																}
-																else 
-																{
-																	curl_setopt($ch,CURLOPT_URL,'http://maps.googleapis.com/maps/api/geocode/json?address='.$city.',+Italy&sensor=false');
-																}
-																curl_setopt($ch,CURLOPT_USERAGENT, $userAgent);
-																curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
-																curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,$timeout);
-																curl_setopt($ch,CURLOPT_FAILONERROR, true);
-																curl_setopt($ch,CURLOPT_FOLLOWLOCATION, true);
-																curl_setopt($ch,CURLOPT_AUTOREFERER, true);
-																curl_setopt($ch,CURLOPT_TIMEOUT, 10);
-																$data = curl_exec($ch);
-																curl_close($ch);
-																
-																$data = json_decode($data);
-																if ( $data->status == "OK" && $data->results[0]->geometry->location_type == "ROOFTOP" )
-																{
-																	$field55V = $data->results[0]->geometry->location->lat;
-																	$field56V = $data->results[0]->geometry->location->lng;
-																}
-															}
-														}
-														
-														if ( $field55V != "app" )
-														{
-															if ( $fieldID==55 )
-															{
-																$value = $field55V;
-															}
-															else 
-															{
-																$value = $field56V;
-															}
-														}
-													}
 													
 													if ($productDouble->GetID ()) // in exist
 													{
@@ -723,71 +593,6 @@ class Pr_mainCMS extends CMSObject implements CMSInterface
 											break;
 										case 4: // double
 											$productDouble = new Pr_double ( null, $productID, $fieldID, $group );
-											if ( ($fieldID==55 || $fieldID==56) && ($value=="" || $value==0) )
-											{
-												if ( $field55V=="" )
-												{
-													$field55V = "app";
-													$field56V = "app";
-													
-													$address = trim($this->m_pr_main->GetFieldValue(28));
-													$zip = trim($this->m_pr_main->GetFieldValue(29));
-													$city = trim($this->m_pr_main->GetFieldValue(18, 'ru', true, "key"));
-													if ( $city)
-													{
-														$address = str_replace(" ", "+", $address);
-														
-														$ch = curl_init();
-														$timeout = 5;
-														$userAgent = 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322)';
-														
-														if ( $address )
-														{
-															if ( $zip )
-															{
-																curl_setopt($ch,CURLOPT_URL,'http://maps.googleapis.com/maps/api/geocode/json?address='.$address.',+'.$zip.',+'.$city.',+Italy&sensor=false');
-															}
-															else 
-															{
-																curl_setopt($ch,CURLOPT_URL,'http://maps.googleapis.com/maps/api/geocode/json?address='.$address.',+'.$city.',+Italy&sensor=false');
-															}
-														}
-														else 
-														{
-															curl_setopt($ch,CURLOPT_URL,'http://maps.googleapis.com/maps/api/geocode/json?address='.$city.',+Italy&sensor=false');
-														}
-														curl_setopt($ch,CURLOPT_USERAGENT, $userAgent);
-														curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
-														curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,$timeout);
-														curl_setopt($ch,CURLOPT_FAILONERROR, true);
-														curl_setopt($ch,CURLOPT_FOLLOWLOCATION, true);
-														curl_setopt($ch,CURLOPT_AUTOREFERER, true);
-														curl_setopt($ch,CURLOPT_TIMEOUT, 10);
-														$data = curl_exec($ch);
-														curl_close($ch);
-														
-														$data = json_decode($data);
-														if ( $data->status == "OK" && $data->results[0]->geometry->location_type == "ROOFTOP" )
-														{
-															$field55V = $data->results[0]->geometry->location->lat;
-															$field56V = $data->results[0]->geometry->location->lng;
-														}
-													}
-												}
-												
-												if ( $field55V != "app" )
-												{
-													if ( $fieldID==55 )
-													{
-														$value = $field55V;
-													}
-													else 
-													{
-														$value = $field56V;
-													}
-												}
-											}
-											
 											if ($productDouble->GetID ()) // in exist
 											{
 												$ar = $productDouble->SetValue ( $value );
@@ -950,20 +755,8 @@ class Pr_mainCMS extends CMSObject implements CMSInterface
 				{
 					$status = 1;
 				}
-
+				
 				$this->m_pr_main->SetStatus($status);
-				break;
-			case 'updateComments':
-				$comments = $this->m_pr_main->GetComments();
-				if ( $comments )
-				{
-					$comments .= "<br /><br /><b>".CMS::GetUser()->GetUserName()."(".date("Y-m-d H:i:s")."): </b>".strip_tags(DB::POST ( 'comments' ));
-				}
-				else 
-				{
-					$comments = "<b>".CMS::GetUser()->GetUserName()."(".date("Y-m-d H:i:s")."): </b>".strip_tags(DB::POST ( 'comments' ));
-				}
-				$ar = $this->m_pr_main->SetComments ( $comments );
 				break;
 			case 'setAuthor':
 				$author = intval($_POST['author']);
@@ -1029,6 +822,10 @@ class Pr_mainCMS extends CMSObject implements CMSInterface
 		
 		$overLink = 'pr_mainID';
 		
+		$prType = new Pr_type($this->m_pr_main->GetTypeID());
+		$tabs = $prType->GetTabs();
+		$tabs = unserialize($tabs);
+		
 		//	display error text if needed
 		if ( $this->m_errorText!="" )
 		{
@@ -1069,8 +866,6 @@ class Pr_mainCMS extends CMSObject implements CMSInterface
 		print ( '<div class="someGBox">' );
 		
 		
-		// rename sj
-		
 		// hiddens
 		// display rename form
 		$this->DisplayTabHeader ( ++ $panelIndex, $renameS );
@@ -1082,48 +877,55 @@ class Pr_mainCMS extends CMSObject implements CMSInterface
 		$this->DisplayTabFooter ();
 		
 		// subtitle form
-		$subtitle = $this->m_pr_main->GetSubtitle($this->m_displayLang);
-		$this->DisplayTabHeader ( ++ $panelIndex, "Subtitle" );
+		$subtitle = $this->m_pr_main->GetSubtitle( $this->m_displayLang );
+		$subtitleS = $this->GetNameString ( 'subtitle' );
+		$this->DisplayTabHeader ( ++ $panelIndex, $subtitleS );
 		$this->DisplayFormHeadr ( 'updateSubtitle' );
 		$this->DisplayHidden ( $overLink, $ID );
 		print ( "<input type='text' value='$subtitle' name='subtitle' id='subtitle' size='64' maxlength='256' />\n" );
 		$this->DisplayFormFooter ( $doneS );
 		$this->DisplayTabFooter ();
-
-		// short description form
-		$shortDescS = $this->GetNameString ( 'shortDescription' );
-		$this->DisplayTabHeader ( ++ $panelIndex, $shortDescS );
-		$descShort = $this->m_pr_main->GetDescShort ( $this->m_displayLang );
-		$this->DisplayFormHeadr ( 'updateShortDescription' );
-		$this->DisplayHidden ( $overLink, $ID );
-		print ( "<textarea name='shortDescription' rows='10' cols='80' >$descShort</textarea>" );
-		print ( '<br /><br />' );
-		$this->DisplayFormFooter ();
-		$this->DisplayTabFooter ();
 		
 		// description form
+		$desc = $this->m_pr_main->GetDesc ( $this->m_displayLang );
 		$descS = $this->GetNameString ( 'description' );
 		$this->DisplayTabHeader ( ++ $panelIndex, $descS );
-		$desc = $this->m_pr_main->GetDesc ( $this->m_displayLang );
 		$this->DisplayFormHeadr ( 'updateDescription' );
 		$this->DisplayHidden ( $overLink, $ID );
 		print ( "<textarea name='description' rows='10' cols='80' >$desc</textarea>" );
 		print ( '<br /><br />' );
 		$this->DisplayFormFooter ();
 		$this->DisplayTabFooter ();
-		// end description form
+		
+		// short description form
+		if ( in_array('short', $tabs) )
+		{
+			$descShort = $this->m_pr_main->GetDescShort ( $this->m_displayLang );
+			$shortDescS = $this->GetNameString ( 'shortDescription' );
+			$this->DisplayTabHeader ( ++ $panelIndex, $shortDescS );
+			$this->DisplayFormHeadr ( 'updateShortDescription' );
+			$this->DisplayHidden ( $overLink, $ID );
+			print ( "<textarea name='shortDescription' rows='10' cols='80' >$descShort</textarea>" );
+			print ( '<br /><br />' );
+			$this->DisplayFormFooter ();
+			$this->DisplayTabFooter ();
+		}
 		
 		// controller
-		$controller = $this->m_pr_main->GetProductController ();
-		$this->DisplayTabHeader ( ++ $panelIndex, $controllerS );
-		$renameJS = "onsubmit='return SingleForm(\"newName\", \"$noEmptyS\");'";
-		$this->DisplayFormHeadr ( 'setController' );
-		$this->DisplayHidden ( $overLink, $ID );
-		print ($controller) ? '<input type="checkbox" name="controller" id="controller" value="1" checked="checked" />' : '<input type="checkbox" name="controller" id="controller" value="0" />';
-		$this->DisplayFormFooter ( $doneS );
-		$this->DisplayTabFooter ();
+		if ( in_array('controller', $tabs) )
+		{
+			$controller = $this->m_pr_main->GetProductController ();
+			$renameJS = "onsubmit='return SingleForm(\"newName\", \"$noEmptyS\");'";
+			$this->DisplayTabHeader ( ++ $panelIndex, $controllerS );
+			$this->DisplayFormHeadr ( 'setController' );
+			$this->DisplayHidden ( $overLink, $ID );
+			print ($controller) ? '<input type="checkbox" name="controller" id="controller" value="1" checked="checked" />' : '<input type="checkbox" name="controller" id="controller" value="0" />';
+			$this->DisplayFormFooter ( $doneS );
+			$this->DisplayTabFooter ();
+		}
 		
-		// data
+		
+		// date
 		$date = $this->m_pr_main->GetDate ();
 		$this->DisplayTabHeader ( ++ $panelIndex, $dateS );
 		$renameJS = "onsubmit='return SingleForm(\"newName\", \"$noEmptyS\");'";
@@ -1142,108 +944,106 @@ class Pr_mainCMS extends CMSObject implements CMSInterface
 		$this->DisplayFormFooter ( $doneS );
 		$this->DisplayTabFooter ();
 		
-		// diplay viewCount form
-		$viewCount = $this->m_pr_main->GetViewCount ( $this->m_displayLang );
-		$descS = $this->GetNameString ( 'viewCount' );
-		$this->DisplayTabHeader ( ++ $panelIndex, "View Count" );
-		$renameJS = "";
-		$this->DisplayFormHeadr ( 'viewCount', 'viewCountForm', 'post', $renameJS );
-		$this->DisplayHidden ( $overLink, $ID );
-		print ( "<input type='text' value='$viewCount' name='viewCount' id='viewCount' size='64' maxlength='256' />\n" );
-		$this->DisplayFormFooter ( $doneS );
-		$this->DisplayTabFooter ();
+		// display viewCount form
+		if ( in_array('viewcount', $tabs) )
+		{
+			$viewCount = $this->m_pr_main->GetViewCount ( $this->m_displayLang );
+			$descS = $this->GetNameString ( 'viewCount' );
+			$this->DisplayTabHeader ( ++ $panelIndex, "View Count" );
+			$renameJS = "";
+			$this->DisplayFormHeadr ( 'viewCount', 'viewCountForm', 'post', $renameJS );
+			$this->DisplayHidden ( $overLink, $ID );
+			print ( "<input type='text' value='$viewCount' name='viewCount' id='viewCount' size='64' maxlength='256' />\n" );
+			$this->DisplayFormFooter ( $doneS );
+			$this->DisplayTabFooter ();
+		}
 		
 		//	display meta options
-		// page options   
-		$pageoptionsS = $this->GetNameString ( 'pageoptions' );
-		
-		$pageTitleS = $this->GetNameString ( 'pageTitle' );
-		$pageKeywordS = $this->GetNameString ( 'pageKeyword' );
-		$pageDescS = $this->GetNameString ( 'pageDesc' );
-		
-		$otherS = $this->GetNameString ( 'other' );
-		$defoptS = $this->GetNameString ( 'defopt' );
-		
-		// tab header
-		$this->DisplayTabHeader ( ++ $panelIndex, "META options" );
-		
-		$this->DisplayFormHeadr ( 'metaoptions' );
-		$this->DisplayHidden ( $overLink, $ID );
-		
-		print ("<strong>Title</strong>");
-		print ('<table border="0" cellspacing="0" cellpadding="5">');
-		print ('<tr><td>');
-		$seotitleopt = $this->m_pr_main->GetSEOTitleOpt();
-		$seotitleauto = $this->m_pr_main->GetSEOTitleAuto();
-		$seotitle = $this->m_pr_main->GetSEOTitle($this->m_displayLang);
-		if ( $seotitleauto )
+		if ( in_array('meta', $tabs) )
 		{
-			print ('<input name="seotitleauto" type="checkbox" checked /><label>Auto</label>');
+			$pageoptionsS = $this->GetNameString ( 'pageoptions' );
+			$pageTitleS = $this->GetNameString ( 'pageTitle' );
+			$pageKeywordS = $this->GetNameString ( 'pageKeyword' );
+			$pageDescS = $this->GetNameString ( 'pageDesc' );
+			$otherS = $this->GetNameString ( 'other' );
+			$defoptS = $this->GetNameString ( 'defopt' );
+			
+			$this->DisplayTabHeader ( ++ $panelIndex, "META options" );
+			$this->DisplayFormHeadr ( 'metaoptions' );
+			$this->DisplayHidden ( $overLink, $ID );
+			print ("<strong>Title</strong>");
+			print ('<table border="0" cellspacing="0" cellpadding="5">');
+			print ('<tr><td>');
+			$seotitleopt = $this->m_pr_main->GetSEOTitleOpt();
+			$seotitleauto = $this->m_pr_main->GetSEOTitleAuto();
+			$seotitle = $this->m_pr_main->GetSEOTitle($this->m_displayLang);
+			if ( $seotitleauto )
+			{
+				print ('<input name="seotitleauto" type="checkbox" checked /><label>Auto</label>');
+			}
+			else 
+			{
+				print ('<input name="seotitleauto" type="checkbox" /><label>Auto</label>');
+			}
+			if ( $seotitleopt==0 )
+			{
+				print ('<input name="seotitleopt" type="radio" value="2" /><label>Custom</label>
+	                	<input name="seotitleopt" type="radio" value="1" checked /><label>Default + Custom</label>');
+			}
+			elseif ( $seotitleopt==1 )
+			{
+				print ('<input name="seotitleopt" type="radio" value="2" /><label>Custom</label>
+	                	<input name="seotitleopt" type="radio" value="1" checked /><label>Default + Custom</label>');
+			}
+			else
+			{
+				print ('<input name="seotitleopt" type="radio" value="2" checked /><label>Custom</label>
+	                	<input name="seotitleopt" type="radio" value="1" /><label>Default + Custom</label>');
+			}
+			print ('</td></tr>');
+			print ('<tr><td>');
+			print ("<input type='text' value=\"$seotitle\" name='seotitle' size='64' maxlength='255' />\n");
+			print ('</td></tr>');
+			print ('</table>');
+			print ('<br />');
+			print ("<strong>Description</strong>");
+			print ('<table border="0" cellspacing="0" cellpadding="5">');
+			print ('<tr><td>');
+			$seodescopt = $this->m_pr_main->GetSEODescriptionOpt();
+			$seodescauto = $this->m_pr_main->GetSEODescriptionAuto();
+			$seodesc = $this->m_pr_main->GetSEODescription($this->m_displayLang);
+			if ( $seodescauto )
+			{
+				print ('<input name="seodescauto" type="checkbox" checked /><label>Auto</label>');
+			}
+			else 
+			{
+				print ('<input name="seodescauto" type="checkbox" /><label>Auto</label>');
+			}
+			if ( $seodescopt==0 )
+			{
+				print ('<input name="seodescopt" type="radio" value="2" /><label>Custom</label>
+	                	<input name="seodescopt" type="radio" value="1" checked /><label>Default + Custom</label>');
+			}
+			elseif ( $seodescopt==1 )
+			{
+				print ('<input name="seodescopt" type="radio" value="2" /><label>Custom</label>
+	                	<input name="seodescopt" type="radio" value="1" checked /><label>Default + Custom</label>');
+			}
+			else
+			{
+				print ('<input name="seodescopt" type="radio" value="2" checked /><label>Custom</label>
+	                	<input name="seodescopt" type="radio" value="1" /><label>Default + Custom</label>');
+			}
+			print ('</td></tr>');
+			print ('<tr><td>');
+			print ("<input type='text' value=\"$seodesc\" name='seodescription' size='64' maxlength='255' />\n");
+			print ('</td></tr>');
+			print ('</table>');
+			print ('<br />');
+			$this->DisplayFormFooter ( $doneS );
+			$this->DisplayTabFooter ();
 		}
-		else 
-		{
-			print ('<input name="seotitleauto" type="checkbox" /><label>Auto</label>');
-		}
-		if ( $seotitleopt==0 )
-		{
-			print ('<input name="seotitleopt" type="radio" value="2" /><label>Custom</label>
-                	<input name="seotitleopt" type="radio" value="1" checked /><label>Default + Custom</label>');
-		}
-		elseif ( $seotitleopt==1 )
-		{
-			print ('<input name="seotitleopt" type="radio" value="2" /><label>Custom</label>
-                	<input name="seotitleopt" type="radio" value="1" checked /><label>Default + Custom</label>');
-		}
-		else
-		{
-			print ('<input name="seotitleopt" type="radio" value="2" checked /><label>Custom</label>
-                	<input name="seotitleopt" type="radio" value="1" /><label>Default + Custom</label>');
-		}
-		print ('</td></tr>');
-		print ('<tr><td>');
-		print ("<input type='text' value=\"$seotitle\" name='seotitle' size='64' maxlength='255' />\n");
-		print ('</td></tr>');
-		print ('</table>');
-		print ('<br />');
-		print ("<strong>Description</strong>");
-		print ('<table border="0" cellspacing="0" cellpadding="5">');
-		print ('<tr><td>');
-		$seodescopt = $this->m_pr_main->GetSEODescriptionOpt();
-		$seodescauto = $this->m_pr_main->GetSEODescriptionAuto();
-		$seodesc = $this->m_pr_main->GetSEODescription($this->m_displayLang);
-		if ( $seodescauto )
-		{
-			print ('<input name="seodescauto" type="checkbox" checked /><label>Auto</label>');
-		}
-		else 
-		{
-			print ('<input name="seodescauto" type="checkbox" /><label>Auto</label>');
-		}
-		if ( $seodescopt==0 )
-		{
-			print ('<input name="seodescopt" type="radio" value="2" /><label>Custom</label>
-                	<input name="seodescopt" type="radio" value="1" checked /><label>Default + Custom</label>');
-		}
-		elseif ( $seodescopt==1 )
-		{
-			print ('<input name="seodescopt" type="radio" value="2" /><label>Custom</label>
-                	<input name="seodescopt" type="radio" value="1" checked /><label>Default + Custom</label>');
-		}
-		else
-		{
-			print ('<input name="seodescopt" type="radio" value="2" checked /><label>Custom</label>
-                	<input name="seodescopt" type="radio" value="1" /><label>Default + Custom</label>');
-		}
-		print ('</td></tr>');
-		print ('<tr><td>');
-		print ("<input type='text' value=\"$seodesc\" name='seodescription' size='64' maxlength='255' />\n");
-		print ('</td></tr>');
-		print ('</table>');
-		print ('<br />');
-		$this->DisplayFormFooter ( $doneS );
-		
-		// tab footer
-		$this->DisplayTabFooter ();
 		
 		// status
 		$status = $this->m_pr_main->GetStatus();
@@ -1254,12 +1054,12 @@ class Pr_mainCMS extends CMSObject implements CMSInterface
 			// diplay rename form
 			$this->DisplayFormHeadr ( 'setStatus' );
 			$this->DisplayHidden ( $overLink, $ID );
-
+			
 			// display label
 			if ( $status==1 )
 			{
 				print 'Publish <input type="checkbox" name="status" checked />';
-			}
+			} 
 			else 
 			{
 				print 'Publish <input type="checkbox" name="status" />';
@@ -1280,26 +1080,25 @@ class Pr_mainCMS extends CMSObject implements CMSInterface
 			if ( $status==1 )
 			{
 				print 'Published';
-			}
+			} 
 			else 
 			{
-				print 'Not published';
+				print 'Not Published';
 			}
 			
 			$this->DisplayTabFooter ();
 		}
 		
-		/*if ( CMS::GetUser()->GetUserTypeID()<12 )
+		// author
+		if ( CMS::GetUser()->GetUserTypeID()<12 && in_array('author', $tabs) )
 		{
-			// author
 			$authorID = $this->m_pr_main->GetUserID();
-
 			$this->DisplayTabHeader ( ++ $panelIndex, "Author" );
-
+			
 			// diplay rename form
 			$this->DisplayFormHeadr ( 'setAuthor' );
 			$this->DisplayHidden ( $overLink, $ID );
-
+			
 			//	get all user types
 			$utl = new UserTypeList(1);
 			$utlArr = $utl->GetStructure();
@@ -1321,7 +1120,7 @@ class Pr_mainCMS extends CMSObject implements CMSInterface
 						<option value="<?php echo $ref_ulArr[$i]["ID"];?>"<?php echo ($authorID==$ref_ulArr[$i]["ID"] ? " selected": "");?>>&nbsp;&nbsp;&nbsp;<?php echo $ref_ulArr[$i]["username"];?></option>
 						<?php
 					}
-
+					
 					$ref = $ref[0]["ref"];
 				}
 				?>
@@ -1329,29 +1128,10 @@ class Pr_mainCMS extends CMSObject implements CMSInterface
 			<?php
 			$this->DisplayFormFooter ( $doneS );
 			$this->DisplayTabFooter ();
-		}*/
-		
-		// pattern
-		$pattern = $this->m_pr_main->GetPattern();
-		
-		$this->DisplayTabHeader ( ++ $panelIndex, "Pattern" );
-		
-		// diplay rename form
-		$this->DisplayFormHeadr ( 'setPattern' );
-		$this->DisplayHidden ( $overLink, $ID );
-		
-		//	get all user types
-		?>
-		<select name="pattern" id="pattern">
-			<option value="main"<?php echo ($pattern=="main" ? " selected": "");?>>Main</option>
-			<option value="secondary"<?php echo ($pattern=="secondary" ? " selected": "");?>>Secondary</option>
-		</select>
-		<?php
-		$this->DisplayFormFooter ( $doneS );
-		$this->DisplayTabFooter ();
+		}
 
-		// language
-		if ( $this->m_pr_main->GetTypeID()==9 )
+		// display viewCount form
+		if ( /*$this->m_pr_main->GetTypeID()==9*/ 1 )
 		{
 			$language = $this->m_pr_main->GetLanguage();
 			$prLang["en"] = $this->m_pr_main->GetLang("en");
@@ -1365,7 +1145,8 @@ class Pr_mainCMS extends CMSObject implements CMSInterface
 
 			//	get all user types
 			?>
-			Default: <select name="language" id="language">
+			Default:
+			<select name="language" id="language">
 				<option value="">---</option>
 				<?php
 				$langs = $this->m_site->GetLanguages();
@@ -1392,6 +1173,7 @@ class Pr_mainCMS extends CMSObject implements CMSInterface
 			$this->DisplayFormFooter ( $doneS );
 			$this->DisplayTabFooter ();
 		}
+
 		
 		print ( '</div>' );
 		// end description form
@@ -1423,171 +1205,173 @@ class Pr_mainCMS extends CMSObject implements CMSInterface
 			print ( '<table width="100%" border="0" cellspacing="0" cellpadding="0">' );
 			$groupFields = "";
 			$showMainMap = false;
-			foreach ( $fields as $relField )
+			
+			if ($fields)
 			{
-				$fieldID = $relField ['fieldID'];
-				$field = new Pr_field ( $fieldID );
-				
-				$value = $this->m_pr_main->GetFieldValue ( $fieldID, $this->m_displayLang );
-				if ( $field->GetType()!=9 )
+				foreach ( $fields as $relField )
 				{
-					print ( '<tr>' );
-					print ( "<td align='right' style='padding:2px;' width='150'><strong>{$relField['name']}</strong></td>" );
-					print ( "<td style='padding:2px;'>" );
-				}
-				
-				// add slashes
-				if (is_string ( $value ))
-				{
-					$value = str_replace ( "'", "&rsquo;", $value );
-				}
-				
-				switch ( $field->GetType() )
-				{
-					case 1 : // options
-						// get selected option type
-						$optionsTypeId = $field->GetSubID ();
-						$opDataList = new OptionsdataList ( $optionsTypeId );
-						// get selected item
-						if ( $relField['single']==2 )
-						{
-							$struc = $opDataList->GetStructure ();
-							
-							$prOptList = new Pr_optionsList ( $ID, $fieldID );
-							
-							// get related options
-							$relOpts = $prOptList->GetStructure ();
-							
-							$relOptsA = array ();
-							
-							if ($relOpts)
+					$fieldID = $relField ['fieldID'];
+					$field = new Pr_field ( $fieldID );
+					
+					$value = $this->m_pr_main->GetFieldValue ( $fieldID, $this->m_displayLang );
+					if ( $field->GetType()!=9 )
+					{
+						print ( '<tr>' );
+						print ( "<td align='right' style='padding:2px;' width='150'><strong>{$relField['name']}</strong></td>" );
+						print ( "<td style='padding:2px;'>" );
+					}
+					
+					// add slashes
+					if (is_string ( $value ))
+					{
+						$value = str_replace ( "'", "&rsquo;", $value );
+					}
+					
+					switch ( $field->GetType() )
+					{
+						case 1 : // options
+							// get selected option type
+							$optionsTypeId = $field->GetSubID ();
+							$opDataList = new OptionsdataList ( $optionsTypeId );
+							// get selected item
+							if ( $relField['single']==2 )
 							{
-								foreach ( $relOpts as $relId )
-								{
-									array_push ( $relOptsA, $relId ['relatedID'] );
-								}
-							}
-							// display options with checked
-							print ( '<div class="multiOptionsBox">' );
-							foreach ( $struc as $item )
-							{
+								$struc = $opDataList->GetStructure ();
 								
-								$chack = (in_array ( $item ['ID'], $relOptsA )) ? "checked='checked'" : '';
-								print ( "<input name='productfield{$fieldID}[]' id='productfield{$fieldID}[]' type='checkbox' value='{$item['ID']}' $chack /> {$item['name']} <br />" );
+								$prOptList = new Pr_optionsList ( $ID, $fieldID );
+								
+								// get related options
+								$relOpts = $prOptList->GetStructure ();
+								
+								$relOptsA = array ();
+								
+								if ($relOpts)
+								{
+									foreach ( $relOpts as $relId )
+									{
+										array_push ( $relOptsA, $relId ['relatedID'] );
+									}
+								}
+								// display options with checked
+								print ( '<div class="multiOptionsBox">' );
+								foreach ( $struc as $item )
+								{
+									
+									$chack = (in_array ( $item ['ID'], $relOptsA )) ? "checked='checked'" : '';
+									print ( "<input name='productfield{$fieldID}[]' id='productfield{$fieldID}[]' type='checkbox' value='{$item['ID']}' $chack /> {$item['name']} <br />" );
+								}
+								print ( '</div>' );
 							}
-							print ( '</div>' );
-						}
-						else 
-						{
-							print ( "<select name='productfield$fieldID'>\n" );
-							$opDataList->DisplaySelect ( ' ... ', $value );
-							print ( "</select>\n" );
-						}
-						break;
-					case 2 : // structure
-						$catID = $field->GetSubID ();
-						$menuView = null;
-						if ($catID > 0)
-						{
-							$category = new Category ( $catID );
-							$menuID = $category->GetMenuID ();
-							$menu = new Menu ( $menuID, true, $this->m_displayLang, true );
+							else 
+							{
+								print ( "<select name='productfield$fieldID'>\n" );
+								$opDataList->DisplaySelect ( ' ... ', $value );
+								print ( "</select>\n" );
+							}
+							break;
+						case 2 : // structure
+							$catID = $field->GetSubID ();
+							$menuView = null;
+							if ($catID > 0)
+							{
+								$category = new Category ( $catID );
+								$menuID = $category->GetMenuID ();
+								$menu = new Menu ( $menuID, true, $this->m_displayLang, true );
+								
+								$structure = array ();
+								$menu->GetSubMenu ( $catID, $structure, null, true );
+								$menuView = new MenuView ( $structure );
+							}
+							elseif ($catID < 0)
+							{
+								$menu = new Menu ( - $catID, true, $this->m_displayLang, true );
+								$structure = $menu->GetStructure ();
+								$menuView = new MenuView ( $structure );
+							}
 							
-							$structure = array ();
-							$menu->GetSubMenu ( $catID, $structure, null, true );
-							$menuView = new MenuView ( $structure );
-						}
-						elseif ($catID < 0)
-						{
-							$menu = new Menu ( - $catID, true, $this->m_displayLang, true );
-							$structure = $menu->GetStructure ();
-							$menuView = new MenuView ( $structure );
-						}
-						
-						if ($menuView)
-						{
-							print ( "<select name='productfield$fieldID'>\n" );
-							$menuView->DisplaySimpleSelect ( $structure, $value, 1, '---' );
-							print ( "</select>\n" );
-						}
-						
-						break;
-					case 3 : // int
-						print ( "<input type='text' name='productfield$fieldID' value='$value' size='10' />" );
-						break;
-					case 4 : // double
-						if ( $fieldID==55 )
-						{
-							$showMainMap = true;
-						}
-						print ( "<input type='text' name='productfield$fieldID' id='productfield$fieldID' value='$value' size='15' />" );
-						break;
-					case 5 : // char 255
-						print ( "<input type='text' name='productfield$fieldID' id='productfield$fieldID' value='$value' size='30' />" );
-						if ( $fieldID==3 || $fieldID==4 )
-						{
-							print ( "<input name='' type='button' id='dateBtn$fieldID'>\n" );
-							print ( '<script type="text/javascript">
-													//<![CDATA[
-													  var cal = Calendar.setup({
-														  onSelect: function(cal) { cal.hide() }
-													  });
-													  cal.manageFields("dateBtn'.$fieldID.'", "productfield'.$fieldID.'", "%Y-%m-%d");
-													//]]>
-												</script>' );
-						}
-						break;
-					case 6 : // char 255 multi lang
-						print ( "<input type='text' name='productfield$fieldID' value='$value' size='30' />" );
-						break;
-					case 7 : // textarea
-						if ( $field->GetEditor() )
-						{
-							print ( "<textarea name='productfield$fieldID' cols='50' rows='7'>$value</textarea>" );
-						}
-						else 
-						{
-							print ( "<textarea name='productfield$fieldID' cols='50' rows='7' class='mceNoEditor'>$value</textarea>" );
-						}
-						break;
-					case 8 : // structure multi choice
-						$catID = $field->GetSubID ();
-						$menuView = null;
-						if ($catID > 0)
-						{
-							$category = new Category ( $catID );
-							$menuID = $category->GetMenuID ();
-							$menu = new Menu ( $menuID, true, $this->m_displayLang, true );
+							if ($menuView)
+							{
+								print ( "<select name='productfield$fieldID'>\n" );
+								$menuView->DisplaySimpleSelect ( $structure, $value, 1, '---' );
+								print ( "</select>\n" );
+							}
 							
-							$structure = array ();
-							$menu->GetSubMenu ( $catID, $structure, null, true );
-							$menuView = new MenuView ( $structure );
-						}
-						elseif ($catID < 0)
-						{
-							$menu = new Menu ( - $catID, true, $this->m_displayLang, true );
-							$structure = $menu->GetStructure ();
-							$menuView = new MenuView ( $structure );
-						}
-						
-						if ($menuView)
-						{
-							print ( '<select name="productfield'.$fieldID.'[]" multiple="multiple" size="5">'."\n" );
-							$menuView->DisplayMultiSelect ( $structure, $value, 1, '---' );
-							print ( "</select>\n" );
-						}
-						
-						break;
-					case 9:
-						$groupFields[$fieldID] = $field->GetFields();
-						break;
-				}
-				if ( $field->GetType()!=9 )
-				{
-					print ( '<td>' );
-					print ( '</tr>' );
+							break;
+						case 3 : // int
+							print ( "<input type='text' name='productfield$fieldID' value='$value' size='10' />" );
+							break;
+						case 4 : // double
+							print ( "<input type='text' name='productfield$fieldID' id='productfield$fieldID' value='$value' size='15' />" );
+							break;
+						case 5 : // char 255
+							print ( "<input type='text' name='productfield$fieldID' id='productfield$fieldID' value='$value' size='30' />" );
+							
+							if ( $fieldID==18 || $fieldID==19 )
+							{
+								print ( "<input name='' type='button' id='dateBtn$fieldID'>\n" );
+								print ( '<script type="text/javascript">
+														//<![CDATA[
+														  var cal = Calendar.setup({
+															  onSelect: function(cal) { cal.hide() }
+														  });
+														  cal.manageFields("dateBtn'.$fieldID.'", "productfield'.$fieldID.'", "%Y-%m-%d");
+														//]]>
+													</script>' );
+							}
+							break;
+						case 6 : // char 255 multi lang
+							print ( "<input type='text' name='productfield$fieldID' value='$value' size='30' />" );
+							break;
+						case 7 : // textarea
+							if ( $field->GetEditor() )
+							{
+								print ( "<textarea name='productfield$fieldID' cols='50' rows='7'>$value</textarea>" );
+							}
+							else
+							{
+								print ( "<textarea name='productfield$fieldID' cols='50' rows='7' class='mceNoEditor'>$value</textarea>" );
+							}
+							break;
+						case 8 : // structure multi choice
+							$catID = $field->GetSubID ();
+							$menuView = null;
+							if ($catID > 0)
+							{
+								$category = new Category ( $catID );
+								$menuID = $category->GetMenuID ();
+								$menu = new Menu ( $menuID, true, $this->m_displayLang, true );
+								
+								$structure = array ();
+								$menu->GetSubMenu ( $catID, $structure, null, true );
+								$menuView = new MenuView ( $structure );
+							}
+							elseif ($catID < 0)
+							{
+								$menu = new Menu ( - $catID, true, $this->m_displayLang, true );
+								$structure = $menu->GetStructure ();
+								$menuView = new MenuView ( $structure );
+							}
+							
+							if ($menuView)
+							{
+								print ( '<select name="productfield'.$fieldID.'[]" multiple="multiple" size="5">'."\n" );
+								$menuView->DisplayMultiSelect ( $structure, $value, 1, '---' );
+								print ( "</select>\n" );
+							}
+							
+							break;
+						case 9:
+							$groupFields[$fieldID] = $field->GetFields();
+							break;
+					}
+					if ( $field->GetType()!=9 )
+					{
+						print ( '<td>' );
+						print ( '</tr>' );
+					}
 				}
 			}
+			
 			
 			if ( is_array($groupFields) )
 			{
@@ -1686,23 +1470,24 @@ class Pr_mainCMS extends CMSObject implements CMSInterface
 													print ( "<input type='text' name='productfield{$fieldID}_{$group}' value='$value' size='10' />" );
 													break;
 												case 4 : // double
-													if ( $fieldID==55 )
-													{
-														$showMap = true;
-													}
 													print ( "<input type='text' name='productfield{$fieldID}_{$group}' id='productfield{$fieldID}_{$group}' value='$value' size='15' />" );
 													break;
 												case 5 : // char 255
-													print ( "<input type='text' name='productfield{$fieldID}_{$group}' id='productfield{$fieldID}_{$group}' value='$value' size='30' />" );
-													if ( $fieldID==42 || $fieldID==43 )
+													if ( $fieldID==22 )
 													{
-														print ( "<input name='' type='button' id='dateBtn{$fieldID}_1'>\n" );
+														$showMap = true;
+													}
+													
+													print ( "<input type='text' name='productfield{$fieldID}_{$group}' id='productfield{$fieldID}_{$group}' value='$value' size='30' />" );
+													if ( $fieldID==18 || $fieldID==19 )
+													{
+														print ( "<input name='' type='button' id='dateBtn{$fieldID}_{$group}'>\n" );
 														print ( '<script type="text/javascript">
 																	//<![CDATA[
 																	  var cal = Calendar.setup({
 																		  onSelect: function(cal) { cal.hide() }
 																	  });
-																	  cal.manageFields("dateBtn'.$fieldID.'_'.$group.'", "productfield'.$fieldID.'", "%Y-%m-%d");
+																	  cal.manageFields("dateBtn'.$fieldID.'_'.$group.'", "productfield'.$fieldID.'_'.$group.'", "%Y-%m-%d");
 																	//]]>
 																</script>' );
 													}
@@ -1821,7 +1606,7 @@ class Pr_mainCMS extends CMSObject implements CMSInterface
 								break;
 							case 5 : // char 255
 								print ( "<input type='text' name='productfield{$fieldID}_{$group}' id='productfield{$fieldID}_{$group}' value='$value' size='30' />" );
-								if ( $fieldID==42 || $fieldID==43 )
+								if ( $fieldID==18 || $fieldID==19 )
 								{
 									print ( "<input name='' type='button' id='dateBtn{$fieldID}_{$group}'>\n" );
 									print ( '<script type="text/javascript">
@@ -1829,7 +1614,7 @@ class Pr_mainCMS extends CMSObject implements CMSInterface
 												  var cal = Calendar.setup({
 													  onSelect: function(cal) { cal.hide() }
 												  });
-												  cal.manageFields("dateBtn'.$fieldID.'_{$group}", "productfield'.$fieldID.'", "%Y-%m-%d");
+												  cal.manageFields("dateBtn'.$fieldID.'_'.$group.'", "productfield'.$fieldID.'_'.$group.'", "%Y-%m-%d");
 												//]]>
 											</script>' );
 								}
@@ -1931,20 +1716,18 @@ class Pr_mainCMS extends CMSObject implements CMSInterface
 		// display Cover form
 		$cover = $this->m_pr_main->GetCover();
 		print ( "<div class='someGTitleBox'>Cover</div>" );
-		if ( $cover=="img/cover.gif" )
-		{
-			print ( "<div class='iconBox'><img src='$cover' />" );
-		}
-		else 
-		{
-			print ( "<div class='iconBox'><img src='$cover?".time()."' width='1000' />" );
-		}
+		
 		// dispkay remove icon form
 		if ($cover != 'img/cover.gif')
 		{
+			print ( "<div class='iconBox'><img src='$cover?".time()."' width='800' />" );
 			$this->DisplayFormHeadr ( 'deleteCover' );
 			$this->DisplayHidden ( $overLink, $ID );
 			$this->DisplayFormFooter ( 'Remove cover' );
+		}
+		else 
+		{
+			print ( "<div class='iconBox'><img src='$cover?".time()."' />" );
 		}
 		print ( '</div>' );
 	}

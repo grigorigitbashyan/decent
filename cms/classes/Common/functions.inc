@@ -74,48 +74,4 @@ function CutText($text, $sNum=100)
 	
 	return $text;
 }
-
-function ComputeDate($pDate)
-{
-	global $monthArr;
-	
-	$dateDiff = time() - strtotime($pDate);
-	if ( $dateDiff<61 )
-	{
-		$showDate = "just now";
-	}
-	elseif ( $dateDiff>=86400 )
-	{
-		$pDate = explode(" ", $pDate);
-		$pTime = substr($pDate[1], 0, 5);
-		
-		$showDate = date("d M, Y", strtotime($pDate[0]));
-		/*$pDate = explode("-", $pDate[0]);
-		if ( $pDate[0]==date("Y") )
-		{
-			$showDate = $pDate[2]." ".$monthArr[$pDate[1]].", ".$pTime;
-		}
-		else 
-		{
-			$showDate = $pDate[2]." ".$monthArr[$pDate[1]]." ".$pDate[0].", ".$pTime;
-		}*/
-	}
-	else 
-	{
-		$passedMins = ceil($dateDiff/60);
-		if ( $passedMins>59 )
-		{
-			$passedHours = ceil($passedMins/60) - 1;
-			$passedMins = $passedMins - $passedHours*60;
-			
-			$showDate = $passedHours."h. ".$passedMins."m.";
-		}
-		else 
-		{
-			$showDate = $passedMins."minutes";
-		}
-	}
-	
-	return $showDate;
-}
 ?>

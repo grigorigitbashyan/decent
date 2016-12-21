@@ -40,28 +40,14 @@ class Pr_picture extends Record
 	 *
 	 * @protected array
 	 */
-	protected $m_desc;
+	protected $m_title;
 	
 	/**
 	 * Enter description here...
 	 *
 	 * @protected array
 	 */
-	protected $m_source;
-	
-	/**
-	 * Enter description here...
-	 *
-	 * @protected string
-	 */
-	protected $m_url;
-	
-	/**
-	 * Enter description here...
-	 *
-	 * @protected int
-	 */
-	protected $m_group;
+	protected $m_desc;
 	
 	/**
 	 * Enter description here...
@@ -69,6 +55,13 @@ class Pr_picture extends Record
 	 * @var bool
 	 */
 	protected $m_isuploaded;
+	
+	/**
+	 * Enter description here...
+	 *
+	 * @var bool
+	 */
+	protected $m_gallery;
 	
 	/**
 	 * Enter description here...
@@ -142,6 +135,7 @@ class Pr_picture extends Record
 		// delete record
 		return $this->DeleteRecord ($writeToDB);
 	}
+	
 	/**
 	 * Update record
 	 *
@@ -152,6 +146,7 @@ class Pr_picture extends Record
 	{
 		return $this->UpdateValues ( $properties );
 	}
+	
 	/**
 	 * Insert new record
 	 *
@@ -165,7 +160,6 @@ class Pr_picture extends Record
 	
 	// Get functions ///////////////////////////////////////////////////
 	
-
 	/**
 	 * Return value of m_productID
 	 *
@@ -207,6 +201,17 @@ class Pr_picture extends Record
 	}
 	
 	/**
+	 * Return value of m_title
+	 *
+	 * @param string $lang
+	 * @return string
+	 */
+	function GetTitle($lang = 'en')
+	{
+		return $this->m_title[$lang];
+	}
+	
+	/**
 	 * Return value of m_desc
 	 *
 	 * @param string $lang
@@ -218,39 +223,16 @@ class Pr_picture extends Record
 	}
 	
 	/**
-	 * Return value of m_souce
-	 *
-	 * @param string $lang
-	 * @return string
-	 */
-	function GetSource($lang = 'en')
-	{
-		return $this->m_source[$lang];
-	}
-	
-	/**
-	 * Return value of m_url
-	 *
-	 * @return string
-	 */
-	function GetURL()
-	{
-		return $this->m_url;
-	}
-	
-	/**
-	 * Return value of m_group
+	 * Return value of m_gallery
 	 *
 	 * @return int
 	 */
-	function GetGroup()
+	function GetGallery()
 	{
-		return $this->m_group;
+		return $this->m_gallery;
 	}
 	
 	// Set functions ////////////////////////////////////////////////////
-	
-
 	/**
 	 * Set value to m_productID  
 	 *
@@ -300,6 +282,19 @@ class Pr_picture extends Record
 	}
 	
 	/**
+	 * Set value to m_title
+	 *
+	 * @param string $title
+	 * @param string $lang
+	 * @param bool $dbupdate
+	 * @return bool
+	 */
+	function SetTitle($title, $lang, $dbupdate = true)
+	{
+		return $this->UpdateValue ( "title_$lang", $title, $dbupdate );
+	}
+	
+	/**
 	 * Set value to m_desc  
 	 *
 	 * @param string $desc
@@ -313,40 +308,15 @@ class Pr_picture extends Record
 	}
 	
 	/**
-	 * Set value to m_source
+	 * Set value to m_gallery
 	 *
-	 * @param string $source
-	 * @param string $lang
+	 * @param int $gallery
 	 * @param bool $dbupdate
 	 * @return bool
 	 */
-	function SetSource($source, $lang, $dbupdate = true)
+	function SetGallery($gallery, $dbupdate = true)
 	{
-		return $this->UpdateValue ( "source_$lang", $source, $dbupdate );
-	}
-	
-	/**
-	 * Set value to m_url
-	 *
-	 * @param int $url
-	 * @param bool $dbupdate
-	 * @return bool
-	 */
-	function SetURL($url, $dbupdate = true)
-	{
-		return $this->UpdateValue ( 'url', $url, $dbupdate );
-	}
-	
-	/**
-	 * Set value to m_group
-	 *
-	 * @param int $group
-	 * @param bool $dbupdate
-	 * @return bool
-	 */
-	function SetGroup($group, $dbupdate = true)
-	{
-		return $this->UpdateValue ( 'group', $group, $dbupdate );
+		return $this->UpdateValue ( 'gallery', $gallery, $dbupdate );
 	}
 }
 ?>

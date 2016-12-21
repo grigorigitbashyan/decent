@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id="transactionID">Transaction ID</name>
+	<name id="transactionIDT">Trans. ID</name>
+	<name id="products">Products / Quantity</name>
+	<name id="totalMerch">Merchandise Total:</name>
+	<name id="shipPrice">Shipping Total:</name>
+	<name id="totalAmount">SubTotal:</name>
+	<name id="totalAmountT">Amount</name>
+	<name id="giftMsg">Type your personal message</name>
+	<name id="giftMsgT">Gift msg</name>
+	<name id="giftCustMsg"></name>
+	<name id="shippingInfo">Shipping info</name>
+	<name id="shipped">Shipping status</name>
+	<name id="markShipped">Mark as shipped</name>
+	<name id="markNotShipped">Mark as not shipped</name>
+	<name id="shippedYes">Shipped</name>
+	<name id="shippedNo">In process</name>
+	<name id="insertGiftMsg">Please, insert a gift message</name>
+	<name id="thankyouMsg">Thank you for your payment!</name>
+	<name id="unsuccessfulPayment2">Your payment was unsuccessful.</name>
+	<name id="unsuccessfulPayment3">Your payment was unsuccessful.</name>
+	<name id="unsuccessfulPayment4">Your payment was unsuccessful.</name>
+	<name id="noItemsInYourCart">There are no items in your shopping cart.</name>
+	<name id="continueShopping">Continue shopping.</name>
+	<name id="date">Trans. date</name>
+	<name id="orderinfo">Order History</name>
+	
+	<name id="firstname">First Name:</name>
+	<name id="lastname">Last Name:</name>
+	<name id="company">Company:</name>
+	<name id="address">Address:</name>
+	<name id="city">City:</name>
+	<name id="state">State/Province:</name>
+	<name id="zip">Zip/Postal Code:</name>
+	<name id="country">Country:</name>
+	
+	<name id="done">Done</name>
+	<name id="options">Options</name>
+	<name id="sureDelete">Are you sure to delete?</name>
+	<name id="delete">Delete</name>
+	
+	
+	<name id="emailSectionTitle">Email</name>
+	<name id="toEmailTabName">Admin's Email</name>
+	<name id="fromEmailTabName">Sender Email</name>
+	
+	<name id="comntentSectionTitle">Emails content</name>
+	<name id="shoppingEmailAdminCont">Email content for Admin</name>
+	<name id="shoppingEmailBuyerCont">Email content for buyer</name>
+	
+	<!-- Classic Gift Types -->
+	<name id="appleandpear">Apple and Pear</name>
+	<name id="pumpkinandapple">Pumpkin and Apple</name>
+	<name id="walnut">Walnut</name>
+		<name id="apricotwhitecherry">Apricot and White Cherry</name>
+		<name id="peach">Peach</name>
+		<name id="quince">Quince</name>
+			<name id="apricot">Apricot</name>
+			<name id="tearosepetal">Tea Rose Petal</name>
+			<name id="wildstrawberry">Wild Strawberry</name>
+			<name id="goldenfig">Golden Fig</name>
+	<!-- Classic Gift Types -->
+	
+	<!-- Sampler Gift Types -->
+	<name id="freshwalnut">Fresh Walnut</name>
+	<!-- Sampler Gift Types -->
+	
+	<!-- Trio Gift Types -->
+	<name id="sourcherry">Sour Cherry</name>
+	<!-- Trio Gift Types -->
+</names>

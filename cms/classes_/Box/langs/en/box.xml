@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id='box'>Box</name>
+	<name id='boxCollection'>Box Collection</name>
+	<name id='newBox'>New box</name>
+	<name id='newBoxName'>New box name: </name>
+	<name id='newboxCollection'>New box collection</name>
+	<name id='newboxCollName'>New collection name: </name>
+	<name id="collBoxesTitle">Box relation</name>
+	<name id="relatedBoxes">Related boxes</name>
+	<name id="allBoxes">All boxes</name>
+	<name id="catRelColl">Related box collections</name>
+	<name id="relFile">Related File</name>
+</names>

@@ -1,4 +1,5 @@
 <?php
+
 $includes = array (
 	'classes/Product/pr_main/Pr_mainListView.class.inc', 
 	'classes/Product/pr_type/Pr_typeView.class.inc', 
@@ -21,7 +22,6 @@ class ProductAll extends View
 	 */
 	protected $m_catID;
 	protected $m_catIDStr;
-	
 	/**
 	 * Enter description here...
 	 *
@@ -57,24 +57,24 @@ class ProductAll extends View
 	function GetProducts($order1 = "date", $order1Type = "desc", $order2 = null, $order2Type = null, $limit = 10, $tagName = null)
 	{
 		$query = "
-			select 
-				PM.`ID`, 
-				PM.`random` as link, 
-				PM.`name_$this->m_displayLang` as name, 
-				PM.`short_desc_$this->m_displayLang` as short_desc, 
-				PM.`picture`, 
-				PM.`date`, 
-				S.`path` 
-			from 
-				`pr_main` PM 
-			join 
-				`pr_options` PO on (PM.`ID` = PO.`productID`)
-			join
-				`structure` S on (PO.`relatedID` = S.`ID`) 
-			where 
-				PM.`status` = 1 
-			order by 
-				PM.`$order1` $order1Type limit 0, $limit";
+					select 
+						PM.`ID`, 
+						PM.`random` as link, 
+						PM.`name_$this->m_displayLang` as name, 
+						PM.`short_desc_$this->m_displayLang` as short_desc, 
+						PM.`picture`, 
+						PM.`date`, 
+						S.`path` 
+					from 
+						`pr_main` PM 
+					join 
+						`pr_options` PO on (PM.`ID` = PO.`productID`)
+					join
+						`structure` S on (PO.`relatedID` = S.`ID`) 
+					where 
+						PM.`status` = 1 
+					order by 
+						PM.`$order1` $order1Type limit 0, $limit";
 		$ProdArr = DB::QueryToArray($query);
 		
 		foreach ( $ProdArr as $prodItem )
@@ -83,372 +83,229 @@ class ProductAll extends View
 		}
 	}
 	
-	function GetMostViewedProducts($limit="0, 3", $forDays=7, $exceptionIDs=null)
+	function GetSpecialProducts($order1 = "date", $order1Type = "desc", $order2 = null, $order2Type = null, $tagName = null)
 	{
-		$selDate = time() - $forDays*86400;
-		$selDate = date("Y-m-d", $selDate);
-		
-		$exceptionIDs_str = "";
-		if ( is_array($exceptionIDs) )
-		{
-			$exceptionIDs = implode(", ", $exceptionIDs);
-			$exceptionIDs_str = " and `ID` not in ($exceptionIDs)";
-		}
-		
 		$query = "
-			select 
-				`ID`, 
-				`random` as `link`, 
-				`name_$this->m_displayLang` as `name`, 
-				`short_desc_$this->m_displayLang` as `short_desc`, 
-				`desc_$this->m_displayLang` as `desc`, 
-				`picture`, 
-				`picture1`, 
-				`picture2`, 
-				`cover`, 
-				`published_date`, 
-				`updated_date`, 
-				`viewCount`, 
-				`googleViewCount`, 
-				`googleUniqueViewCount` 
-			from 
-				`pr_main` 
-			where 
-				`status` = 1 and `picture` <> 'img/thumbnail.gif' and `date` > '$selDate' $exceptionIDs_str
-			order by 
-				`viewCount` desc, `ID` desc
-			limit ".$limit;
+					select 
+						PM.`ID`, 
+						PM.`random` as link, 
+						PM.`name_$this->m_displayLang` as name, 
+						PM.`short_desc_$this->m_displayLang` as short_desc, 
+						PM.`picture`, 
+						PM.`date`, 
+						S.`path` 
+					from 
+						`pr_main` PM 
+					join 
+						`pr_options` PO on (PM.`ID` = PO.`productID`)
+					join 
+						`pr_options` PO2 on (PO2.`productID` = PO.`productID`)
+					join
+						`structure` S on (PO2.`relatedID` = S.`ID`) 
+					where 
+						PM.`special` = 1 and PM.`status` = 1 and PO2.`fieldID` = 24
+					group by 
+						PM.`ID` 
+					order by 
+						PM.`$order1` $order1Type";
+		$ProdArr = DB::QueryToArray($query);
+		
+		foreach ( $ProdArr as $prodItem )
+		{
+			$this->DisplayItem($prodItem, $tagName);
+		}
+	}
+	
+	function GetHomeGalleryProductsList($limit=5)
+	{
+		$query = "
+					select 
+						PM.`ID`, 
+						PM.`random`, 
+						PM.`name_$this->m_displayLang` as name, 
+						PM.`short_desc_$this->m_displayLang` as short_desc, 
+						PM.`picture`, 
+						PM.`cover`, 
+						PM.`date`, 
+						PT.`name` as `typename`, 
+						S.`path` 
+					from 
+						`pr_main` PM 
+					join 
+						`pr_type` PT on (PT.`ID` = PM.`typeID`)
+					join 
+						`pr_options` PO on (PO.`productID` = PM.`ID`)
+					join
+						`structure` S on (PO.`relatedID` = S.`ID`) 
+					where 
+						PO.`fieldID` = 6 and PM.`homeGallery` = 1 and PM.`status` = 1 
+					group by 
+						PM.`ID` 
+					order by 
+						PM.`date` desc, PM.`ID` desc
+					limit 0, ".$limit;
 		$ProdArr = DB::QueryToArray($query);
 		
 		return $ProdArr;
 	}
 	
-	function GetRandomProducts($limit="0, 3", $forDays=7, $exceptionIDs=null)
+	function GetHomeGalleryProductsItems($divClass = null, $divId = null)
 	{
-		$selDate = time() - $forDays*86400;
-		$selDate = date("Y-m-d", $selDate);
-		
-		$exceptionIDs_str = "";
-		if ( is_array($exceptionIDs) )
-		{
-			$exceptionIDs = implode(", ", $exceptionIDs);
-			$exceptionIDs_str = " and `ID` not in ($exceptionIDs)";
-		}
-		
 		$query = "
-			select 
-				`ID`, 
-				`random` as `link`, 
-				`name_$this->m_displayLang` as `name`, 
-				`short_desc_$this->m_displayLang` as `short_desc`, 
-				`desc_$this->m_displayLang` as `desc`, 
-				`picture`, 
-				`picture1`, 
-				`picture2`, 
-				`cover`, 
-				`published_date`, 
-				`updated_date`, 
-				`viewCount`, 
-				`googleViewCount`, 
-				`googleUniqueViewCount` 
-			from 
-				`pr_main` 
-			where 
-				`status` = 1 and `picture` <> 'img/thumbnail.gif' and `published_date` > '$selDate' $exceptionIDs_str
-			order by 
-				rand() 
-			limit ".$limit;
+					select 
+						PM.`ID`, 
+						PM.`random` as link, 
+						PM.`name_$this->m_displayLang` as name, 
+						PM.`short_desc_$this->m_displayLang` as short_desc, 
+						PM.`picture`, 
+						PM.`cover`, 
+						PM.`date`, 
+						S.`path` 
+					from 
+						`pr_main` PM 
+					join 
+						`pr_options` PO2 on (PO2.`productID` = PM.`ID`)
+					join
+						`structure` S on (PO2.`relatedID` = S.`ID`) 
+					where 
+						PO2.`fieldID` = 24 and PM.`homeGallery` = 1 and PM.`status` = 1 
+					group by 
+						PM.`ID` 
+					order by 
+						PM.`date` desc, PM.`ID` desc
+					limit 0, 6";
 		$ProdArr = DB::QueryToArray($query);
-		
-		return $ProdArr;
-	}
-	
-	function GetSiteUserProducts($userID, $limit=3, $exceptionIDs=null)
-	{
-		//	get user last activity date
-		$query = "select `lasttime` from `user_tags` where `userID` = $userID and `tagType` = 'tag' order by `lasttime` desc limit 0, 1";
-		$lastTime = DB::QueryToValue($query);
-		
-		//	count one week from user last activity date
-		$lastTime = $lastTime - 7*86400;
-		
-		//	get 3 most popular user tags from counted perioud
-		$tagsArr = "";
-		$query = "select * from `user_tags` where `userID` = $userID and `tagType` = 'tag' and `lasttime` > $lastTime order by `count` desc limit 0, 3";
-		$retArr = DB::QueryToArray($query);
-		for ( $i=0; $i<count($retArr); $i++ )
+		$index = 1;
+		if ( $ProdArr[0]!="" )
 		{
-			$tagsArr[] = $retArr[$i]["tagID"];
-		}
-		
-		//	select 3 most popular articles from selected tags from last week
-		if ( is_array($tagsArr) )
-		{
-//			$fromDate = time() - 7*86400 - 1;
-			$fromDate = time() - 365*86400 - 1;
-			$fromDate = date("Y-m-d", $fromDate);
-			
-			$tagsArr = implode(", ", $tagsArr);
-			
-			$exceptionIDs_str = "";
-			if ( is_array($exceptionIDs) )
+			foreach ( $ProdArr as $prodItem )
 			{
-				$exceptionIDs = implode(", ", $exceptionIDs);
-				$exceptionIDs_str = " and PM.`ID` not in ($exceptionIDs)";
+				?>
+				<div id="<?php echo $divId.$index;?>" class="<?php echo $divClass;?>">
+                    <div class="title"><a href="<?php echo $this->m_site->GetSiteURL().$this->m_displayLang.'/'.$prodItem["path"].$prodItem["link"];?>" ><?php echo $prodItem["name"];?></a></div>
+                    <div class="image"><a href="<?php echo $this->m_site->GetSiteURL().$this->m_displayLang.'/'.$prodItem["path"].$prodItem["link"];?>" ><img src="<?php echo $prodItem["cover"];?>" width="400" height="300" alt="" /></a></div>
+                    <div class="desc"><?php echo $prodItem["short_desc"];?><div class="read-more"><a href="<?php echo $this->m_site->GetSiteURL().$this->m_displayLang.'/'.$prodItem["path"].$prodItem["link"];?>"><?php echo ($this->m_displayLang=="en" ? "Continue" : "გაგრძელება");?>...</a></div></div>
+                </div>
+				<?php
+				$index++;
 			}
-			
-			$query = "
-				select 
-					PM.`ID`, 
-					PM.`random` as `link`, 
-					PM.`name_$this->m_displayLang` as `name`, 
-					PM.`short_desc_$this->m_displayLang` as `short_desc`, 
-					PM.`desc_$this->m_displayLang` as `desc`, 
-					PM.`picture`, 
-					PM.`picture1`, 
-					PM.`picture2`, 
-					PM.`cover`, 
-					PM.`published_date`, 
-					PM.`updated_date`, 
-					PM.`viewCount`, 
-					PM.`googleViewCount`, 
-					PM.`googleUniqueViewCount` 
-				from 
-					`pr_main` PM 
-				join 
-					`pr_options` PO on (PM.`ID` = PO.`productID` and PO.`fieldID` = 71)
-				where 
-					PM.`status` = 1 and PO.`relatedID` in ($tagsArr) and PM.`published_date` > '$fromDate' and PM.`ID` not in (select `productID` from `viewedArticles` where `userID` = $userID) $exceptionIDs_str 
-				group by 
-					PM.`ID`
-				order by 
-					PM.`viewCount` desc
-				limit 0, ".$limit;
+		}
+	}
+	
+	function GetMostViewedProducts($tagName = null, $limit=5)
+	{
+		$query = "
+					select 
+						PM.`ID`, 
+						PM.`random` as link, 
+						PM.`name_$this->m_displayLang` as name, 
+						PM.`short_desc_$this->m_displayLang` as short_desc, 
+						PM.`picture`, 
+						PM.`date`, 
+						S.`path` 
+					from 
+						`pr_main` PM 
+					join 
+						`pr_options` PO on (PO.`productID` = PM.`ID`)
+					join
+						`structure` S on (PO.`relatedID` = S.`ID`) 
+					where 
+						PO.`fieldID` = 24 and PM.`status` = 1 
+					group by 
+						PM.`ID` 
+					order by 
+						PM.`viewCount` desc, PM.`date` desc 
+					limit
+						0, ".$limit;
+		$ProdArr = DB::QueryToArray($query);
+		
+		$index = 1;
+		foreach ( $ProdArr as $prodItem )
+		{
+			$this->DisplayMostViewedItem($prodItem, $tagName, $index);
+			$index++;
+		}
+	}
+	
+	function GetRandomProducts($tagName = null, $limit=5)
+	{
+		$query = "
+					select 
+						PM.`ID`, 
+						PM.`random` as link, 
+						PM.`name_$this->m_displayLang` as name, 
+						PM.`short_desc_$this->m_displayLang` as short_desc, 
+						PM.`picture`, 
+						PM.`date`, 
+						S.`path` 
+					from 
+						`pr_main` PM 
+					join 
+						`pr_options` PO on (PO.`productID` = PM.`ID`)
+					join
+						`structure` S on (PO.`relatedID` = S.`ID`) 
+					where 
+						PO.`fieldID` = 24 and PM.`status` = 1 
+					group by 
+						PM.`ID` 
+					order by 
+						rand() 
+					limit
+						0, ".$limit;
+		$ProdArr = DB::QueryToArray($query);
+		
+		$index = 1;
+		foreach ( $ProdArr as $prodItem )
+		{
+			$this->DisplayMostViewedItem($prodItem, $tagName, $index);
+			$index++;
+		}
+	}
+	
+	function GetLastProducts($tagName=null, $limit="0, 4", $display=false)
+	{
+		$query = "
+					select 
+						PM.`ID`, 
+						PM.`random`, 
+						PM.`name_$this->m_displayLang` as name, 
+						PM.`short_desc_$this->m_displayLang` as short_desc, 
+						PM.`picture`, 
+						PM.`cover`, 
+						PM.`date`, 
+						PT.`name` as `typename`, 
+						S.`path` 
+					from 
+						`pr_main` PM 
+					join 
+						`pr_type` PT on (PT.`ID` = PM.`typeID`)
+					join 
+						`pr_options` PO on (PO.`productID` = PM.`ID`)
+					join
+						`structure` S on (PO.`relatedID` = S.`ID`) 
+					where 
+						PO.`fieldID` = 6 and PM.`homeGallery` = 0 and PM.`status` = 1 
+					group by 
+						PM.`ID` 
+					order by 
+						PM.`date` desc, PM.`ID` desc
+					limit ".$limit;
+		$ProdArr = DB::QueryToArray($query);
+		
+		if ( $display )
+		{
+			foreach ( $ProdArr as $prodItem )
+			{
+				$this->DisplayLastItem($prodItem, $tagName);
+			}
 		}
 		else 
 		{
-			$toDate = time() - 7*86400 - 1;
-			$toDate = date("Y-m-d", $toDate);
-			
-//			$fromDate = time() - 30*86400;
-			$fromDate = time() - 365*86400;
-			$fromDate = date("Y-m-d", $fromDate);
-			
-			$exceptionIDs_str = "";
-			if ( is_array($exceptionIDs) )
-			{
-				$exceptionIDs = implode(", ", $exceptionIDs);
-				$exceptionIDs_str = " and `ID` not in ($exceptionIDs)";
-			}
-			
-			$query = "
-				select 
-					`ID`, 
-					`random` as `link`, 
-					`name_$this->m_displayLang` as `name`, 
-					`short_desc_$this->m_displayLang` as `short_desc`, 
-					`desc_$this->m_displayLang` as `desc`, 
-					`picture`, 
-					`picture1`, 
-					`picture2`, 
-					`cover`, 
-					`published_date`, 
-					`updated_date`, 
-					`viewCount`, 
-					`googleViewCount`, 
-					`googleUniqueViewCount` 
-				from 
-					`pr_main` 
-				where 
-					`status` = 1 and `picture` <> 'img/thumbnail.gif' and `published_date` > '$fromDate' and `published_date` < '$toDate' $exceptionIDs_str 
-				order by 
-					`viewCount` desc
-				limit 0, ".$limit;
+			return $ProdArr;
 		}
-		
-		$ProdArr = DB::QueryToArray($query);
-		
-		return $ProdArr;
 	}
 	
-	function GetSiteUserProductsByAuthor($userID, $exceptionIDs=null)
-	{
-		//	get user last activity date
-		$query = "select `lasttime` from `user_tags` where `userID` = $userID and `tagType` = 'author' order by `lasttime` desc limit 0, 1";
-		$lastTime = DB::QueryToValue($query);
-		
-		//	count one week from user last activity date
-		$lastTime = $lastTime - 7*86400;
-		
-		//	get user authors from counted perioud
-		$tagsArr = "";
-		$query = "select * from `user_tags` where `userID` = $userID and `tagType` = 'author' and `lasttime` > $lastTime order by `count` desc";
-		$retArr = DB::QueryToArray($query);
-		for ( $i=0; $i<count($retArr); $i++ )
-		{
-			$tagsArr[] = $retArr[$i]["tagID"];
-		}
-		
-		$exceptionIDs_str = "";
-		if ( is_array($exceptionIDs) )
-		{
-			$exceptionIDs = implode(", ", $exceptionIDs);
-			$exceptionIDs_str = " and `ID` not in ($exceptionIDs)";
-		}
-		
-		//	select 3 most popular articles from selected tags from last week
-		$ProdArr = "";
-		if ( is_array($tagsArr) )
-		{
-//			$fromDate = time() - 7*86400 - 1;
-			$fromDate = time() - 365*86400 - 1;
-			$fromDate = date("Y-m-d", $fromDate);
-			
-			$tagsArr = implode(", ", $tagsArr);
-			
-			$query = "
-				select 
-					`ID`, 
-					`random` as `link`, 
-					`name_$this->m_displayLang` as `name`, 
-					`short_desc_$this->m_displayLang` as `short_desc`, 
-					`desc_$this->m_displayLang` as `desc`, 
-					`picture`, 
-					`picture1`, 
-					`picture2`, 
-					`cover`, 
-					`published_date`, 
-					`updated_date`, 
-					`viewCount`, 
-					`googleViewCount`, 
-					`googleUniqueViewCount` 
-				from 
-					`pr_main` 
-				where 
-					`status` = 1 and `userID` in ($tagsArr) and `published_date` > '$fromDate' and `ID` not in (select `productID` from `viewedArticles` where `userID` = $userID) $exceptionIDs_str 
-				group by 
-					`userID`
-				order by 
-					`viewCount` desc
-				limit 0, 3";
-			
-			$ProdArr = DB::QueryToArray($query);
-		}
-		
-		return $ProdArr;
-	}
-	
-	function GetLastProducts($limit="0, 4", $cover=false)
-	{
-		$coverStr = "";
-		if ( $cover )
-		{
-			$coverStr = " and `cover` <> 'img/cover.gif'";
-		}
-		
-		$query = "
-			select 
-				`ID`, 
-				`random` as `link`, 
-				`name_$this->m_displayLang` as `name`, 
-				`short_desc_$this->m_displayLang` as `short_desc`, 
-				`desc_$this->m_displayLang` as `desc`, 
-				`picture`, 
-				`picture1`, 
-				`picture2`, 
-				`cover`, 
-				`published_date`, 
-				`updated_date`, 
-				`viewCount`, 
-				`payment`
-			from 
-				`pr_main` 
-			where 
-				`typeID` = 1 and `status` = 1 $coverStr
-			order by 
-				`date` desc, `ID` desc
-			limit ".$limit;
-		$ProdArr = DB::QueryToArray($query);
-		
-		return $ProdArr;
-	}
-	
-	function GetUserArticles($userID, $limit="0, 9")
-	{
-		$query = "
-			select 
-				`ID`, 
-				`random` as `link`, 
-				`name_$this->m_displayLang` as `name`, 
-				`short_desc_$this->m_displayLang` as `short_desc`, 
-				`desc_$this->m_displayLang` as `desc`, 
-				`picture`, 
-				`picture1`, 
-				`picture2`, 
-				`cover`, 
-				`published_date`, 
-				`updated_date`, 
-				`viewCount`, 
-				`payment`
-			from 
-				`pr_main` 
-			where 
-				`status` = 1 and `typeID` = 1 and `userID` = $userID 
-			order by 
-				`date` desc, `ID` desc
-			limit ".$limit;
-		$ProdArr = DB::QueryToArray($query);
-		
-		return $ProdArr;
-	}
-	function GetUserArticlesViewCount($userID)
-	{
-		$query = "
-			select 
-				SUM(`googleUniqueViewCount`) as `total` 
-			from 
-				`pr_main` 
-			where 
-				`status` = 1 and `userID` = $userID";
-		
-		return DB::QueryToValue($query);
-	}
-	function GetUserMostViewedArticle($userID, $cover=true)
-	{
-		$coverStr = "";
-		if ( $cover )
-		{
-			$coverStr = " and `cover` <> '' and `cover` <> 'img/cover.gif'";
-		}
-		$query = "
-			select 
-				`ID`, 
-				`random` as `link`, 
-				`name_$this->m_displayLang` as `name`, 
-				`short_desc_$this->m_displayLang` as `short_desc`, 
-				`desc_$this->m_displayLang` as `desc`, 
-				`picture`, 
-				`picture1`, 
-				`picture2`, 
-				`cover`, 
-				`published_date`, 
-				`updated_date`, 
-				`viewCount`, 
-				`googleViewCount`, 
-				`googleUniqueViewCount` 
-			from 
-				`pr_main` 
-			where 
-				`status` = 1 and `userID` = $userID $coverStr
-			order by 
-				`googleUniqueViewCount` desc
-			limit 0, 1";
-		$ProdArr = DB::QueryToRow($query);
-		
-		return $ProdArr;
-	}
-	
-	function GetProductsByTypes($typeIDs, $fieldIDs=0, $orderBy="PM.`date`", $orderType="desc", $limit = 4, $relatedID=0)
+	function GetProductsByTypes($typeIDs, $fieldIDs=0, $orderBy="PM.`date`", $orderType="desc", $limit = 4, $relatedID=0, $special=0)
 	{
 		$orderStr = "";
 		if ( $orderBy=="random" )
@@ -462,7 +319,7 @@ class ProductAll extends View
 		
 		if ( is_array($typeIDs) )
 		{
-			$conStr = "";
+			$conStr = "(";
 			for ( $i=0; $i<count($typeIDs); $i++ )
 			{
 				if ( $i==0 )
@@ -474,6 +331,7 @@ class ProductAll extends View
 					$conStr .= " or (PM.`typeID` = ".$typeIDs[$i]." and PO2.`fieldID` = ".$fieldIDs[$i].")";
 				}
 			}
+			$conStr .= ")";
 		}
 		else 
 		{
@@ -493,6 +351,12 @@ class ProductAll extends View
 			$relatedIDStr = " and PO2.`relatedID` = ".$relatedID;
 		}
 		
+		$specialStr = "";
+		if ( $special==0 || $special==1 )
+		{
+			$specialStr = " and PM.`special` = ".$special;
+		}
+		
 		if ( $fieldIDs==0 )
 		{
 			$query = "
@@ -509,7 +373,7 @@ class ProductAll extends View
 				from 
 					`pr_main` PM 
 				where 
-					$conStr 
+					PM.`status` = 1 and $conStr $specialStr 
 				order by 
 					$orderStr 
 				limit 0, ".$limit;
@@ -521,7 +385,6 @@ class ProductAll extends View
 					PM.`ID`, 
 					PM.`random` as `link`, 
 					PM.`name_$this->m_displayLang` as `name`, 
-					PM.`subtitle_$this->m_displayLang` as `subtitle`, 
 					PM.`short_desc_$this->m_displayLang` as `short_desc`, 
 					PM.`desc_$this->m_displayLang` as `desc`, 
 					PM.`picture`, 
@@ -532,7 +395,7 @@ class ProductAll extends View
 				join 
 					`pr_options` PO2 on (PO2.`productID` = PM.`ID`)
 				where 
-					$conStr $relatedIDStr 
+					PM.`status` = 1 and $conStr $relatedIDStr $specialStr 
 				order by 
 					$orderStr 
 				limit 0, ".$limit;
@@ -586,6 +449,65 @@ class ProductAll extends View
 		return $ProdArr;
 	}
 	
+	function GetLastProductsByCategory($tagName = null, $category, $limit = 4, $order="date", $display=true)
+	{
+		if ( $order=="random" )
+		{
+			$orderStr = " rand()";
+		}
+		else 
+		{
+			$orderStr = " PM.`$order` desc, PM.`ID` desc";
+		}
+		$query = "
+			select 
+				PM.`ID`, 
+				PM.`typeID`, 
+				PM.`random` as link, 
+				PM.`name_$this->m_displayLang` as name, 
+				PM.`short_desc_$this->m_displayLang` as short_desc, 
+				PM.`picture`, 
+				PM.`date`, 
+				S.`name_$this->m_displayLang` as path_name, 
+				S.`path` 
+			from 
+				`pr_main` PM 
+			join 
+				`pr_options` PO on (PO.`productID` = PM.`ID`)
+			join
+				`structure` S on (PO.`relatedID` = S.`ID`) 
+			JOIN 
+			  	`pr_field` PF ON (PO.`fieldID` = PF.`ID`) 
+			where 
+				(PF.`type` = 2 || PF.`type` = 8) and PO.`relatedID` = $category and PM.`status` = 1 
+			order by 
+				$orderStr 
+			limit 0, ".$limit;
+		$ProdArr = DB::QueryToArray($query);
+		
+		if ( $display )
+		{
+			if ( $tagName!=null )
+			{
+				print ('<'.$tagName.' class="latestArticles_'.$category.'">');
+			}
+			
+			foreach ( $ProdArr as $prodItem )
+			{
+				$this->DisplayLastItemByCat($prodItem, $tagName);
+			}
+			
+			if ( $tagName!=null )
+			{
+				print ('</'.$tagName.'>');
+			}
+		}
+		else 
+		{
+			return $ProdArr;
+		}
+	}
+	
 	function GetProductsByType($typeID, $fieldID, $orderBy="PM.`date`", $orderType="desc", $limit = 4)
 	{
 		$orderStr = "";
@@ -599,28 +521,28 @@ class ProductAll extends View
 		}
 		
 		$query = "
-			select 
-				PM.`ID`, 
-				PM.`random` as `link`, 
-				PM.`name_$this->m_displayLang` as `name`, 
-				PM.`short_desc_$this->m_displayLang` as `short_desc`, 
-				PM.`desc_$this->m_displayLang` as `desc`, 
-				PM.`picture`, 
-				PM.`cover`, 
-				PM.`date`, 
-				S.`name_$this->m_displayLang` as path_name, 
-				S.`path` 
-			from 
-				`pr_main` PM 
-			join 
-				`pr_options` PO2 on (PO2.`productID` = PM.`ID`)
-			join
-				`structure` S on (PO2.`relatedID` = S.`ID`) 
-			where 
-				PM.`typeID` = $typeID and PM.`status` = 1 and PO2.`fieldID` = $fieldID 
-			order by 
-				$orderStr 
-			limit 0, ".$limit;
+					select 
+						PM.`ID`, 
+						PM.`random` as `link`, 
+						PM.`name_$this->m_displayLang` as `name`, 
+						PM.`short_desc_$this->m_displayLang` as `short_desc`, 
+						PM.`desc_$this->m_displayLang` as `desc`, 
+						PM.`picture`, 
+						PM.`cover`, 
+						PM.`date`, 
+						S.`name_$this->m_displayLang` as path_name, 
+						S.`path` 
+					from 
+						`pr_main` PM 
+					join 
+						`pr_options` PO2 on (PO2.`productID` = PM.`ID`)
+					join
+						`structure` S on (PO2.`relatedID` = S.`ID`) 
+					where 
+						PM.`typeID` = $typeID and PM.`status` = 1 and PO2.`fieldID` = $fieldID 
+					order by 
+						$orderStr 
+					limit 0, ".$limit;
 		$ProdArr = DB::QueryToArray($query);
 		
 		return $ProdArr;
@@ -777,168 +699,6 @@ class ProductAll extends View
 				}
 			}
 		}
-	}
-	
-	
-	function GetArticlesCountForTag($tagID)
-	{
-		$query = "
-			SELECT PM.`ID`, PM.`typeID`, PM.`name_{$this->m_displayLang}` as `name`, PM.`desc_{$this->m_displayLang}` as `desc`, PM.`short_desc_{$this->m_displayLang}` as `short_desc`, PM.`picture`, PM.`picture1`, PM.`picture2`, PM.`picture3`, PM.`picture4`, PM.`cover`, PM.`date` as `sdate`, PM.`published_date`, PM.`updated_date`, PM.`random`, PM.`viewCount`, PM.`googleViewCount`, PM.`googleUniqueViewCount` 
-			FROM `pr_main` PM 
-			JOIN `pr_options` PO ON (PM.`ID` = PO.`productID`) 
-			JOIN `optionsdata` OD ON (OD.`ID` = PO.`relatedID` and OD.`ID` = $tagID and OD.`optionsID` = 28) 
-			WHERE PM.`status` = 1 
-			GROUP BY PM.`ID`";
-		
-		return count(DB::QueryToArray($query));
-	}
-	function GetAuthorsCountForTag($tagID)
-	{
-		$query = "
-			SELECT PM.`ID`, PM.`typeID`, PM.`name_{$this->m_displayLang}` as `name`, PM.`desc_{$this->m_displayLang}` as `desc`, PM.`short_desc_{$this->m_displayLang}` as `short_desc`, PM.`picture`, PM.`picture1`, PM.`picture2`, PM.`picture3`, PM.`picture4`, PM.`cover`, PM.`date` as `sdate`, PM.`published_date`, PM.`updated_date`, PM.`random`, PM.`viewCount`, PM.`googleViewCount`, PM.`googleUniqueViewCount` 
-			FROM `pr_main` PM 
-			JOIN `pr_options` PO ON (PM.`ID` = PO.`productID`) 
-			JOIN `optionsdata` OD ON (OD.`ID` = PO.`relatedID` and OD.`ID` = $tagID and OD.`optionsID` = 28) 
-			WHERE PM.`status` = 1 
-			GROUP BY PM.`userID`";
-		
-		return count(DB::QueryToArray($query));
-	}
-	function GetMostViewedArticleForTag($tagID, $coverExist = true)
-	{
-		$coverStr = "";
-		if ( $coverExist )
-		{
-			$coverStr = " and PM.`cover` <> '' and PM.`cover` <> 'img/cover.gif'";
-		}
-		$query = "
-			SELECT PM.`ID`, PM.`typeID`, PM.`name_{$this->m_displayLang}` as `name`, PM.`desc_{$this->m_displayLang}` as `desc`, PM.`short_desc_{$this->m_displayLang}` as `short_desc`, PM.`picture`, PM.`picture1`, PM.`picture2`, PM.`picture3`, PM.`picture4`, PM.`cover`, PM.`date` as `sdate`, PM.`published_date`, PM.`updated_date`, PM.`random`, PM.`viewCount`, PM.`googleViewCount`, PM.`googleUniqueViewCount` 
-			FROM `pr_main` PM 
-			JOIN `pr_options` PO ON (PM.`ID` = PO.`productID`) 
-			JOIN `optionsdata` OD ON (OD.`ID` = PO.`relatedID` and OD.`ID` = $tagID and OD.`optionsID` = 28) 
-			WHERE PM.`status` = 1 $coverStr
-			GROUP BY PM.`ID`
-			ORDER BY `googleUniqueViewCount` desc
-			LIMIT 0, 1";
-		
-		return DB::QueryToRow($query);
-	}
-	function GetSubscribersForTag($tagID)
-	{
-		$query = "select * from `user_tags` where `tagID` = $tagID and `tagType` = 'tag' and `follow` = 1";
-		
-		return DB::QueryToArray($query);
-	}
-	
-	
-	public function SearchProducts($tags=null, $searchWord=null, $limit="0, 10")
-	{
-		if ( is_array($tags) && count($tags)>0 )
-		{
-			$tags = implode(", ", $tags);
-			if ( $searchWord )
-			{
-				$query = "
-					select 
-						PM.`ID`, 
-						PM.`random` as `link`, 
-						PM.`name_en` as `name`, 
-						PM.`short_desc_en` as `short_desc`, 
-						PM.`desc_en` as `desc`, 
-						PM.`picture`, 
-						PM.`picture1`, 
-						PM.`picture2`, 
-						PM.`cover`, 
-						PM.`published_date`, 
-						PM.`updated_date`, 
-						PM.`viewCount`, 
-						PM.`payment`
-					from 
-						`pr_main` PM 
-					join 
-						`pr_options` PO on (PO.`productID` = PM.`ID` and PO.`fieldID` = 1 and PO.`relatedID` in ($tags))
-					where 
-						PM.`typeID` = 1 and PM.`status` = 1 and (PM.`name_en` like '%$searchWord%' or `desc_en` like '%$searchWord%') 
-					group by
-						PM.`ID` 
-					order by 
-						PM.`date` desc, `ID` desc 
-					limit 
-						$limit
-					";
-				$lastPrArr = DB::QueryToArray($query);
-			}
-			else 
-			{
-				$query = "
-					select 
-						PM.`ID`, 
-						PM.`random` as `link`, 
-						PM.`name_en` as `name`, 
-						PM.`short_desc_en` as `short_desc`, 
-						PM.`desc_en` as `desc`, 
-						PM.`picture`, 
-						PM.`picture1`, 
-						PM.`picture2`, 
-						PM.`cover`, 
-						PM.`published_date`, 
-						PM.`updated_date`, 
-						PM.`viewCount`, 
-						PM.`payment`
-					from 
-						`pr_main` PM 
-					join 
-						`pr_options` PO on (PO.`productID` = PM.`ID` and PO.`fieldID` = 1 and PO.`relatedID` in ($tags))
-					where 
-						PM.`typeID` = 1 and PM.`status` = 1 
-					group by
-						PM.`ID` 
-					order by 
-						PM.`date` desc, `ID` desc 
-					limit 
-						$limit
-					";
-				$lastPrArr = DB::QueryToArray($query);
-			}
-		}
-		elseif ( $searchWord )
-		{
-			$query = "
-				select 
-					PM.`ID`, 
-					PM.`random` as `link`, 
-					PM.`name_en` as `name`, 
-					PM.`short_desc_en` as `short_desc`, 
-					PM.`desc_en` as `desc`, 
-					PM.`picture`, 
-					PM.`picture1`, 
-					PM.`picture2`, 
-					PM.`cover`, 
-					PM.`published_date`, 
-					PM.`updated_date`, 
-					PM.`viewCount`, 
-					PM.`payment`
-				from 
-					`pr_main` PM 
-				join 
-					`pr_options` PO on (PO.`productID` = PM.`ID` and PO.`fieldID` = 1)
-				where 
-					PM.`typeID` = 1 and PM.`status` = 1 and (PM.`name_en` like '%$searchWord%' or `desc_en` like '%$searchWord%') 
-				group by
-					PM.`ID` 
-				order by 
-					PM.`date` desc, `ID` desc 
-				limit 
-					$limit
-				";
-			$lastPrArr = DB::QueryToArray($query);
-		}
-		else 
-		{
-			$lastPrArr = $this->GetLastProducts($limit);
-		}
-		
-		return $lastPrArr;
 	}
 }
 ?>

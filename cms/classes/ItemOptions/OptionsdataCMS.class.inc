@@ -50,15 +50,10 @@ class OptionsdataCMS extends CMSObject implements CMSInterface
 				}
 				break;
 			case 'setKey' : // rename Optionsdata
-				if (($newName = DB::POST ( 'newKey' )))
-				{
-					$newName = trim ( $newName );
-					if (strlen ( $newName ) > 0)
-					{
-						// rename
-						$ar = $this->m_optionsdata->SetKey( $newName );
-					}
-				}
+				$newName = DB::POST ( 'newKey' );
+				$newName = trim ( $newName );
+				$ar = $this->m_optionsdata->SetKey( $newName );
+				
 				break;
 			case 'delete' : // delete Optionsdata
 				$ar = $this->m_optionsdata->Delete ( false );
@@ -119,7 +114,7 @@ class OptionsdataCMS extends CMSObject implements CMSInterface
 		
 		print('<br />');
 		$renameJS = "onsubmit='return SingleForm(\"newKey\", \"$noEmptyS\");'";
-		$this->DisplaySingleTextForm ( 'setKey', $keyS, 'newKey', $objKey, array ($overLink => $ID ), $doneS, $renameJS );
+		$this->DisplaySingleTextForm ( 'setKey', $keyS, 'newKey', $objKey, array ($overLink => $ID ), $doneS );
 	}
 	
 	/**

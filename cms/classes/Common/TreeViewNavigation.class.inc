@@ -143,6 +143,25 @@ class TreeViewNavigation extends TreeView
 	}
 	
 	/**
+	 * Enter description here...
+	 *
+	 * @return int
+	 */
+	function GetGroupedCount($groupby)
+	{
+		$retArr = DB::QueryToArray( $this->m_allResultesquery );
+		$newArr = array();
+		for ( $i=0; $i<count($retArr); $i++ )
+		{
+			if ( !in_array($retArr[$i][$groupby], $newArr) )
+			{
+				$newArr[] = $retArr[$i][$groupby];
+			}
+		}
+		return count($newArr);
+	}
+	
+	/**
 	 * This function displays navigation links.
 	 * Set $ajaxFuStart and $ajaxFuEnd perimeters to display links by ajax functnion.
 	 *

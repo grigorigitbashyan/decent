@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id="directories">Directories</name>
+	<name id="description">Text</name>
+	<name id="shortDescription">Short Text</name>
+	<name id="createProduct">Create a product:</name>
+	<name id="controller">Controller</name>
+	<name id="date">Date</name>
+	
+	<!-- Classic Gift Types -->
+	<name id="appleandpear">Apple and Pear</name>
+	<name id="pumpkinandapple">Pumpkin and Apple</name>
+	<name id="walnut">Walnut</name>
+		<name id="apricotwhitecherry">Apricot and White Cherry</name>
+		<name id="peach">Peach</name>
+		<name id="quince">Quince</name>
+			<name id="apricot">Apricot</name>
+			<name id="tearosepetal">Tea Rose Petal</name>
+			<name id="wildstrawberry">Wild Strawberry</name>
+			<name id="goldenfig">Golden Fig</name>
+	<!-- Classic Gift Types -->
+	
+	<!-- Sampler Gift Types -->
+	<name id="freshwalnut">Fresh Walnut</name>
+	<!-- Sampler Gift Types -->
+	
+	<!-- Trio Gift Types -->
+	<name id="sourcherry">Sour Cherry</name>
+	<!-- Trio Gift Types -->
+</names>

@@ -308,7 +308,7 @@ class Content extends NamedRecord
 	        	$content = str_replace("**securityfileID**", "{$root}$lang/$loginPath", $content);
         	}
         }
-		
+
         return $content;
     }
     

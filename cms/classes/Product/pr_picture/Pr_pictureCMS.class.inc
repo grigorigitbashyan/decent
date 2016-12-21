@@ -58,15 +58,15 @@ class Pr_pictureCMS extends CMSObject implements CMSInterface
 			case 'delete' : // delete Pr_picture
 				$ar = $this->m_pr_picture->Delete (false, true);
 				break;
-			case 'changedesc' :
+			case 'changeinfo' :
+				$title = DB::POST ('title');
+				$ar = $this->m_pr_picture->SetTitle( $title, $this->m_displayLang );
+				
 				$desc = DB::POST ('desc');
-				$ar &= $this->m_pr_picture->SetDesc ( $desc, $this->m_displayLang );
+				$ar = $this->m_pr_picture->SetDesc ( $desc, $this->m_displayLang );
 				
-				$source = DB::POST ('source');
-				$ar &= $this->m_pr_picture->SetSource( $source, $this->m_displayLang );
-				
-				$url = DB::POST ('url');
-				$ar &= $this->m_pr_picture->SetURL($url);
+				$gallery = $_POST["gallery"]=="on" ? 1: 0;
+				$ar = $this->m_pr_picture->SetGallery( $gallery );
 				break;
 		}
 		
@@ -98,12 +98,13 @@ class Pr_pictureCMS extends CMSObject implements CMSInterface
 		$doneS = $this->GetNameString('done');
 		$backS = $this->GetNameString('back');
 		$descS = $this->GetNameString('desc');
+		$titleS = $this->GetNameString('title');
+		$galleryS = $this->GetNameString('gallery');
 		
-		//////
 		$ID = $this->m_pr_picture->GetID ();
+		$title = $this->m_pr_picture->GetTitle ( $this->m_displayLang );
 		$desc = $this->m_pr_picture->GetDesc ( $this->m_displayLang );
-		$source = $this->m_pr_picture->GetSource( $this->m_displayLang );
-		$url = $this->m_pr_picture->GetURL();
+		$gallery = $this->m_pr_picture->GetGallery ( );
 		
 		$productID = $this->m_pr_picture->GetProductID ();
 		
@@ -129,43 +130,42 @@ class Pr_pictureCMS extends CMSObject implements CMSInterface
 		</table>' );
 		
 		// diplay rename form
-		$hV = array ($overLink => $ID, 'pr_mainID' => $productID, 'pr_typeID' => $proTypeID );
-//		$this->DisplaySingleTextForm ( 'changedesc', $descS, 'desc', $desc, $hV, $doneS );
 		?>
 		<form action="" class="clearPD" id="" name="" method="post">
-			<input type="hidden" value="changedesc" name="pr_picturecmsAction">
+			<input type="hidden" value="changeinfo" name="pr_picturecmsAction">
 			<input type="hidden" value="<?php echo $ID;?>" name="pr_pictureID">
 			<input type="hidden" value="<?php echo $productID;?>" name="pr_mainID">
 			<input type="hidden" value="<?php echo $proTypeID;?>" name="pr_typeID">
-			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="titleBox">
+			<table cellspacing="0" cellpadding="0" border="0" width="100%" class="titleBox">
 				<tr>
 					<td>
-						<div class="titleColL">
-							<span style="width:70px;display:inline-block;"><label><strong>Description</strong></label></span>
-							<input type="text" style="font-size:14px" maxlength="256" size="64" value="<?php echo $desc;?>" id="desc" name="desc">
-						</div>
-						<br class="clearFloat">
-						
-						<div class="titleColL">
-							<span style="width:70px;display:inline-block;"><label><strong>Source</strong></label></span>
-							<input type="text" style="font-size:14px" maxlength="256" size="64" value="<?php echo $source;?>" id="source" name="source">
-						</div>
-						<br class="clearFloat">
-						
-						<div class="titleColL">
-							<span style="width:70px;display:inline-block;"><label><strong>URL</strong></label></span>
-							<input type="text" style="font-size:14px" maxlength="256" size="64" value="<?php echo $url;?>" id="url" name="url">
-						</div>
-						<br class="clearFloat">
-						
-						<div class="titleColL">
-							<span style="width:70px;display:inline-block;">&nbsp;</span>
-							<input type="submit" value="Done" name="">
-						</div>
+						<div class="titleColL" style="width:50px;"><label><strong><?php echo $titleS;?></strong></label></div>
+						<div class="titleColL"><input type="text" style="font-size:14px" maxlength="256" size="64" value="<?php echo $title;?>" id="title" name="title"></div>
 						<br class="clearFloat">
 					</td>
 				</tr>
-			</table>
+				<tr>
+					<td>
+						<div class="titleColL" style="width:50px;"><label><strong><?php echo $descS;?></strong></label></div>
+						<div class="titleColL"><textarea id="desc" name="desc"><?php echo $desc;?></textarea></div>
+						<br class="clearFloat">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="titleColL" style="width:50px;"><label><strong><?php echo $galleryS;?></strong></label></div>
+						<div class="titleColL"><input type="checkbox" name="gallery"<?php echo ($gallery ? " checked": "");?>></div>
+						<br class="clearFloat">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="titleColL" style="width:50px;">&nbsp;</div>
+						<div class="titleColL"><input type="submit" value="<?php echo $doneS;?>" name=""></div>
+						<br class="clearFloat">
+					</td>
+				</tr>
+		</table>
 		</form>
 		<?php
 	}

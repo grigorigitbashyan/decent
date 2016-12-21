@@ -15,12 +15,14 @@ class OptionsdataList extends TreeView
 	 *
 	 * @param int $optionsID use positive to gate names and use negative to get keys
 	 */
-	function __construct($optionsID = null, $order = 'name', $orderType = 'asc')
+	function __construct($optionsID = null)
 	{
 		parent::__construct ( null, 'optionsdataID', 'name' );
 		
 		if ($optionsID != null)
 		{
+			$query = '';
+			
 			// get vlaues
 			if($optionsID > 0)
 			{
@@ -33,7 +35,7 @@ class OptionsdataList extends TreeView
 				$query = "SELECT `ID`, `optionsID`, `key` as `name` FROM `optionsdata` WHERE `optionsID` = $optionsID";
 			}
 			
-			$query = $query." order by ".$order." ".$orderType;
+			$query = $query." order by `key` desc, `name` asc";
 			
 			$this->SetQueryString($query);
 		}

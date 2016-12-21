@@ -48,7 +48,7 @@ class ProductList extends TreeViewNavigation
 				if ( $externalParmas[0] )
 				{
 					$sql = "
-						SELECT PM.`ID`, PM.`typeID`, PM.`name_{$this->m_displayLang}` as `name`, PM.`subtitle_{$this->m_displayLang}` as `subtitle`, PM.`desc_{$this->m_displayLang}` as `desc`, PM.`short_desc_{$this->m_displayLang}` as `short_desc`, PM.`picture`, PM.`picture1`, PM.`picture2`, PM.`picture3`, PM.`picture4`, PM.`cover`, PM.`date` as `sdate`, PM.`published_date`, PM.`updated_date`, PM.`random`, PM.`viewCount` 
+						SELECT PM.`ID`, PM.`typeID`, PM.`name_{$this->m_displayLang}` as `name`, PM.`subtitle_{$this->m_displayLang}` as `subtitle`, PM.`desc_{$this->m_displayLang}` as `desc`, PM.`short_desc_{$this->m_displayLang}` as `short_desc`, PM.`picture`, PM.`cover`, PM.`date` as `sdate`, PM.`date`, PM.`random`, PM.`viewCount` 
 						FROM `pr_main` PM 
 						JOIN `pr_options` PO ON (PM.`ID` = PO.`productID`) 
 						JOIN `optionsdata` OD ON (OD.`ID` = PO.`relatedID` and OD.`key` = '".$externalParmas[0]."' and OD.`optionsID` = $optionID) 
@@ -58,7 +58,7 @@ class ProductList extends TreeViewNavigation
 				else 
 				{
 					$sql = "
-						SELECT PM.`ID`, PM.`typeID`, PM.`name_{$this->m_displayLang}` as `name`, PM.`subtitle_{$this->m_displayLang}` as `subtitle`, PM.`desc_{$this->m_displayLang}` as `desc`, PM.`short_desc_{$this->m_displayLang}` as `short_desc`, PM.`picture`, PM.`picture1`, PM.`picture2`, PM.`picture3`, PM.`picture4`, PM.`cover`, PM.`date` as `sdate`, PM.`published_date`, PM.`updated_date`, PM.`random`, PM.`viewCount` 
+						SELECT PM.`ID`, PM.`typeID`, PM.`name_{$this->m_displayLang}` as `name`, PM.`subtitle_{$this->m_displayLang}` as `subtitle`, PM.`desc_{$this->m_displayLang}` as `desc`, PM.`short_desc_{$this->m_displayLang}` as `short_desc`, PM.`picture`, PM.`cover`, PM.`date` as `sdate`, PM.`date`, PM.`random`, PM.`viewCount` 
 						FROM `pr_main` PM 
 						JOIN `pr_options` PO ON (PM.`ID` = PO.`productID`) 
 						JOIN `optionsdata` OD ON (OD.`ID` = PO.`relatedID` and OD.`optionsID` = $optionID) 
@@ -86,17 +86,12 @@ class ProductList extends TreeViewNavigation
 						PM.`typeID`, 
 						$moreFields
 						PM.`name_{$this->m_displayLang}` as `name`, 
+						PM.`subtitle_{$this->m_displayLang}` as `subtitle`, 
 						PM.`desc_{$this->m_displayLang}` as `desc`, 
 						PM.`short_desc_{$this->m_displayLang}` as `short_desc`, 
 						PM.`picture`, 
-						PM.`picture1`, 
-						PM.`picture2`, 
-						PM.`picture3`, 
-						PM.`picture4`, 
 						PM.`cover`, 
-						PM.`date` as `sdate`, 
-						PM.`published_date`, 
-						PM.`updated_date`, 
+						PM.`date`, 
 						PM.`random`, 
 						PM.`viewCount`, 
 						PM.`language` 
@@ -118,12 +113,12 @@ class ProductList extends TreeViewNavigation
 		}
 	}
 	
-	function GetAllProducts($categoryID=null, $limit=100, $orderBy="`name`", $orderType="desc", $status=1)
+	function GetAllProducts($typeID=null, $limit=100, $orderBy="`name`", $orderType="desc", $status=1)
 	{
 		$catStr = "";
-		if ( $categoryID!==null )
+		if ( $typeID!==null )
 		{
-			$catStr = "and `typeID` = ".$categoryID;
+			$catStr = "and `typeID` = ".$typeID;
 		}
 		
 		$statusStr = "";
@@ -133,34 +128,27 @@ class ProductList extends TreeViewNavigation
 		}
 		
 		$sql = "
-				select 
-					`ID`, `typeID`, 
-					`name_{$this->m_displayLang}` as `name`, 
-					`desc_{$this->m_displayLang}` as `desc`, 
-					`short_desc_{$this->m_displayLang}` as `short_desc`, 
-					`picture`, 
-					`picture1`, 
-					`picture2`, 
-					`picture3`, 
-					`picture4`, 
-					`cover`, 
-					`date` as `sdate`, 
-					`published_date`, 
-					`updated_date`, 
-					`random`, 
-					`viewCount`, 
-					`googleViewCount`, 
-					`googleUniqueViewCount` 
-				from 
-					`pr_main` 
-				where 
-					`ID` > 0 $statusStr 
-					$catStr 
-				order by 
-					$orderBy $orderType, `ID` desc 
-				limit 
-					$limit
-			";
+			select 
+				`ID`, `typeID`, 
+				`name_{$this->m_displayLang}` as `name`, 
+				`subtitle_{$this->m_displayLang}` as `subtitle`, 
+				`desc_{$this->m_displayLang}` as `desc`, 
+				`short_desc_{$this->m_displayLang}` as `short_desc`, 
+				`picture`, 
+				`cover`, 
+				`date`, 
+				`random`, 
+				`viewCount`
+			from 
+				`pr_main` 
+			where 
+				`ID` > 0 $statusStr 
+				$catStr 
+			order by 
+				$orderBy $orderType, `ID` desc 
+			limit 
+				$limit
+		";
 		$retArr = DB::QueryToArray($sql);
 		
 		return $retArr;

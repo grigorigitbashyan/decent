@@ -199,6 +199,18 @@ class Site
 	}
 	
 	/**
+	 * return default picture
+	 *
+	 * @return string
+	 */
+	function GetDefaultPicture()
+	{
+		//	read from database
+		$rootCat = new Category ( 1 );
+		return $rootCat->GetPicture();
+	}
+	
+	/**
 	 * Return secuirity-file root
 	 *
 	 * @return string
@@ -215,19 +227,12 @@ class Site
 	 * @param string $value
 	 * @param bool $toCookie
 	 */
-	function SaveValue($key, $value, $toCookie = true, $setexpire=false)
+	function SaveValue($key, $value, $toCookie = true)
 	{
 		if ($toCookie)
 		{
 			$value = trim ( $value );
-			if ( $setexpire )
-			{
-				setcookie ( $key, $value, time()+3600*24*100, "/" );
-			}
-			else 
-			{
-				setcookie ( $key, $value, NULL, "/" );
-			}
+			setcookie ( $key, $value, NULL, "/" );
 		}
 	}
 	
@@ -330,7 +335,7 @@ class Site
 		
 		// category
 		$catIDs = array ();
-		for ( $index=1; $index<9; $index++ )
+		for ( $index=1; $index<10; $index++ )
 		{
 			$v = DB::GET ( "p$index" );
 			if ( $v )
@@ -356,50 +361,43 @@ class Site
 				
 				$category = new Category ( null, $path );
 				
-				if ( $category->GetID() )
+				if ($category->GetID ())
 				{
 					$truePath = $path;
 				}
 				else
 				{
-					if ( strpos($catIDs[$index], "page")===false && strpos($catIDs[$index], "logout")===false && strlen($catIDs[$index])<33 )
+					if ( strpos($catIDs[$index], "page")===false )
 					{
 						$tempPr = new Pr_main($catIDs[$index]);
 						if ( !$tempPr->GetID() )
 						{
-							$tempSU = new Site_user($catIDs[$index], "random");
-							if ( !$tempSU->GetID() && strlen($catIDs[$index])<17 )
+							$query = "select * from `optionsdata` where `key` = '".$catIDs[$index]."'";
+							$retArr = DB::QueryToRow($query);
+							if ( is_array($retArr) || $catIDs[$index]=="other" )
 							{
-								$query = "select * from `optionsdata` where `key` = '".$catIDs[$index]."'";
-								$retArr = DB::QueryToRow($query);
-								if ( is_array($retArr) || $catIDs[$index]=="other" )
-								{
-									$truePath = $path;
-									$truePath = substr($truePath, 0, -1);
-									$pos = strrpos($truePath, "/");
-									$truePath = substr($truePath, 0, $pos)."/";
-								}
-								else 
-								{
-									header('HTTP/1.0 404 Not Found');
-									$errorPage = file_get_contents($this->GetSiteURL()."404.html");
-									print $errorPage;
-									exit();
-								}
+								$truePath = $path;
+								$truePath = substr($truePath, 0, -1);
+								$pos = strrpos($truePath, "/");
+								$truePath = substr($truePath, 0, $pos)."/";
+							}
+							else 
+							{
+								header('HTTP/1.0 404 Not Found');
+								$errorPage = file_get_contents($this->GetSiteURL()."404.html");
+								print $errorPage;
+								exit();
 							}
 						}
 						else 
 						{
-							$tempPath = $tempPr->GetCategoryPath();
-							if ( $tempPath )
-							{
-								$truePath = $tempPath;
-							}
+							$truePath = $tempPr->GetCategoryPath();
 						}
 					}
 					
 					$lastIDs = array();
-					for ( $subIndex = $index; $subIndex < $count; $subIndex ++)
+					
+					for($subIndex = $index; $subIndex < $count; $subIndex ++)
 					{
 						array_push ( $lastIDs, $catIDs [$subIndex] );
 					}

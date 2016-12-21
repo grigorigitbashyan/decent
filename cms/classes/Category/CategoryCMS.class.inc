@@ -217,6 +217,7 @@ class CategoryCMS extends CMSObject implements CMSInterface
 					
 					$actionResult = true;
 				}
+				
 				break;
 			case 'pagecontent':
 				$cshowtitle = (isset($_POST["cshowtitle"]) && $_POST["cshowtitle"]=="on" ? 1: 0);
@@ -279,6 +280,7 @@ class CategoryCMS extends CMSObject implements CMSInterface
 		// if category and menu have not been selected then display new menu feature  
 		if ($catID == null)
 		{
+//			$isOwner = (CMS::GetUser ()->GetUserTypeID () == 1);
 			$menuListCMS = new MenuListCMS ();
 			$menuListCMS->DisplayFeatures ();
 			
@@ -544,7 +546,7 @@ class CategoryCMS extends CMSObject implements CMSInterface
 		}
 		
 		// reposition
-		if ( $catID > 1 && $this->IsReadable ( $this->m_category, 'path' ) )
+		if ($catID > 1 && $this->IsReadable ( $this->m_category, 'path' ))
 		{
 			$repostionS = $this->GetNameString ( 'reposition' );
 			

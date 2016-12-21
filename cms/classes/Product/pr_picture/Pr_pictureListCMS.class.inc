@@ -108,108 +108,106 @@ class Pr_pictureListCMS extends CMSObject implements CMSInterface
 		switch ($this->GetFormAction ())
 		{
 			case 'uploadImage' :
-				// insert new pr_picture with name
-				$newPr_picture = new Pr_picture ( );
-				$params = array ('productID' => $this->m_productID, 'path' => "", 'iconPath' => "");
-				$ar = $newPr_picture->Insert ( $params );
-				if ( $ar )
+				$uploadedCount = count($_FILES['gl2_img']['name']);
+				for ( $i=0; $i<$uploadedCount; $i++ )
 				{
-					$imageID = rand(1111, 9999);
-					// upload file to folder according product ID
-					$path = $this->UploadPicture ( $this->m_productID . '/', $imageID );
-					
-					// upload icon to folder according product ID
-					if ( $pos = strrpos($path, ".") )
+					$imageID = rand(111111, 999999);
+					$path = $this->UploadPicture ( $this->m_productID . '/', $imageID, $i );
+					if ( $path )
 					{
-						$defPath = substr($path, 0, $pos)."-icon".substr($path, $pos);
-						
-						$PR = new Pr_main($this->m_productID);
-						$prTypeID = $PR->GetTypeID();
-						
-						//	get icon parameters from DB
-						$prType = new Pr_type($prTypeID);
-						$imageSize = $prType->GetIconSize();
-						$imageSize = explode(";", $imageSize);
-						$DPW = $imageSize[0];
-						$DPH = $imageSize[1];
-						$cropImage = $prType->GetIconCrop();
-						
-						$prLocalRoot = $this->m_site->GetProImageRoot ( true ) . $this->m_productID . '/' . $defPath;
-						$prGlobalRoot = $this->m_site->GetProImageRoot ( false ) . $this->m_productID . '/' . $defPath;
-						
-						// create icon
-						$im = new Image ( );
-						$im->ChangeSizeInBox ( $this->m_site->GetProImageRoot ( true ) . $this->m_productID . '/' .$path, 1280, 1280, $prLocalRoot );
-						
-						//	added by Grigor		start
-						if ( $cropImage )
+						// insert new pr_picture with name
+						$newPr_picture = new Pr_picture ( );
+						$params = array ('productID' => $this->m_productID, 'path' => "", 'iconPath' => "");
+						$ar = $newPr_picture->Insert ( $params );
+
+						// upload icon to folder according product ID
+						if ( $pos = strrpos($path, ".") )
 						{
-							list ( $width, $height ) = getimagesize ( $prLocalRoot );
-							if ( $width*$DPH > $height*$DPW ) {
-								$width = round($width * $DPH / $height);
-								$height = $DPH;
-								$ch = 0;
-								$cW = ceil(($width - $DPW) / 2);
-							} else {
-								$height = round($height * $DPW / $width);
-								$width = $DPW;
-								$cW = 0;
-								$ch = 0;
-							}
-							$im->ChangeImageSize( $prLocalRoot, $width, $height, $prLocalRoot);
+							$defPath = substr($path, 0, $pos)."-icon".substr($path, $pos);
+							$pos = strrpos ( $defPath, '.' );
+							$esxt = substr ( $defPath, $pos + 1 );
 							
-							switch ( $esxt )
-							{
-								case 'jpg':
-								case 'jpeg':
-									$source = imagecreatefromjpeg($prLocalRoot);
-									break;
-								case 'png':
-									$source = imagecreatefrompng($prLocalRoot);
-									break;
-								case 'gif':
-									$source = imagecreatefromgif($prLocalRoot);
-									break;
-							}
-							$new = imagecreatetruecolor($DPW, $DPH);
+							$PR = new Pr_main($this->m_productID);
+							$prTypeID = $PR->GetTypeID();
 							
-							// Copy
-							imagecopy($new, $source, 0, 0, $cW, $ch, $DPW, $DPH);
-							switch ( $esxt )
+							//	get icon parameters from DB
+							$prType = new Pr_type($prTypeID);
+							$imageSize = $prType->GetThumbnailSize();
+							$imageSize = explode(";", $imageSize);
+							$DPW = $imageSize[0];
+							$DPH = $imageSize[1];
+							$cropImage = intval($prType->GetThumbnailCrop());
+							
+							$prLocalRoot = $this->m_site->GetProImageRoot ( true ) . $this->m_productID . '/' . $defPath;
+							$prGlobalRoot = $this->m_site->GetProImageRoot ( false ) . $this->m_productID . '/' . $defPath;
+							
+							// create icon
+							$im = new Image ( );
+							$im->ChangeSizeInBox ( $this->m_site->GetProImageRoot ( true ) . $this->m_productID . '/' .$path, 1920, 1920, $prLocalRoot );
+							
+							//	added by Grigor		start
+							if ( $cropImage )
 							{
-								case 'jpg':
-								case 'jpeg':
-									imagejpeg ( $new, $prLocalRoot, 99 );
-									break;
-								case 'png':
-									imagepng( $new, $prLocalRoot, 9 );
-									break;
-								case 'gif':
-									imagegif( $new, $prLocalRoot, 99 );
-									break;
+								list ( $width, $height ) = getimagesize ( $prLocalRoot );
+								if ( $width*$DPH > $height*$DPW ) {
+									$width = round($width * $DPH / $height);
+									$height = $DPH;
+									$ch = 0;
+									$cW = ceil(($width - $DPW) / 2);
+								} else {
+									$height = round($height * $DPW / $width);
+									$width = $DPW;
+									$cW = 0;
+									$ch = 0;
+								}
+								$im->ChangeImageSize( $prLocalRoot, $width, $height, $prLocalRoot);
+								
+								switch ( $esxt )
+								{
+									case 'jpg':
+									case 'jpeg':
+										$source = imagecreatefromjpeg($prLocalRoot);
+										break;
+									case 'png':
+										$source = imagecreatefrompng($prLocalRoot);
+										break;
+									case 'gif':
+										$source = imagecreatefromgif($prLocalRoot);
+										break;
+								}
+								$new = imagecreatetruecolor($DPW, $DPH);
+								
+								// Copy
+								imagecopy($new, $source, 0, 0, $cW, $ch, $DPW, $DPH);
+								switch ( $esxt )
+								{
+									case 'jpg':
+									case 'jpeg':
+										imagejpeg ( $new, $prLocalRoot, 99 );
+										break;
+									case 'png':
+										imagepng( $new, $prLocalRoot, 9 );
+										break;
+									case 'gif':
+										imagegif( $new, $prLocalRoot, 99 );
+										break;
+								}
 							}
+							else 
+							{
+								list ( $width, $height ) = getimagesize ( $prLocalRoot );
+								$DPH = round($height * $DPW / $width);
+								$im->ChangeImageSize( $prLocalRoot, $DPW, $DPH, $prLocalRoot);
+							}
+							//	added by Grigor		end
+							
+							$newPr_picture->SetIconPath($prGlobalRoot);
 						}
-						else 
-						{
-							list ( $width, $height ) = getimagesize ( $prLocalRoot );
-							$DPH = round($height * $DPW / $width);
-							$cW = 0;
-							$ch = 0;
-							$im->ChangeImageSize( $prLocalRoot, $DPW, $DPH, $prLocalRoot);
-						}
-						//	added by Grigor		end
 						
-						$newPr_picture->SetIconPath($prGlobalRoot);
-					}
-					
-					$proURL = $this->m_site->GetProImageRoot ( false );
-					$fullPath = $proURL . "$this->m_productID/" . $path;
-					
-					$newPr_picture->SetPath($fullPath);
-					
-					if ( isset($_POST["makeWaterMark"]) && $_POST["makeWaterMark"]=="on" )
-					{
-						$this->WaterMark($fullPath);
+						$proURL = $this->m_site->GetProImageRoot ( false );
+						$fullPath = $proURL . "$this->m_productID/" . $path;
+						
+						$newPr_picture->SetPath($fullPath);
 					}
 				}
 				break;
@@ -273,29 +271,43 @@ class Pr_pictureListCMS extends CMSObject implements CMSInterface
 					
 					$PR = new Pr_main($this->m_productID);
 					$prTypeID = $PR->GetTypeID();
-					if ( $prTypeID==32 )
+					
+					//	get icon parameters from DB
+					$prType = new Pr_type($prTypeID);
+					$imageSize = $prType->GetIconSize();
+					$imageSize = explode(";", $imageSize);
+					$DPW = $imageSize[0];
+					$DPH = $imageSize[1];
+					$cropImage = $prType->GetIconCrop();
+					
+					$prID = $product->GetID ();
+					$prLocalRoot = $this->m_site->GetProImageRoot ( true );
+					$prGlobalRoot = $this->m_site->GetProImageRoot ( false );
+					
+					$prLocalRoot .= $prID . '.' . $esxt;
+					$prGlobalRoot .= $prID . '.' . $esxt;
+					
+					// create icon
+					$im = new Image ( );
+					$im->ChangeSizeInBox ( $defPath, 1280, 1280, $prLocalRoot );
+					
+					//	added by Grigor		start
+					if ( $cropImage )
 					{
-						$cW = DB::POST('cropLeft');
-						$ch = DB::POST('cropTop');
-						$width = DB::POST('cropWidth');
-						$height = DB::POST('cropHeight');
+						list ( $width, $height ) = getimagesize ( $prLocalRoot );
+						if ( $width*$DPH > $height*$DPW ) {
+							$width = round($width * $DPH / $height);
+							$height = $DPH;
+							$ch = 0;
+							$cW = ceil(($width - $DPW) / 2);
+						} else {
+							$height = round($height * $DPW / $width);
+							$width = $DPW;
+							$cW = 0;
+							$ch = 0;
+						}
+						$im->ChangeImageSize( $prLocalRoot, $width, $height, $prLocalRoot);
 						
-						//	get icon parameters from DB
-						$DPW = $cropWidth;
-						$DPH = $cropHeight;
-						
-						$prID = $product->GetID ();
-						$prLocalRoot = $this->m_site->GetProImageRoot ( true );
-						$prGlobalRoot = $this->m_site->GetProImageRoot ( false );
-						
-						$prLocalRoot .= $prID . '.' . $esxt;
-						$prGlobalRoot .= $prID . '.' . $esxt;
-						
-						// create icon
-						$im = new Image ( );
-						$im->ChangeSizeInBox ( $defPath, 1280, 1280, $prLocalRoot );
-						
-						//	added by Grigor		start
 						switch ( $esxt )
 						{
 							case 'jpg':
@@ -309,10 +321,10 @@ class Pr_pictureListCMS extends CMSObject implements CMSInterface
 								$source = imagecreatefromgif($prLocalRoot);
 								break;
 						}
-						$new = imagecreatetruecolor($width, $height);
+						$new = imagecreatetruecolor($DPW, $DPH);
 						
 						// Copy
-						imagecopy($new, $source, 0, 0, $cW, $ch, $width, $height);
+						imagecopy($new, $source, 0, 0, $cW, $ch, $DPW, $DPH);
 						switch ( $esxt )
 						{
 							case 'jpg':
@@ -326,87 +338,16 @@ class Pr_pictureListCMS extends CMSObject implements CMSInterface
 								imagegif( $new, $prLocalRoot, 99 );
 								break;
 						}
-						//	added by Grigor		end
 					}
 					else 
 					{
-						//	get icon parameters from DB
-						$prType = new Pr_type($prTypeID);
-						$imageSize = $prType->GetIconSize();
-						$imageSize = explode(";", $imageSize);
-						$DPW = $imageSize[0];
-						$DPH = $imageSize[1];
-						$cropImage = $prType->GetIconCrop();
-						
-						$prID = $product->GetID ();
-						$prLocalRoot = $this->m_site->GetProImageRoot ( true );
-						$prGlobalRoot = $this->m_site->GetProImageRoot ( false );
-						
-						$prLocalRoot .= $prID . '.' . $esxt;
-						$prGlobalRoot .= $prID . '.' . $esxt;
-						
-						// create icon
-						$im = new Image ( );
-						$im->ChangeSizeInBox ( $defPath, 1280, 1280, $prLocalRoot );
-						
-						//	added by Grigor		start
-						if ( $cropImage )
-						{
-							list ( $width, $height ) = getimagesize ( $prLocalRoot );
-							if ( $width*$DPH > $height*$DPW ) {
-								$width = round($width * $DPH / $height);
-								$height = $DPH;
-								$ch = 0;
-								$cW = ceil(($width - $DPW) / 2);
-							} else {
-								$height = round($height * $DPW / $width);
-								$width = $DPW;
-								$cW = 0;
-								$ch = 0;
-							}
-							$im->ChangeImageSize( $prLocalRoot, $width, $height, $prLocalRoot);
-							
-							switch ( $esxt )
-							{
-								case 'jpg':
-								case 'jpeg':
-									$source = imagecreatefromjpeg($prLocalRoot);
-									break;
-								case 'png':
-									$source = imagecreatefrompng($prLocalRoot);
-									break;
-								case 'gif':
-									$source = imagecreatefromgif($prLocalRoot);
-									break;
-							}
-							$new = imagecreatetruecolor($DPW, $DPH);
-							
-							// Copy
-							imagecopy($new, $source, 0, 0, $cW, $ch, $DPW, $DPH);
-							switch ( $esxt )
-							{
-								case 'jpg':
-								case 'jpeg':
-									imagejpeg ( $new, $prLocalRoot, 99 );
-									break;
-								case 'png':
-									imagepng( $new, $prLocalRoot, 9 );
-									break;
-								case 'gif':
-									imagegif( $new, $prLocalRoot, 99 );
-									break;
-							}
-						}
-						else 
-						{
-							list ( $width, $height ) = getimagesize ( $prLocalRoot );
-							$DPH = round($height * $DPW / $width);
-							$cW = 0;
-							$ch = 0;
-							$im->ChangeImageSize( $prLocalRoot, $DPW, $DPH, $prLocalRoot);
-						}
-						//	added by Grigor		end
+						list ( $width, $height ) = getimagesize ( $prLocalRoot );
+						$DPH = round($height * $DPW / $width);
+						$cW = 0;
+						$ch = 0;
+						$im->ChangeImageSize( $prLocalRoot, $DPW, $DPH, $prLocalRoot);
 					}
+					//	added by Grigor		end
 					
 					$ar = $product->SetPicture ( $prGlobalRoot );
 				}
@@ -417,6 +358,7 @@ class Pr_pictureListCMS extends CMSObject implements CMSInterface
 				
 				break;
 			case 'selectCoverPic' :
+				ini_set('memory_limit', '-1');
 				$defPicID = DB::POST ('coverpic');
 				if ($defPicID)
 				{
@@ -428,29 +370,43 @@ class Pr_pictureListCMS extends CMSObject implements CMSInterface
 					
 					$PR = new Pr_main($this->m_productID);
 					$prTypeID = $PR->GetTypeID();
-					if ( $prTypeID==32 )
+					
+					//	get icon parameters from DB
+					$prType = new Pr_type($prTypeID);
+					$imageSize = $prType->GetCoverSize();
+					$imageSize = explode(";", $imageSize);
+					$DPW = $imageSize[0];
+					$DPH = $imageSize[1];
+					$cropImage = $prType->GetCoverCrop();
+					
+					$prID = $product->GetID ();
+					$prLocalRoot = $this->m_site->GetProImageRoot ( true );
+					$prGlobalRoot = $this->m_site->GetProImageRoot ( false );
+					
+					$prLocalRoot .= $prID . '_cover.' . $esxt;
+					$prGlobalRoot .= $prID . '_cover.' . $esxt;
+					
+					// create icon
+					$im = new Image ( );
+					$im->ChangeSizeInBox ( $defPath, 1280, 1280, $prLocalRoot );
+					
+					//	added by Grigor		start
+					if ( $cropImage )
 					{
-						$cW = DB::POST('cropLeft');
-						$ch = DB::POST('cropTop');
-						$width = DB::POST('cropWidth');
-						$height = DB::POST('cropHeight');
+						list ( $width, $height ) = getimagesize ( $prLocalRoot );
+						if ( $width > $height*$DPW/$DPH ) {
+							$width = round($width * $DPH / $height);
+							$height = $DPH;
+							$ch = 0;
+							$cW = ceil(($width - $DPW) / 2);
+						} else {
+							$height = round($height * $DPW / $width);
+							$width = $DPW;
+							$cW = 0;
+							$ch = 0;
+						}
+						$im->ChangeImageSize( $prLocalRoot, $width, $height, $prLocalRoot);
 						
-						//	get icon parameters from DB
-						$DPW = $cropWidth;
-						$DPH = $cropHeight;
-						
-						$prID = $product->GetID ();
-						$prLocalRoot = $this->m_site->GetProImageRoot ( true );
-						$prGlobalRoot = $this->m_site->GetProImageRoot ( false );
-						
-						$prLocalRoot .= $prID . '_cover.' . $esxt;
-						$prGlobalRoot .= $prID . '_cover.' . $esxt;
-						
-						// create icon
-						$im = new Image ( );
-						$im->ChangeSizeInBox ( $defPath, 1280, 1280, $prLocalRoot );
-						
-						//	added by Grigor		start
 						switch ( $esxt )
 						{
 							case 'jpg':
@@ -464,10 +420,10 @@ class Pr_pictureListCMS extends CMSObject implements CMSInterface
 								$source = imagecreatefromgif($prLocalRoot);
 								break;
 						}
-						$new = imagecreatetruecolor($width, $height);
+						$new = imagecreatetruecolor($DPW, $DPH);
 						
 						// Copy
-						imagecopy($new, $source, 0, 0, $cW, $ch, $width, $height);
+						imagecopy($new, $source, 0, 0, $cW, $ch, $DPW, $DPH);
 						switch ( $esxt )
 						{
 							case 'jpg':
@@ -481,87 +437,16 @@ class Pr_pictureListCMS extends CMSObject implements CMSInterface
 								imagegif( $new, $prLocalRoot, 99 );
 								break;
 						}
-						//	added by Grigor		end
 					}
 					else 
 					{
-						//	get icon parameters from DB
-						$prType = new Pr_type($prTypeID);
-						$imageSize = $prType->GetCoverSize();
-						$imageSize = explode(";", $imageSize);
-						$DPW = $imageSize[0];
-						$DPH = $imageSize[1];
-						$cropImage = $prType->GetCoverCrop();
-						
-						$prID = $product->GetID ();
-						$prLocalRoot = $this->m_site->GetProImageRoot ( true );
-						$prGlobalRoot = $this->m_site->GetProImageRoot ( false );
-						
-						$prLocalRoot .= $prID . '_cover.' . $esxt;
-						$prGlobalRoot .= $prID . '_cover.' . $esxt;
-						
-						// create icon
-						$im = new Image ( );
-						$im->ChangeSizeInBox ( $defPath, 1280, 1280, $prLocalRoot );
-						
-						//	added by Grigor		start
-						if ( $cropImage )
-						{
-							list ( $width, $height ) = getimagesize ( $prLocalRoot );
-							if ( $width > $height*$DPW/$DPH ) {
-								$width = round($width * $DPH / $height);
-								$height = $DPH;
-								$ch = 0;
-								$cW = ceil(($width - $DPW) / 2);
-							} else {
-								$height = round($height * $DPW / $width);
-								$width = $DPW;
-								$cW = 0;
-								$ch = 0;
-							}
-							$im->ChangeImageSize( $prLocalRoot, $width, $height, $prLocalRoot);
-							
-							switch ( $esxt )
-							{
-								case 'jpg':
-								case 'jpeg':
-									$source = imagecreatefromjpeg($prLocalRoot);
-									break;
-								case 'png':
-									$source = imagecreatefrompng($prLocalRoot);
-									break;
-								case 'gif':
-									$source = imagecreatefromgif($prLocalRoot);
-									break;
-							}
-							$new = imagecreatetruecolor($DPW, $DPH);
-							
-							// Copy
-							imagecopy($new, $source, 0, 0, $cW, $ch, $DPW, $DPH);
-							switch ( $esxt )
-							{
-								case 'jpg':
-								case 'jpeg':
-									imagejpeg ( $new, $prLocalRoot, 99 );
-									break;
-								case 'png':
-									imagepng( $new, $prLocalRoot, 9 );
-									break;
-								case 'gif':
-									imagegif( $new, $prLocalRoot, 99 );
-									break;
-							}
-						}
-						else 
-						{
-							list ( $width, $height ) = getimagesize ( $prLocalRoot );
-							$DPH = round($height * $DPW / $width);
-							$cW = 0;
-							$ch = 0;
-							$im->ChangeImageSize( $prLocalRoot, $DPW, $DPH, $prLocalRoot);
-						}
-						//	added by Grigor		end
+						list ( $width, $height ) = getimagesize ( $prLocalRoot );
+						$DPH = round($height * $DPW / $width);
+						$cW = 0;
+						$ch = 0;
+						$im->ChangeImageSize( $prLocalRoot, $DPW, $DPH, $prLocalRoot);
 					}
+					//	added by Grigor		end
 					
 					$ar = $product->SetCover( $prGlobalRoot );
 				}
@@ -614,154 +499,6 @@ class Pr_pictureListCMS extends CMSObject implements CMSInterface
 	function DisplayFeatures()
 	{
 		print ( '<br />' );
-		
-		//	display image crop area if needed		-	added by Grigor
-		if ( isset($_POST["pr_picturelistcmsAction"]) && ($_POST["pr_picturelistcmsAction"]=="selectDefPicM" || $_POST["pr_picturelistcmsAction"]=="selectCoverPicM") )
-		{
-			if ( $_POST["pr_picturelistcmsAction"]=="selectDefPicM" )
-			{
-				$defPicID = DB::POST ('defpic');
-			}
-			else 
-			{
-				$defPicID = DB::POST ('coverpic');
-			}
-			
-			if ($defPicID)
-			{
-				$pic = new Pr_picture ( $defPicID );
-				$defPath = $pic->GetPath ();
-				
-				list ( $width, $height ) = getimagesize ( $defPath );
-				
-				$product = new Pr_main ( $this->m_productID );
-				$productTypeID = $product->GetTypeID ();
-				$prType = new Pr_type($productTypeID);
-				if ( $_POST["pr_picturelistcmsAction"]=="selectDefPicM" )
-				{
-					$imageSize = $prType->GetIconSize();
-				}
-				else 
-				{
-					$imageSize = $prType->GetCoverSize();
-				}
-				$imageSize = explode(";", $imageSize);
-				$DPW = $imageSize[0];
-				$DPH = $imageSize[1];
-				
-				if ( $_POST["pr_picturelistcmsAction"]=="selectDefPicM" )
-				{
-					$this->DisplayFormHeadr ( 'selectDefPic' );
-				}
-				else 
-				{
-					$this->DisplayFormHeadr ( 'selectCoverPic' );
-				}
-				$this->DisplayHidden ( 'pr_mainID', $this->m_productID );
-				?>
-				<link rel="stylesheet" href="js/dg-crop/css/dg-crop.css" type="text/css"></link>
-				<script type="text/javascript" src="js/dg-crop/js/external/mootools.js"></script>
-				<script type="text/javascript" src="js/dg-crop/js/effects/effect-element.js"></script>
-				<script type="text/javascript" src="js/dg-crop/js/effects/movable.js"></script>
-				<script type="text/javascript" src="js/dg-crop/js/effects/resizable.js"></script>
-				<script type="text/javascript" src="js/dg-crop/js/dg-crop.js"></script>
-				<script type="text/javascript">
-				var formElements = null;
-				function setElements() {
-					if(!formElements) {
-						formElements = {
-							left : $('left'),
-							top : $('top'),
-							width : $('width'),
-							height : $('height')
-						}
-					};
-				}
-				function updateForm(coordinates) {
-					this.setElements();
-					formElements.width.value = coordinates.width;
-					formElements.height.value = coordinates.height;
-					formElements.left.value = coordinates.left;
-					formElements.top.value = coordinates.top;
-				}
-				function clearForm() {
-					this.setElements();
-					formElements.width.value = '...';
-					formElements.height.value = '...';
-					formElements.left.value = '...';
-					formElements.top.value = '...';
-				}
-				
-				var cropObject;
-				function initCrop() {
-					cropObject = new DG.ImageCrop('cropImage', {
-						lazyShadows : true,
-						resizeConfig: {
-							preserveAspectRatio : true,
-							minWidth : <?php echo ceil($DPW*800/$width);?>
-						},
-						moveConfig : {
-							keyNavEnabled : false
-						},
-						initialCoordinates : {
-							left : 0,
-							top : 0,
-							width: <?php echo $DPW;?>,
-							height: <?php echo $DPH;?>
-						},
-						originalCoordinates : {
-							width: 	<?php echo $width;?>,
-							height : <?php echo $height;?>
-						},
-						previewCoordinates : {
-							width: 	800,
-							height : <?php echo ceil(800*$height/$width);?>
-						},
-						listeners : {
-							render : function() {
-								updateForm(this.getCoordinates());
-							},
-							crop : function() {
-								updateForm(this.getCoordinates());
-							}
-						}
-					});
-				}
-				</script>
-				<?php
-				if ( $_POST["pr_picturelistcmsAction"]=="selectDefPicM" )
-				{
-					?>
-					<input type="hidden" id="defpic" name="defpic" value="<?php echo $defPicID;?>">
-					<?php
-				}
-				else 
-				{
-					?>
-					<input type="hidden" id="coverpic" name="coverpic" value="<?php echo $defPicID;?>">
-					<?php
-				}
-				?>
-				<input type="hidden" id="left" name="cropLeft">
-				<input type="hidden" id="top" name="cropTop">
-				<input type="hidden" id="width" name="cropWidth">
-				<input type="hidden" id="height" name="cropHeight">
-				<?php
-				print ( "<div class='someGTitleBox'>Crop image for ".( $_POST["pr_picturelistcmsAction"]=="selectDefPicM" ? "Icon": "Cover" )."</div>" );
-				print ( "<div class='iconBox'>
-							<div style='position:relative;width:800px;height:".ceil(800*$height/$width)."px;' id='cropImage'><img src='$defPath' width='800' /></div>" );
-				print ( '<br /><input type="submit" value="Done">' );
-				print ( '</div>' );
-				?>
-				</form>
-				<script type="text/javascript">
-				initCrop();
-				</script>
-				<?php
-			}
-		}
-		//	display image crop area if needed		-	added by Grigor
-		
 		print ( "<div class='someGTitleBox'>Gallery</div>" );
 		
 		$currentPr_pictureID = $this->m_pr_pictureList->GetCurrentID ();
@@ -796,11 +533,9 @@ class Pr_pictureListCMS extends CMSObject implements CMSInterface
 			$this->DisplayHidden ( $className, 'uploadImage' );
 			
 			print ( '<div class="titleColL"> 
-            		<label><strong>File Upload: </strong></label>
-            		<input type="file" name="gl2_img" size="48" />' );
+            		<label><strong>File Upload (multiple files allowed): </strong></label>
+            		<input type="file" name="gl2_img[]" size="48" multiple />' );
 			print ( "<span>[ Max = $maxFileSize ]</span>" );
-			
-			print ( "<span style='padding-left:50px;'>Make WaterMark <input type='checkbox' name='makeWaterMark'></span>" );
 			
 			print ( '</div>
 		            <div class="titleColR"><input name="" type="submit" value="Upload" /></div>
@@ -893,7 +628,6 @@ class Pr_pictureListCMS extends CMSObject implements CMSInterface
 <a href="#"	onclick="chekeBoxes('pictureForm', 'picIDs[]', true); return false"><?php echo $allS?></a>,
 <a href="#"	onclick="chekeBoxes('pictureForm', 'picIDs[]', false); return false"><?php echo $noneS?></a>
 </span> 
-<input name="addwatermark" type="submit" value="Add Watermark" />
 <input name="delete" type="submit" onclick="return ChecksFormDelete('pictureForm', 'picIDs[]', '<?php echo $noselectedS?>', '<?php echo $sureDeleteS?>');" value="<?php echo $deleteS?>" /></div>
 <br class="clearFloat" />
 </div>
@@ -929,7 +663,7 @@ class Pr_pictureListCMS extends CMSObject implements CMSInterface
 	 * @param string $addPath 
 	 * @return ActionResult
 	 */
-	function UploadPicture($addPath = null, $imageID)
+	function UploadPicture($addPath = null, $imageID, $i=0)
 	{
 		// get product folder, if not exist create it
 		$prodFolderPath = '../' . $this->m_site->GetProImageRoot (true, false);
@@ -952,8 +686,8 @@ class Pr_pictureListCMS extends CMSObject implements CMSInterface
 		}
 		
 		// get upload file properties
-		$name = str_replace ( " ", "", $_FILES['gl2_img']['name'] );
-		$size = str_replace ( " ", "", $_FILES['gl2_img']['size'] );
+		$name = str_replace ( " ", "", $_FILES['gl2_img']['name'][$i] );
+		$size = str_replace ( " ", "", $_FILES['gl2_img']['size'][$i] );
 		
 		// image size is 0 , then return 
 		if ( $size < 1 )
@@ -962,7 +696,7 @@ class Pr_pictureListCMS extends CMSObject implements CMSInterface
 		}
 		
 		// get uploaded file extension
-		$path_parts = pathinfo ( $_FILES['gl2_img']['name'] );
+		$path_parts = pathinfo ( $_FILES['gl2_img']['name'][$i] );
 		$ext = $path_parts ['extension'];
 		$ext = strtolower ( $ext );
 		
@@ -987,7 +721,7 @@ class Pr_pictureListCMS extends CMSObject implements CMSInterface
 		}
 		
 		// uploading
-		$res = FolderXP::Upload( $_FILES['gl2_img']['tmp_name'], $fileAddress );
+		$res = FolderXP::Upload( $_FILES['gl2_img']['tmp_name'][$i], $fileAddress );
 
 		//// if file is image and most be resize, create Image class item and resize image
 		$maxWidth = $this->m_site->GetMaxImageWidth ();

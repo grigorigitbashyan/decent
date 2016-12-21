@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id='screenName'>Screen name</name>
+	<name id='profile'>Profile</name>
+	<name id='password'>Password:</name>
+	<name id='cpassword'>Confirm password:</name>
+	<name id='name'>Full name:</name>
+	<name id='email'>E-Mail:</name>
+	<name id="createNew">Create a new</name>
+</names>

@@ -42,8 +42,15 @@ class Pr_mainList extends TreeViewNavigation
 			$fieldJoinStr = "";
 			if ( $field!="all" && $field!=null )
 			{
-				$fieldJoinStr = 'JOIN `pr_options` PO on (PO.`productID` = PM.`ID`) ';
-				$fieldStr = ' and PO.`fieldID` = 18 and PO.`relatedID` = '.$field;
+				$fieldJoinStr = 'JOIN `pr_char` PC on (PC.`productID` = PM.`ID`) ';
+				if ( $field==0 )
+				{
+					$fieldStr = ' and PC.`fieldID` = 18 and PC.`value` >= '.date("Y-m-d");
+				}
+				else 
+				{
+					$fieldStr = ' and PC.`fieldID` = 18 and PC.`value` < '.date("Y-m-d");
+				}
 			}
 			
 			$userStr = "";

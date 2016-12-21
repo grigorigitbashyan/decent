@@ -186,6 +186,13 @@ class Category extends NamedRecord
     protected $m_contenttext = array();
     
     /**
+     * Category Picture URL
+     *
+     * @protected string
+     */
+    protected $m_picture;
+    
+    /**
      * Canstructor
      *
      * @param int $categoryID
@@ -895,6 +902,16 @@ class Category extends NamedRecord
     }
     
     /**
+     * Return m_picture
+     *
+     * @return string
+     */
+    public function GetPicture()
+    {
+        return $this->m_picture;
+    }
+    
+    /**
       * @param int $show
       * @return bool
       */
@@ -921,6 +938,15 @@ class Category extends NamedRecord
     function SetContentText($text, $lang)
     {
         return $this->UpdateValue("contenttext_{$lang}", $text);
+    }
+    
+    /**
+      * @param int $picture
+      * @return bool
+      */
+    function SetPicture($picture)
+    {
+        return $this->UpdateValue("picture", $picture);
     }
     
     /**

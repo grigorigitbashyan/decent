@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<!-- User accounts  -->
+	<name id="userTitle">User accounts</name>
+	<name id="siteOptions">Website options</name>
+	<name id="seoTools">SEO Tools</name>
+	
+	<name id="websiteName">Website name</name>
+	<name id="defWebsiteName">Website name:</name>
+	
+	<name id="metadata">Metadata</name>
+	<name id="defTitle">Default website title:</name>
+	<name id="defDesc">Default website description:</name>
+	<name id="defKeys">Default website keywords:</name>
+	<name id="addLanguage">Language options</name>
+	
+	<name id="status">Status</name>
+	<name id="online">Online</name>
+	<name id="offline">Offline</name>
+	<name id="offlineMessage">Offline message</name>
+	
+	<name id="sitemap">Sitemap XML</name>
+	<name id="robots">Robots</name>
+	
+	<name id="cmsOptions">CMS options</name>
+	<name id="cmsLanguage">Select CMS langiage:</name>
+	<name id="help">Help contents</name>
+	<name id="about">About Siteius CMS</name>
+	
+	<name id="backup">Backup</name>
+	<name id="backupDB">Backup database</name>
+	<name id="restoreDB">Restor database</name>
+
+	<name id="generate">Generate</name>
+	
+	<name id="ftpSettings">FTP settings</name>
+	<name id="ftp">FTP connection</name>
+</names>

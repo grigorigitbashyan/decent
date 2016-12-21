@@ -60,34 +60,6 @@ class Pr_main extends NamedRecord
 	 *
 	 * @protected string
 	 */
-	protected $m_picture1;
-	
-	/**
-	 * Enter description here...
-	 *
-	 * @protected string
-	 */
-	protected $m_picture2;
-	
-	/**
-	 * Enter description here...
-	 *
-	 * @protected string
-	 */
-	protected $m_picture3;
-	
-	/**
-	 * Enter description here...
-	 *
-	 * @protected string
-	 */
-	protected $m_picture4;
-	
-	/**
-	 * Enter description here...
-	 *
-	 * @protected string
-	 */
 	protected $m_cover;
 	
 	/**
@@ -96,9 +68,6 @@ class Pr_main extends NamedRecord
 	 * @var date
 	 */
 	protected $m_date;
-	protected $m_created_date;
-	protected $m_published_date;
-	protected $m_updated_date;
 	
 	/**
 	 * Enter description here...
@@ -296,7 +265,7 @@ class Pr_main extends NamedRecord
 
 		return $this->DeleteRecord ( true, $toStroe );
 	}
-	
+
 	/**
 	 * Update record
 	 *
@@ -307,7 +276,7 @@ class Pr_main extends NamedRecord
 	{
 		return $this->UpdateValues ( $properties );
 	}
-	
+
 	/**
 	 * Insert new record
 	 *
@@ -317,23 +286,23 @@ class Pr_main extends NamedRecord
 	function Insert($properties = null)
 	{
 		// generate random code
-		$random = GetRandCode(3, true).GetRandCode(5);
-		
-		$query = "select * from `pr_main` where `random` = '$random'";
-		$retArr = DB::QueryToRow($query);
-		while ( is_array($retArr) )
-		{
-			$random = GetRandCode(3, true).GetRandCode(5);
-			
-			$query = "select * from `pr_main` where `random` = '$random'";
-			$retArr = DB::QueryToRow($query);
-		}
-		
-		if ( !isset($properties['random']) )
-		{
-			$properties['random'] = $random;
-		}
-		
+        $random = GetRandCode(3, true).GetRandCode(5);
+
+        $query = "select * from `pr_main` where `random` = '$random'";
+        $retArr = DB::QueryToRow($query);
+        while ( is_array($retArr) )
+        {
+            $random = GetRandCode(3, true).GetRandCode(5);
+
+            $query = "select * from `pr_main` where `random` = '$random'";
+            $retArr = DB::QueryToRow($query);
+        }
+
+        if ( !isset($properties['random']) )
+        {
+            $properties['random'] = $random;
+        }
+
 		return $this->InsertRecord ( $properties );
 	}
 	
@@ -391,46 +360,6 @@ class Pr_main extends NamedRecord
 	}
 	
 	/**
-	 * Return value of m_picture1
-	 *
-	 * @return string
-	 */
-	function GetPicture1()
-	{
-		return $this->m_picture1;
-	}
-	
-	/**
-	 * Return value of m_picture2
-	 *
-	 * @return string
-	 */
-	function GetPicture2()
-	{
-		return $this->m_picture2;
-	}
-	
-	/**
-	 * Return value of m_picture3
-	 *
-	 * @return string
-	 */
-	function GetPicture3()
-	{
-		return $this->m_picture3;
-	}
-	
-	/**
-	 * Return value of m_picture4
-	 *
-	 * @return string
-	 */
-	function GetPicture4()
-	{
-		return $this->m_picture4;
-	}
-	
-	/**
 	 * Return value of m_cover
 	 *
 	 * @return string
@@ -458,18 +387,6 @@ class Pr_main extends NamedRecord
 	function GetDate()
 	{
 		return $this->m_date;
-	}
-	function GetCreatedDate()
-	{
-		return $this->m_created_date;
-	}
-	function GetPublishedDate()
-	{
-		return $this->m_published_date;
-	}
-	function GetUpdatedDate()
-	{
-		return $this->m_updated_date;
 	}
 	
 	/**
@@ -588,12 +505,12 @@ class Pr_main extends NamedRecord
 			";
 			$path = DB::QueryToValue($query);
 		}
-
-        if ( $path=="" )
-        {
-            $query = "select S.`path` from `structure` S join `pr_type` PT on (PT.`structureID` = S.`ID`) join `pr_main` PM on (PM.`typeID` = PT.`ID` and PM.`ID` = ".$this->GetID().")";
-            $path = DB::QueryToValue($query);
-        }
+		
+		if ( $path=="" )
+		{
+			$query = "select S.`path` from `structure` S join `pr_type` PT on (PT.`structureID` = S.`ID`) join `pr_main` PM on (PM.`typeID` = PT.`ID` and PM.`ID` = ".$this->GetID().")";
+			$path = DB::QueryToValue($query);
+		}
 		
 		return $path;
 	}
@@ -673,7 +590,7 @@ class Pr_main extends NamedRecord
 	}
 	
 	/**
-	 * Set value to m_desc
+	 * Set value to m_desc  
 	 *
 	 * @param string $desc
 	 * @param string $lang
@@ -711,7 +628,7 @@ class Pr_main extends NamedRecord
 	}
 	
 	/**
-	 * Set value to m_picture1
+	 * Set value to m_picture  
 	 *
 	 * @param string $picture
 	 * @param bool $dbupdate
@@ -720,54 +637,6 @@ class Pr_main extends NamedRecord
 	function SetPicture($picture, $dbupdate = true)
 	{
 		return $this->UpdateValue ( 'picture', $picture, $dbupdate );
-	}
-	
-	/**
-	 * Set value to m_picture1
-	 *
-	 * @param string $picture
-	 * @param bool $dbupdate
-	 * @return bool
-	 */
-	function SetPicture1($picture, $dbupdate = true)
-	{
-		return $this->UpdateValue ( 'picture1', $picture, $dbupdate );
-	}
-	
-	/**
-	 * Set value to m_picture2
-	 *
-	 * @param string $picture
-	 * @param bool $dbupdate
-	 * @return bool
-	 */
-	function SetPicture2($picture, $dbupdate = true)
-	{
-		return $this->UpdateValue ( 'picture2', $picture, $dbupdate );
-	}
-	
-	/**
-	 * Set value to m_picture3
-	 *
-	 * @param string $picture
-	 * @param bool $dbupdate
-	 * @return bool
-	 */
-	function SetPicture3($picture, $dbupdate = true)
-	{
-		return $this->UpdateValue ( 'picture3', $picture, $dbupdate );
-	}
-	
-	/**
-	 * Set value to m_picture4
-	 *
-	 * @param string $picture
-	 * @param bool $dbupdate
-	 * @return bool
-	 */
-	function SetPicture4($picture, $dbupdate = true)
-	{
-		return $this->UpdateValue ( 'picture4', $picture, $dbupdate );
 	}
 	
 	/**
@@ -994,18 +863,6 @@ class Pr_main extends NamedRecord
 	{
 		return $this->UpdateValue ( 'date', $date, $dbupdate );
 	}
-	function SetCreatedDate($date, $dbupdate = true)
-	{
-		return $this->UpdateValue ( 'created_date', $date, $dbupdate );
-	}
-	function SetPublishedDate($date, $dbupdate = true)
-	{
-		return $this->UpdateValue ( 'published_date', $date, $dbupdate );
-	}
-	function SetUpdatedDate($date, $dbupdate = true)
-	{
-		return $this->UpdateValue ( 'updated_date', $date, $dbupdate );
-	}
 	
 	/**
 	 * Enter description here...
@@ -1184,43 +1041,43 @@ class Pr_main extends NamedRecord
 	 *
 	 * @return string
 	 */
-    function GetOthers($limit=5, $order="date", $exIds="", $selectCurrent=false)
-    {
-        $orderStr = "";
-        switch ( $order )
-        {
-            case 'date': $orderStr = " order by `date` desc"; break;
-            case 'random': $orderStr = " order by rand()"; break;
-            case 'popular': $orderStr = " order by `viewCount` desc"; break;
-        }
-
-        $exIdsStr = "";
-        if ( is_array($exIds) && count($exIds)>0 )
-        {
-            $exIdsStr = " and `ID` not in (".implode(", ", $exIds).")";
-        }
-
-        if ( $selectCurrent )
-        {
-            $sql = "
+	function GetOthers($limit=5, $order="date", $exIds="", $selectCurrent=false)
+	{
+		$orderStr = "";
+		switch ( $order )
+		{
+			case 'date': $orderStr = " order by `date` desc"; break;
+			case 'random': $orderStr = " order by rand()"; break;
+			case 'popular': $orderStr = " order by `viewCount` desc"; break;
+		}
+		
+		$exIdsStr = "";
+		if ( is_array($exIds) && count($exIds)>0 )
+		{
+			$exIdsStr = " and `ID` not in (".implode(", ", $exIds).")";
+		}
+		
+		if ( $selectCurrent )
+		{
+			$sql = "
 				select `ID` 
 				from `pr_main` 
 				where `status` = 1 and `typeID` = ".$this->GetTypeID().$exIdsStr.$orderStr." 
 				limit 0, ".$limit;
-        }
-        else
-        {
-            $sql = "
+		}
+		else 
+		{
+			$sql = "
 				select `ID` 
 				from `pr_main` 
 				where `status` = 1 and `typeID` = ".$this->GetTypeID()." and `ID` <> ".$this->GetID().$exIdsStr.$orderStr." 
 				limit 0, ".$limit;
-        }
-        
-        $retArr = DB::QueryToArray($sql);
-
-        return $retArr;
-    }
+		}
+		
+		$retArr = DB::QueryToArray($sql);
+		
+		return $retArr;
+	}
 	
 	/**
      * Return title
@@ -1402,16 +1259,16 @@ class Pr_main extends NamedRecord
 		return null;
 	}
 
-	function GetAuthorSiteName()
-	{
-		$query = "select `name` from `site_user` where `ID` = ".$this->m_userID;
-		return DB::QueryToValue($query);
-	}
+    function GetAuthorSiteName()
+    {
+        $query = "select `name` from `site_user` where `ID` = ".$this->m_userID;
+        return DB::QueryToValue($query);
+    }
 
-	function GetAuthorRandom()
-	{
-		$query = "select `random` from `site_user` where `ID` = ".$this->m_userID;
-		return DB::QueryToValue($query);
-	}
+    function GetAuthorRandom()
+    {
+        $query = "select `random` from `site_user` where `ID` = ".$this->m_userID;
+        return DB::QueryToValue($query);
+    }
 }
 ?>

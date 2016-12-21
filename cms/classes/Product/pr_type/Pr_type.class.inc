@@ -12,27 +12,6 @@ class Pr_type extends NamedRecord
 	* @protected array
 	*/
 	protected $m_pattern;
-	
-	/**
-	* Enter description here...
-	*
-	* @protected array
-	*/
-	protected $m_pattern1;
-	
-	/**
-	* Enter description here...
-	*
-	* @protected array
-	*/
-	protected $m_pattern2;
-	
-	/**
-	* Enter description here...
-	*
-	* @protected array
-	*/
-	protected $m_pattern3;
 
 	/**
 	* Enter description here...
@@ -240,6 +219,13 @@ class Pr_type extends NamedRecord
 	/**
 	* Enter description here...
 	*
+	* @protected string
+	*/
+	protected $m_thumbnail_size;
+	
+	/**
+	* Enter description here...
+	*
 	* @protected boolean
 	*/
 	protected $m_icon_crop;
@@ -250,13 +236,27 @@ class Pr_type extends NamedRecord
 	* @protected boolean
 	*/
 	protected $m_cover_crop;
-
-    /**
+	
+	/**
+	* Enter description here...
+	*
+	* @protected boolean
+	*/
+	protected $m_thumbnail_crop;
+	
+	/**
 	* Enter description here...
 	*
 	* @protected int
 	*/
 	protected $m_structureID;
+	
+	/**
+	* Enter description here...
+	*
+	* @protected string
+	*/
+	protected $m_tabs;
 	
 	/**
 	* Enter description here...
@@ -300,36 +300,6 @@ class Pr_type extends NamedRecord
 	function GetPattern($lang = 'en')
 	{
 		return $this->m_pattern[$lang];
-	}
-	
-	/**
-	* Return value of m_patern1
-	*
-	* @return blob
-	*/
-	function GetPattern1($lang = 'en')
-	{
-		return $this->m_pattern1[$lang];
-	}
-	
-	/**
-	* Return value of m_patern2
-	*
-	* @return blob
-	*/
-	function GetPattern2($lang = 'en')
-	{
-		return $this->m_pattern2[$lang];
-	}
-	
-	/**
-	* Return value of m_patern3
-	*
-	* @return blob
-	*/
-	function GetPattern3($lang = 'en')
-	{
-		return $this->m_pattern3[$lang];
 	}
 	
 	/**
@@ -623,6 +593,16 @@ class Pr_type extends NamedRecord
 	}
 	
 	/**
+	* Return value of m_thumbnail_size
+	*
+	* @return string
+	*/
+	function GetThumbnailSize()
+	{
+		return $this->m_thumbnail_size;
+	}
+	
+	/**
 	* Return value of m_icon_crop
 	*
 	* @return string
@@ -641,16 +621,36 @@ class Pr_type extends NamedRecord
 	{
 		return $this->m_cover_crop;
 	}
-
-    /**
-     * Return value of m_structureID
-     *
-     * @return int
-     */
-    function GetStructureID()
-    {
-        return $this->m_structureID;
-    }
+	
+	/**
+	* Return value of m_thumbnail_crop
+	*
+	* @return string
+	*/
+	function GetThumbnailCrop()
+	{
+		return $this->m_thumbnail_crop;
+	}
+	
+	/**
+	* Return value of m_structureID
+	*
+	* @return int
+	*/
+	function GetStructureID()
+	{
+		return $this->m_structureID;
+	}
+	
+	/**
+	* Return value of m_tabs
+	*
+	* @return string
+	*/
+	function GetTabs()
+	{
+		return $this->m_tabs;
+	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	/**
@@ -663,42 +663,6 @@ class Pr_type extends NamedRecord
 	function SetPattern($pattern, $lang, $dbupdate = true)
 	{
 		return $this->UpdateValue("pattern_$lang", $pattern, $dbupdate);
-	}
-	
-	/**
-	* Set value to m_patern1
-	*
-	* @param blob $patern
-	* @param bool $dbupdate
-	* @return bool
-	*/
-	function SetPattern1($pattern, $lang, $dbupdate = true)
-	{
-		return $this->UpdateValue("pattern1_$lang", $pattern, $dbupdate);
-	}
-	
-	/**
-	* Set value to m_patern2
-	*
-	* @param blob $patern
-	* @param bool $dbupdate
-	* @return bool
-	*/
-	function SetPattern2($pattern, $lang, $dbupdate = true)
-	{
-		return $this->UpdateValue("pattern2_$lang", $pattern, $dbupdate);
-	}
-	
-	/**
-	* Set value to m_patern3
-	*
-	* @param blob $patern
-	* @param bool $dbupdate
-	* @return bool
-	*/
-	function SetPattern3($pattern, $lang, $dbupdate = true)
-	{
-		return $this->UpdateValue("pattern3_$lang", $pattern, $dbupdate);
 	}
 	
 	/**
@@ -1050,6 +1014,18 @@ class Pr_type extends NamedRecord
 	}
 	
 	/**
+	* Set value to m_thumbnail_size
+	*
+	* @param blob $value
+	* @param bool $dbupdate
+	* @return bool
+	*/
+	function SetThumbnailSize($value, $dbupdate = true)
+	{
+		return $this->UpdateValue("thumbnail_size", $value, $dbupdate);
+	}
+	
+	/**
 	* Set value to m_icon_crop
 	*
 	* @param blob $value
@@ -1072,18 +1048,42 @@ class Pr_type extends NamedRecord
 	{
 		return $this->UpdateValue("cover_crop", $value, $dbupdate);
 	}
-
-    /**
-     * Set value to m_structureID
-     *
-     * @param blob $value
-     * @param bool $dbupdate
-     * @return bool
-     */
-    function SetStructureID($value, $dbupdate = true)
-    {
-        return $this->UpdateValue("structureID", $value, $dbupdate);
-    }
+	
+	/**
+	* Set value to m_thumbnail_crop
+	*
+	* @param blob $value
+	* @param bool $dbupdate
+	* @return bool
+	*/
+	function SetThumbnailCrop($value, $dbupdate = true)
+	{
+		return $this->UpdateValue("thumbnail_crop", $value, $dbupdate);
+	}
+	
+	/**
+	* Set value to m_structureID
+	*
+	* @param blob $value
+	* @param bool $dbupdate
+	* @return bool
+	*/
+	function SetStructureID($value, $dbupdate = true)
+	{
+		return $this->UpdateValue("structureID", $value, $dbupdate);
+	}
+	
+	/**
+	* Set value to m_tabs
+	*
+	* @param blob $value
+	* @param bool $dbupdate
+	* @return bool
+	*/
+	function SetTabs($value, $dbupdate = true)
+	{
+		return $this->UpdateValue("tabs", $value, $dbupdate);
+	}
 	
 	/**
 	* Delete product types relations

@@ -397,7 +397,6 @@ class TreeView extends View
 			$styleGrCount = count ( $groupStlye );
 		}
 		
-		$totalRating = 0;
 		$currentStyleIndex = 0;
 		$currentGrStyleIndex = 0;
 		$index = 0;
@@ -453,16 +452,7 @@ class TreeView extends View
 							$replaceWith = " (multiple)";
 						}
 					}
-					$patternCopy = str_replace ( "@@$ckey@@", $replaceWith, $patternCopy );
-				}
-				elseif ( $ckey=="url" )
-				{
-					$replaceWith = $structItem[$ckey];
-					if ( strpos($replaceWith, "http")===false )
-					{
-						$replaceWith = "http://".$replaceWith;
-					}
-					$patternCopy = str_replace ( "@@$ckey@@", $replaceWith, $patternCopy );
+					$patternCopy = str_replace ( "@@$ckey@@", "$replaceWith", $patternCopy );
 				}
 				else 
 				{
@@ -480,124 +470,6 @@ class TreeView extends View
 				{
 					$patternCopy = str_replace ( "@@videoCodeImg@@", "img/thumbnail.gif", $patternCopy );
 				}
-			}
-			
-			if ( strpos($patternCopy, "user_rating") )
-			{
-				if ( $totalRating==0 )
-				{
-					foreach ( $this->m_struct as $structItemTemp )
-					{
-						$userID = $structItemTemp["ID"];
-						$rating = 0;
-						$query = "select * from `pr_main` where `userID` = $userID and `status` = 1 and `typeID` = 33";
-						$retArr = DB::QueryToArray($query);
-						if ( is_array($retArr) )
-						{
-							$articlesCount = count($retArr);
-							$daysCount = 0;
-							$totalViewCount = 0;
-							
-							$ratingStr = '';
-							for ( $r=0; $r<count($retArr); $r++ )
-							{
-								$viewCount = $retArr[$r]["googleUniqueViewCount"];
-								if ( $viewCount>0 )
-								{
-									$reportsCount = $retArr[$r]["reportsCount"];
-									
-									$viewCount = $viewCount - $reportsCount;
-									$viewCount = round($viewCount * (100 - $reportsCount*100/$viewCount)/100);
-									if ( $viewCount<0 )
-									{
-										$viewCount = 0;
-									}
-								}
-								
-								$published_date = $retArr[$r]["published_date"];
-								$published_date = strtotime($published_date);
-								
-								$daysCount += ceil((time() - $published_date)/86400);
-								$totalViewCount += $viewCount;
-							}
-							
-							$totalRating += round($totalViewCount/($articlesCount*$daysCount), 6) * 1000000;
-						}
-					}
-				}
-				
-				$userID = $structItem["ID"];
-				$rating = 0;
-				
-				$query = "select * from `pr_main` where `userID` = $userID and `status` = 1 and `typeID` = 33";
-				$retArr = DB::QueryToArray($query);
-				if ( is_array($retArr) )
-				{
-					$articlesCount = count($retArr);
-					$daysCount = 0;
-					$totalViewCount = 0;
-					
-					$ratingStr = '';
-					for ( $r=0; $r<count($retArr); $r++ )
-					{
-						$viewCount = $retArr[$r]["googleUniqueViewCount"];
-						if ( $viewCount>0 )
-						{
-							$reportsCount = $retArr[$r]["reportsCount"];
-							
-							$viewCount = $viewCount - $reportsCount;
-							$viewCount = round($viewCount * (100 - $reportsCount*100/$viewCount)/100);
-							if ( $viewCount<0 )
-							{
-								$viewCount = 0;
-							}
-						}
-						
-						$published_date = $retArr[$r]["published_date"];
-						$published_date = strtotime($published_date);
-						
-						$daysCount += ceil((time() - $published_date)/86400);
-						$totalViewCount += $viewCount;
-						
-						$ratingStr .= '
-							<tr>
-								<td>'.($r+1).') '.$retArr[$r]["name_ru"].'</td>
-								<td align="center">'.$retArr[$r]["published_date"].'</td>
-								<td align="center">'.$retArr[$r]["googleUniqueViewCount"].'</td>
-								<td align="center">'.$retArr[$r]["reportsCount"].'</td>
-							</tr>
-						';
-					}
-					
-					$rating = round($totalViewCount/($articlesCount*$daysCount), 6) * 1000000;
-					
-					$ratingStr = '
-						<table cellpadding="0" cellspasing="10" width="100%">
-							<tr>
-								<td colspan="4" align="center"><b>Rating: '.$rating.' ('.round($rating*100/$totalRating, 2).' %)</b></td>
-							</tr>
-							<tr>
-								<td style="border-bottom:1px solid #666;">Title</td>
-								<td width="120" align="center" style="border-bottom:1px solid #666;">Published Date</td>
-								<td width="80" align="center" style="border-bottom:1px solid #666;">View Count(google unique view)</td>
-								<td width="80" align="center" style="border-bottom:1px solid #666;">Report Count</td>
-							</tr>
-					'.$ratingStr.'
-					</table>
-					';
-				}
-				else 
-				{
-					$ratingStr = '
-						<table cellpadding="0" cellspasing="10" width="100%">
-							<tr>
-								<td colspan="4" align="center"><b>Rating: 0 (0 %)</b></td>
-							</tr>
-						</table>
-					';
-				}
-				
-				$patternCopy = str_replace ( "@@user_rating@@", $ratingStr, $patternCopy );
 			}
 			
 			$class = null;

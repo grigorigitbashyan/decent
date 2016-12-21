@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id="imageOptions">Video options</name>
+	<name id='title'>Title:</name>
+	<name id='desc'>Description:</name>
+	<name id='link'>Insert link:</name>
+	<name id='videoID'>Video ID:</name>
+	<name id='viewCount'>View count:</name>
+	<name id='hide'>Hide:</name>
+	<name id="exFileURL">External File URL:</name>
+	<name id="toalllang">For all languages</name>
+	<name id="upload">Upload</name>
+	<name id="uploadFile">File Upload:</name>
+	<name id="move">Move</name>
+	<name id="reposition">Reposition:</name>
+</names>

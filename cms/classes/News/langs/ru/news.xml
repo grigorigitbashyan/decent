@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id='boxName'>Comments</name>
+	<name id='activated'>Activated</name>
+	<name id='notActivated'>Not activated</name>
+	<name id="purpose">Purpose</name>
+	<name id="date">Date</name>
+</names>

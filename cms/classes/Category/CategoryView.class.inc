@@ -55,25 +55,25 @@ class CategoryView extends View
 	 * @param bool $drawTitle 
 	 * @return bool
 	 */
-	function DisplayContent($contID = 0, $drawDate = false, $drawTitle = true, $siteUserCode = null, $onlyFile = false)
+	function DisplayContent($contID = 0, $drawDate = false, $drawTitle = true, $siteUserCode = null)
 	{
 		$docRoot = $_SERVER ['DOCUMENT_ROOT'] . '/';
 		
 		// get content ID
 		$catID = $this->m_category->GetID ();
 		
-		if ( !$onlyFile )
+		if ( $catID!=327 )
 		{
 			//	display main content
 			if ( $this->m_category->GetShowContentTitle() )
 			{
 				if ( $this->m_category->GetContentTitle($this->m_displayLang) )
 				{
-					echo "<h1>".$this->m_category->GetContentTitle($this->m_displayLang)."</h1><span></span>";
+					echo "<h1 class='heading'>".$this->m_category->GetContentTitle($this->m_displayLang)."</h1>";
 				}
 				else 
 				{
-					echo "<h1>".$this->m_category->GetName($this->m_displayLang)."</h1><span></span>";
+					echo "<h1 class='heading'>".$this->m_category->GetName($this->m_displayLang)."</h1>";
 				}
 			}
 			echo $this->m_category->GetContentText($this->m_displayLang);
@@ -151,108 +151,6 @@ class CategoryView extends View
 			}
 		}
 		
-		return ($beforResult || $contentResult || $afterResult);
-	}
-	function DisplayContentWishlist($contID = 0, $drawDate = false, $drawTitle = true, $siteUserCode = null)
-	{
-		$docRoot = $_SERVER ['DOCUMENT_ROOT'] . '/';
-		
-		// get content ID
-		$catID = $this->m_category->GetID ();
-		?>
-		<div class="inner-wrap title-wrap">
-			<?php
-			//	display main content
-			if ( $this->m_category->GetShowContentTitle() )
-			{
-				if ( $this->m_category->GetContentTitle($this->m_displayLang) )
-				{
-					echo "<h1>".$this->m_category->GetContentTitle($this->m_displayLang)."</h1>";
-				}
-				else 
-				{
-					echo "<h1>".$this->m_category->GetName($this->m_displayLang)."</h1>";
-				}
-			}
-			echo $this->m_category->GetContentText($this->m_displayLang);
-			?>
-		</div>
-		<div class="inner-wrap" id="innerWrap">
-			<?php
-			// get related files and contents counts
-			$contCount = $this->m_category->GetRelContentCount ();
-			// draw before file
-			// file draw result
-			$beforResult = false;
-			
-			// get category related file list
-			$sfRel = new SFRelation ( $catID );
-			
-			$fRelIDs = $sfRel->GetCatRelations ();
-			$root = $this->m_site->GetStructureToFileRoot ();
-			
-			if ($fRelIDs)
-			{
-				foreach ( $fRelIDs as $elatFile )
-				{
-					
-					$filePath = $root . $elatFile ['filename'];
-					
-					// show_type = 0 is before content file
-					if ($elatFile ['show_type'] == 0)
-					{
-						include ($docRoot . $filePath);
-						$beforResult = true;
-					}
-				}
-				
-				reset ( $fRelIDs );
-			}
-			
-			$rel = new SCRelation ( );
-			
-			// get cactegory related content list
-			$relIDs = $rel->GetCatRelations ( $catID, $this->m_displayLang, false );
-			
-			// get related contents count
-			$countIDs = count ( $relIDs );
-			
-			// content draw result
-			$contentResult = false;
-			if ($contCount == 1) // if structure type is 1, simple type
-			{
-				// single content
-				$contID = ($countIDs > 0) ? $relIDs [0] ['ID'] : 0;
-				$contentResult = $this->DrawSingleContent ( $contID, $drawDate, $drawTitle, $siteUserCode );
-			}
-			elseif ($contCount > 1) // for news type, it has more contents
-			{
-				// multi content
-				$contentResult = $this->DrawMultiContent ( $relIDs, $contID, $drawTitle, $siteUserCode );
-			}
-			
-			// draw after file
-			// file draw result
-			$afterResult = false;
-			
-			if ($fRelIDs)
-			{
-				foreach ( $fRelIDs as $elatFile )
-				{
-					
-					$filePath = $root . $elatFile ['filename'];
-					
-					// show_type = 0 is before content file
-					if ($elatFile ['show_type'] == 1)
-					{
-						include ($docRoot . $filePath);
-						$afterResult = true;
-					}
-				}
-			}
-			?>
-		</div>
-		<?php
 		return ($beforResult || $contentResult || $afterResult);
 	}
 	
@@ -449,9 +347,11 @@ class CategoryView extends View
 	 * Draw Category metas ` Title, description and keywords
 	 *
 	 */
-	function DrawHeaders($prTitle='', $prTitleOpt=0, $prDesc='', $prDescOpt=0, $prKeywords='', $prKeywordsOpt=0, $prImg='img/thumbnail.gif', $pagePath='', $prAuthor='', $prPdate='', $prMdate='', $prTags='')
+	function DrawHeaders($prTitle='', $prTitleOpt=0, $prDesc='', $prDescOpt=0, $prKeywords='', $prKeywordsOpt=0, $prImg='img/thumbnail.gif', $pagePath='')
 	{
 		print ( "<base href='{$this->m_site->GetSiteURL()}' />\n" );
+		print ( "<meta name='author' content='ArattaDesign' />\n" );
+		print ( "<meta name=\"language\" content=\"{$this->m_displayLang}\" />\n" );
 		
 		// meta options
 		$titleOpt = $this->m_category->GetTitleOpt();
@@ -518,42 +418,37 @@ class CategoryView extends View
 				$pageTile = $this->m_site->GetDefaultTitle($this->m_displayLang);
 			}
 		}
-		$pageTile = trim($pageTile);
 		
 		//	configure page description
-		if ( $prDescOpt==2 )		//	only item desc
+		if ( $prDescOpt==2 )	//	only item desc
 		{
 			$pageDesc = $prDesc;
 		}
-		elseif ( $descsOpt )		//	page desc + item desc
+		elseif ( $descsOpt )	//	page desc + item desc
 		{
 			$pageDesc = $this->m_category->GetDescription($this->m_displayLang)." ".$prDesc;
 		}
-		else 						//	default desc + page desc + item desc
+		else 					//	default desc + page desc + item desc
 		{
 			$pageDesc = $this->m_site->GetDefaultDescription($this->m_displayLang)." ".$this->m_category->GetDescription($this->m_displayLang)." ".$prDesc;
 		}
-		$pageDesc = trim($pageDesc);
 		
 		//	configure page keywords
 		if ( $prKeywordsOpt==2 )	//	only item keywords
 		{
 			$pageKeywords = $prKeywords;
 		}
-		elseif ( $keywsOpt )		//	page keywords + item keywords
+		elseif ( $keywsOpt )	//	page keywords + item keywords
 		{
 			$pageKeywords = $this->m_category->GetKeywords($this->m_displayLang).", ".$prKeywords;
 		}
-		else 						//	default keywords + page keywords + item keywords
+		else 					//	default keywords + page keywords + item keywords
 		{
 			$pageKeywords = $this->m_site->GetDefaultKeywords($this->m_displayLang).", ".$this->m_category->GetKeywords($this->m_displayLang).", ".$prKeywords;
 		}
-		$pageKeywords = trim($pageKeywords);
 		
 		//	display meta tags
-		print ( "<meta name=\"language\" content=\"{$this->m_displayLang}\" />\n" );
 		print ( "<title>$pageTile</title>\n" );
-		print ( "<meta name=\"author\" content=\"$prAuthor\" />\n" );
 		print ( "<meta name=\"Description\" content=\"$pageDesc\" />\n" );
 //		print ( "<meta name=\"Keywords\" content=\"$pageKeywords\" />\n" );
 		
@@ -561,38 +456,26 @@ class CategoryView extends View
 		$siteName = $this->m_site->GetSiteName ();
 		print ( "<meta name=\"copyright\" content=\"&copy; ".date("Y")." $siteName\" />\n" );
 		
-		//	facebook tags
-		print ("<meta property=\"og:title\" content=\"$pageTile\" />\n");
-		print ("<meta property=\"og:image\" content=\"$prImg\" />\n");
-		print ("<meta property=\"og:url\" content=\"$pagePath\" />\n");
-		print ("<meta property=\"og:site_name\" content=\"$siteName\" />\n");
-		print ("<meta property=\"og:description\" content=\"$pageDesc\" />\n");
-		if ( $prAuthor=="Emprise Design" )
+		if ( $prImg=="" )
 		{
-			print ("<meta property=\"og:type\" content=\"website\" />\n");
-		}
-		else 
-		{
-			print ("<meta property=\"og:type\" content=\"article\" />\n");
-			print ("<meta property=\"og:article:published_time\" content=\"$prPdate\" />\n");
-			print ("<meta property=\"og:article:modified_time\" content=\"$prMdate\" />\n");
-			print ("<meta property=\"og:article:author\" content=\"$prAuthor\" />\n");
-			for ( $i=0; $i<count($prTags); $i++ )
+			$prImg = $this->m_site->GetDefaultPicture();
+			if ( $prImg=="" )
 			{
-				print ("<meta property=\"og:article:tag\" content=\"".$prTags[$i]."\" />\n");
+				$prImg = $this->m_site->GetSiteURL()."images/social.jpg";
+			}
+			else 
+			{
+				$prImg = $this->m_site->GetSiteURL().$prImg;
 			}
 		}
 		
-		//	twitter tags
-		print ("<meta property=\"twitter:title\" content=\"$pageTile\" />\n");
-		print ("<meta property=\"twitter:description\" content=\"$pageDesc\" />\n");
-		print ("<meta property=\"twitter:site\" content=\"@Blockchain Research & Development Hub\" />\n");
-		print ("<meta property=\"twitter:url\" content=\"$pagePath\" />\n");
-		print ("<meta property=\"twitter:card\" content=\"summary\" />\n");
-		print ("<meta property=\"twitter:image:src\" content=\"$prImg\" />\n");
-		
-		//	iOS webpage icon
-//		print ("<link rel=\"apple-touch-icon\" href=\"/ios_icon.png\">\n");
+		//	facebook tags
+		print ("<meta property=\"og:title\" content=\"".$pageTile."\" />\n");
+		print ("<meta property=\"og:type\" content=\"website\" />\n");
+		print ("<meta property=\"og:image\" content=\"".$prImg."\" />\n");
+		print ("<meta property=\"og:url\" content=\"".$pagePath."\" />\n");
+		print ("<meta property=\"og:site_name\" content=\"Safronov Brothers\" />\n");
+		print ("<meta property=\"og:description\" content=\"".$pageDesc."\" />\n");
 	}
 	
 	/**

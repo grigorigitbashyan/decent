@@ -100,26 +100,20 @@ class ProductViewSite extends View
 		{
 			$params['sorttype'] = 'DESC';
 			$params['sortby'] = 'date';
-			if ( isset($_GET["sortby"]) && $_GET["sortby"]=="recomended" )
-			{
-				$params['sortby'] = $_GET["sortby"];
-			}
-			
-			if ( isset($_GET["sortby"]) && $_GET["sortby"]=="popular" )
-			{
-				$params['sortby'] = "viewCount";
-			}
 		}
 		
 		$params['region'] = (isset($_GET["region"]) ? $_GET["region"]: "");
 		$params['date'] = (isset($_GET["date"]) ? $_GET["date"]: "");
 		
-		// read rpoduct count in one page
+		// read product count in one page
 		$productList = new Pr_mainListView ( $this->m_catID, $this->m_catPath, $countInPage, $params );
+		$productListAll = new Pr_mainListView ( $this->m_catID, $this->m_catPath, 1000, $params );
 		
 		$listObj = $productList->GetProductList ();
-		
-		$count = $listObj->GetAllCount ();
+		$listObjAll = $productListAll->GetProductList ();
+
+		$count = count($listObj->GetStructure());
+		$countAll = count($listObjAll->GetStructure());
 		
 		//	added by Grigor - checking content relations with current page
 		$rel = new SCRelation ( );
@@ -137,25 +131,36 @@ class ProductViewSite extends View
 				$this->DisplayGroup ();
 			}
 		}
+		elseif ( /*$count==1*/ 0 )
+		{
+			$item = $listObj->GetStructure ();
+			if (! $this->m_productView)
+			{
+				$this->m_productView = new Pr_mainView($item[0]['ID']);
+			}
+			
+			$this->DisplayItem ();
+		}
 		else
 		{
-			$tag = "";
-			if ( $params[0] )
+			$typeCount = $listObj->GetGroupedCount("typeID");
+			if ( $typeCount==1 )
 			{
-				$tempOD = new Optionsdata($params[0], "key");
-				$tag = $tempOD->GetName($this->m_displayLang);
+				$articles = $listObj->GetStructure();
+				$articleType = $articles[0]["typeID"];
+				
+				$prType = new Pr_type($articleType);
+				$prTabs = $prType->GetTabs();
+				
+				$prTabs = unserialize($prTabs);
+				if ( in_array("redirect", $prTabs) )
+				{
+					header("location:".$this->m_site->GetSiteURL().$this->m_displayLang."/".$articles[0]["random"]);
+					exit();
+				}
 			}
 			
-			$productList->Display ($tag);
-			
-			if ( $count>$countInPage )
-			{
-				?>
-				<br clear="all">
-				<a id="loadMore" class="more-button h-centered" data-page="1" data-maxpage="<?php echo ceil($count/$countInPage);?>">еще</a>
-				<?php
-			}
-//			$productList->DisplayNavigation ( $afterLink );
+			$productList->Display ($count);
 		}
 	}
 	
@@ -173,82 +178,6 @@ class ProductViewSite extends View
 		{
 			$pr = $this->m_productView->GetProduct ();
 			return $pr->GetName ( $this->m_displayLang );
-		}
-		
-		return null;
-	}
-	
-	/**
-	 * Enter description here...
-	 *
-	 * @param array $params
-	 * @return string|null
-	 */
-	function GetProductAuthor($params)
-	{
-		$this->SetProductView ( $params );
-		
-		if ($this->m_productView)
-		{
-			$pr = $this->m_productView->GetProduct ();
-			return $pr->GetAuthorSiteName();
-		}
-		
-		return null;
-	}
-	
-	/**
-	 * Enter description here...
-	 *
-	 * @param array $params
-	 * @return string|null
-	 */
-	function GetPublishedDate($params)
-	{
-		$this->SetProductView ( $params );
-		
-		if ($this->m_productView)
-		{
-			$pr = $this->m_productView->GetProduct ();
-			return $pr->GetPublishedDate();
-		}
-		
-		return null;
-	}
-	
-	/**
-	 * Enter description here...
-	 *
-	 * @param array $params
-	 * @return string|null
-	 */
-	function GetUpdatedDate($params)
-	{
-		$this->SetProductView ( $params );
-		
-		if ($this->m_productView)
-		{
-			$pr = $this->m_productView->GetProduct ();
-			return $pr->GetUpdatedDate();
-		}
-		
-		return null;
-	}
-	
-	/**
-	 * Enter description here...
-	 *
-	 * @param array $params
-	 * @return string|null
-	 */
-	function GetProductTags($params)
-	{
-		$this->SetProductView ( $params );
-		
-		if ($this->m_productView)
-		{
-			$pr = $this->m_productView->GetProduct ();
-			return $pr->GetFieldValue(71, "ru", true);
 		}
 		
 		return null;

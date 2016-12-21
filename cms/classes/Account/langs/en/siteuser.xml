@@ -16,8 +16,7 @@
 	<name id="regName1">registration - form</name>
 	<name id="regName2">registration - successful</name>
 	<name id="regName3">registration - unsuccessful</name>
-	<name id="regName4">registration - existent user(e-mail)</name>
-	<name id="regName29">registration - existent user(nickname)</name>
+	<name id="regName4">registration - existent user</name>
 	<name id="regName28">registration - incorrect captcha</name>
 	
 	<name id="regName5">activation - email</name>
@@ -51,7 +50,4 @@
 	<name id="regName25">added by administrator - email</name>
 	
 	<name id="regName26">activated by administrator - email</name>
-	
-	<name id="regName30">Invitation - email</name>
-	<name id="regName31">Invitation - successful registration</name>
 </names>

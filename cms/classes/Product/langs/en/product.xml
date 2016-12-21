@@ -2,8 +2,9 @@
 <!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
 <names>
 	<name id="directories">Directories</name>
-	<name id="description">Text</name>
-	<name id="shortDescription">Short Text</name>
+	<name id="subtitle">Subtitle</name>
+	<name id="description">Full text</name>
+	<name id="shortDescription">Short text</name>
 	<name id="createProduct">Create a product:</name>
 	<name id="controller">Controller</name>
 	<name id="date">Date</name>

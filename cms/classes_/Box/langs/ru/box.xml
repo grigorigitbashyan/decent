@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<name id='box'>Бокс</name>
+	<name id='boxCollection'>Калиекция</name>
+	<name id='newBox'>Новий бокс</name>
+	<name id='newBoxName'>Имя нового бокса</name>
+	<name id='newboxCollection'>Новая колекция боксов</name>
+	<name id='newboxCollName'>Имя колекции: </name>
+	<name id="collBoxesTitle">Боксы</name>
+	<name id="relatedBoxes">Связние боксы</name>
+	<name id="allBoxes">Все боксы</name>
+	<name id="catRelColl">Связние коллекции боксов</name>
+	<name id="relFile">Связние File</name>
+</names>

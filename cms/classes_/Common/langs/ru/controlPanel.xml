@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE names SYSTEM "http://www.siteius.com/permanent/0-9-3/dtd/name.dtd">
+<names>
+	<!-- User accounts  -->
+	<name id="userTitle">Учет пользователей</name>
+	<name id="siteOptions">Опции сайта</name>
+	<name id="seoTools">Опции SEO</name>
+	<name id="userStats">Статистика пользователей</name>
+	
+	<name id="websiteName">Имия вебсайта</name>
+	<name id="defWebsiteName">Имия вебсайта:</name>
+	
+	<name id="metadata">Метаданные</name>
+	<name id="defTitle">Название по умолчанию:</name>
+	<name id="defDesc">Описание по умолчанию:</name>
+	<name id="defKeys">Ключевые слова по умолчанию:</name>
+	<name id="addLanguage">Language options</name>
+	
+	<name id="status">Статус</name>
+	<name id="online">режим онлайн</name>
+	<name id="offline">режим офлайн</name>
+	<name id="offlineMessage">Сообщение режима офлайн</name>
+	
+	<name id="sitemap">XML карта сайта</name>
+	<name id="robots">Робот</name>
+	
+	<name id="cmsOptions">Опции CMS-а</name>
+	<name id="cmsLanguage">Выбрать язык CMS-а:</name>
+	<name id="help">Справка</name>
+	<name id="about">O Siteius CMS</name>
+	
+	<name id="generate">Generate</name>
+</names>

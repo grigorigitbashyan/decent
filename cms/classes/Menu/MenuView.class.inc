@@ -215,6 +215,7 @@ class MenuView extends View
 				}
 				else
 				{
+					$path = '';
 					$target = '';
 					// external or internal links
 					if (strpos ( $menuItem ['path'], 'http://' ) === 0)
@@ -224,7 +225,7 @@ class MenuView extends View
 					}
 					else
 					{
-						$path = $siteURL.$this->m_displayLang."/".$menuItem ['path'];
+						$path = $siteURL . $lang . '/' . $menuItem ['path'];
 					}
 					
 					print ("<a href='$path'$target>{$menuItem['name']}</a>");

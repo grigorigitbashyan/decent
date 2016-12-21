@@ -10,6 +10,11 @@ Site::IncludeFile ( 'classes/UserManagement/UserTypeListCMS.class.inc' );
 Site::IncludeFile('classes/Common/ContentCaching.class.inc');
 Site::IncludeFile('classes/Common/ValueCMS.class.inc');
 Site::IncludeFile('classes/Folder/FolderXP.class.inc');
+
+Site::IncludeFile('classes/Analitics/Analitics.class.inc');
+Site::IncludeFile('classes/Analitics/AnaliticsList.class.inc');
+
+Site::IncludeFile('classes/Common/Image.class.inc');
 /**
  * Enter description here...
  *
@@ -90,6 +95,62 @@ class ControlPanelCMS extends CMSObject implements CMSInterface
 				{
 					$rootCat->SetKeywords ( $description, $this->m_displayLang, 3 );
 				}
+				
+				$picture = $_FILES["picture"];
+				if ( $picture["size"]>0 )
+				{
+					$name = str_replace(" ", "", $picture['name']);
+					
+					$path_parts = pathinfo($picture['name']);
+					$esxt = $path_parts['extension'];
+					$esxt = strtolower($esxt);
+					
+					$pos = strripos($name, $esxt);
+					$name = rand(11111, 99999).".".$esxt;
+					
+					$types = array('jpg', 'jpeg', 'png');
+					$res = array_search($esxt, $types);
+					if ( is_int($res) )
+					{
+						$fileAddress = "../media/images/".$name;
+						if ( !file_exists($fileAddress) )
+						{
+							$oldPicture = $rootCat->GetPicture();
+							if ( $oldPicture)
+							{
+								$oldPicture = "../".$oldPicture;
+								if ( file_exists($oldPicture) )
+								{
+									unlink($oldPicture);
+								}
+							}
+							
+							$res = FolderXP::Upload($picture['tmp_name'], $fileAddress);
+							
+							//	resize
+							$maxWidth = $this->m_site->GetMaxImageWidth();
+							$im = new Image();
+							$im->ChangeSizeInBox($fileAddress, $maxWidth);
+							
+							$fileAddress = substr($fileAddress, 3);
+							$rootCat->SetPicture($fileAddress);
+						}
+					}
+				}
+				elseif ( isset($_POST["delete"]) && $_POST["delete"]=="on" ) 
+				{
+					$oldPicture = $rootCat->GetPicture();
+					if ( $oldPicture)
+					{
+						$oldPicture = "../".$oldPicture;
+						if ( file_exists($oldPicture) )
+						{
+							unlink($oldPicture);
+						}
+					}
+					
+					$rootCat->SetPicture("");
+				}
 				break;
 			case 'status' :
 				// read values form form
@@ -111,6 +172,44 @@ class ControlPanelCMS extends CMSObject implements CMSInterface
 				{
 					// open robots.txt file anr write new content
 					file_put_contents ( '../robots.txt', $str );
+				}
+				break;
+			case 'analitics':
+				$title = trim($_POST['title']);
+				$code = $_POST['code'];
+				$place = intval($_POST['place']);
+				if ( $title && $code )
+				{
+					$aFileName = rand(1111, 9999).".html";
+					file_put_contents("../media/analytics/".$aFileName, $code);
+					
+					$properties["title"] = $title;
+					$properties["url"] = $aFileName;
+					$properties["place"] = $place;
+					
+					$analitics = new Analitics();
+					$analitics->Insert($properties);
+				}
+				break;
+			case 'analitics_edit':
+				$item = intval($_POST['item']);
+				$analitics = new Analitics($item);
+				if ( isset($_POST["delete"]) )
+				{
+					unlink("../media/analytics/".$analitics->GetUrl());
+					$analitics->Delete();
+				}
+				else 
+				{
+					$title = trim($_POST['title']);
+					$code = $_POST['code'];
+					$place = intval($_POST['place']);
+					if ( $title && $code )
+					{
+						$analitics->SetTitle($title);
+						$analitics->SetPlace($place);
+						file_put_contents("../media/analytics/".$analitics->GetUrl(), $code);
+					}
 				}
 				break;
 			case 'cmsLang' :
@@ -371,8 +470,11 @@ class ControlPanelCMS extends CMSObject implements CMSInterface
 		//sitemap.xml
 		$this->printMenuItem ( 'sitemap.xml', 'sitemapxml' );
 		
-		// Status
+		// robots.txt
 		$this->printMenuItem ( 'robots.txt', 'robotstxt' );
+		
+		// analitics
+		$this->printMenuItem ( 'Analitics', 'analytics' );
 		print ( '</div>' );
 		
 		print ( '<br />
@@ -469,13 +571,15 @@ class ControlPanelCMS extends CMSObject implements CMSInterface
 				$title = $rootCat->GetTitle ( $this->m_displayLang );
 				$keywords = $rootCat->GetKeywords ( $this->m_displayLang );
 				$description = $rootCat->GetDescription ( $this->m_displayLang );
+				$picture = $rootCat->GetPicture();
 				
 				// display form
 				print ( '<div class="someContent">' );
-				$this->DisplayFormHeadr ( 'metadata' );
+				$this->DisplayFormHeadr ( 'metadata', '', 'post', ' enctype="multipart/form-data"' );
 				print ( '<div class="metadataFormLabel"><label><strong>' . $defTitleS . '</strong></label></div>' );
 				print ( '<div style="float:left"><input name="title" value="' . $title . '" type="text" size="56" maxlength="256" style="font-size:14px" /></div>' );
 				print ( '<br class="clearFloat" />' );
+				
 				print ( '<div class="metadataFormLabel"><label><strong>' . $defDescS . '</strong></label></div>' );
 				print ( '<div style="float:left"><textarea name="description" cols="40" rows="5">' . $description . '</textarea></div>' );
 				print ( '<br class="clearFloat" /><br />' );
@@ -484,9 +588,22 @@ class ControlPanelCMS extends CMSObject implements CMSInterface
 				print ( '<div style="float:left"><textarea name="keywords" cols="40" rows="5">' . $keywords . '</textarea></div>' );
 				print ( '<br class="clearFloat" /><br />' );
 				
+				print ( '<div class="metadataFormLabel"><label><strong>Picture</strong></label></div>' );
+				print ( '<div style="float:left"><input name="picture" type="file" /></div>' );
+				print ( '<br class="clearFloat" />' );
+				
+				if ( $picture && file("../".$picture) )
+				{
+					print ( '<div class="metadataFormLabel">&nbsp;</div>' );
+					print ( '<div style="float:left"><img src="../'.$picture.'" width="200" /><br /><input type="checkbox" name="delete"> delete</div>' );
+					print ( '<br class="clearFloat" />' );
+					print ( '<br class="clearFloat" />' );
+				}
+				
 				print ( '<div class="metadataFormLabel"><label><strong>&nbsp;</strong></label></div>' );
 				print ( '<div style="float:left"><input name="" type="submit" value="' . $doneS . '" /></div>' );
 				print ( '<br class="clearFloat" />' );
+				
 				print ( '</form>' );
 				print ( '</div>' );
 				
@@ -752,6 +869,75 @@ class ControlPanelCMS extends CMSObject implements CMSInterface
 				$this->DisplayFormHeadr ( 'robotstxtGeneration' );
 				$this->DisplayFormFooter ( $generateS );
 				
+				break;
+			case 'analytics':
+				$this->DisplayTitle ( "Analytics" );
+				
+				// display form
+				print ( '<div class="someContent">' );
+				$this->DisplayFormHeadr ( 'analitics' );
+				print ( '<div class="metadataFormLabel"><label><strong>Title</strong></label></div>' );
+				print ( '<div style="float:left"><input name="title" value="" type="text" size="56" maxlength="256" style="font-size:14px" /></div>' );
+				print ( '<br class="clearFloat" />' );
+				print ( '<div class="metadataFormLabel"><label><strong>Code</strong></label></div>' );
+				print ( '<div style="float:left;padding-bottom:10px;"><textarea name="code" cols="100" rows="15"></textarea></div>' );
+				print ( '<br class="clearFloat" />' );
+				print ( '<div class="metadataFormLabel"><label><strong>Place</strong></label></div>' );
+				?>
+				<div style="float:left">
+					<select name="place">
+						<option value="1">Head</option>
+						<option value="2">Body</option>
+					</select>
+				</div>
+				<?php
+				print ( '<br class="clearFloat" /><br />' );
+				print ( '<div class="metadataFormLabel"><label><strong>&nbsp;</strong></label></div>' );
+				print ( '<div style="float:left"><input name="" type="submit" value="Add" /></div>' );
+				print ( '<br class="clearFloat" />' );
+				print ( '</form>' );
+				print ( '</div>' );
+				
+				$analiticsList = new AnaliticsList();
+				$analiticsListArr = $analiticsList->GetStructure();
+				if ( is_array($analiticsListArr) )
+				{
+					$this->DisplayTitle ( "Already exist" );
+					for ( $i=0; $i<count($analiticsListArr); $i++ )
+					{
+						if ( ($i+1)==count($analiticsListArr) )
+						{
+							print ( '<div class="someContent">' );
+						}
+						else 
+						{
+							print ( '<div class="someContent" style="border-bottom:1px solid #999;">' );
+						}
+						$this->DisplayFormHeadr ( 'analitics_edit' );
+						$this->DisplayHidden("item", $analiticsListArr[$i]["ID"]);
+						print ( '<div class="metadataFormLabel"><label><strong>Title</strong></label></div>' );
+						print ( '<div style="float:left"><input name="title" value="'.$analiticsListArr[$i]["title"].'" type="text" size="56" maxlength="256" style="font-size:14px" /></div>' );
+						print ( '<br class="clearFloat" />' );
+						print ( '<div class="metadataFormLabel"><label><strong>Code</strong></label></div>' );
+						print ( '<div style="float:left"><textarea name="code" cols="100" rows="15">'.file_get_contents("../media/analytics/".$analiticsListArr[$i]["url"]).'</textarea></div>' );
+						print ( '<br class="clearFloat" />' );
+						print ( '<div class="metadataFormLabel"><label><strong>Place</strong></label></div>' );
+						?>
+						<div style="float:left">
+							<select name="place">
+								<option value="1"<?php echo ($analiticsListArr[$i]["place"]==1 ? " selected": "");?>>Head</option>
+								<option value="2"<?php echo ($analiticsListArr[$i]["place"]==2 ? " selected": "");?>>Body</option>
+							</select>
+						</div>
+						<?php
+						print ( '<br class="clearFloat" /><br />' );
+						print ( '<div class="metadataFormLabel"><label><strong>&nbsp;</strong></label></div>' );
+						print ( '<div style="float:left"><input name="edit" type="submit" value="Edit" /> <input name="delete" type="submit" value="Delete" /></div>' );
+						print ( '<br class="clearFloat" />' );
+						print ( '</form>' );
+						print ( '</div>' );
+					}
+				}
 				break;
 			case 'cmsoptions' :
 				// cms options

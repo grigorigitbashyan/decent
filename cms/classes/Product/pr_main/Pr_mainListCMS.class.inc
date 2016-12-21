@@ -39,13 +39,6 @@ class Pr_mainListCMS extends CMSObject implements CMSInterface
 	/**
 	 * Enter description here...
 	 *
-	 * @var int
-	 */
-	protected $m_field18;
-	
-	/**
-	 * Enter description here...
-	 *
 	 * @param int $productTypeID
 	 */
 	function __construct($productTypeID = null)
@@ -53,7 +46,7 @@ class Pr_mainListCMS extends CMSObject implements CMSInterface
 		parent::__construct ();
 		$this->m_productTypeID = $productTypeID;
 		$status = DB::GET('status');
-		$field18 = DB::GET('field18');
+		$field = DB::GET('field');
 		if ( $status=="0" || $status=="1" || $status=="2" || $status=="3" || $status=="4" )
 		{
 			
@@ -63,12 +56,12 @@ class Pr_mainListCMS extends CMSObject implements CMSInterface
 			$status = "all";
 		}
 		
-		if ( $field18=="" )
+		if ( $field=="" )
 		{
-			$field18 = "all";
+			$field = 0;
 		}
+		
 		$this->m_status = $status;
-		$this->m_field18 = $field18;
 		$this->Update ();
 		
 		// read strings
@@ -269,50 +262,9 @@ class Pr_mainListCMS extends CMSObject implements CMSInterface
 	class="titleBox">
 	<tr>
 		<td>
-			<div class="titleColL"><span style="padding-right:20px">
-				Status: 
-				<select name="status" id="status" onchange="document.location='index.php?pr_typeID=<?php echo $this->m_productTypeID;?>&field18=<?php echo $this->m_field18;?>&status=' + this.value;">
-					<option value="all">All</option>
-					<option value="0"<?php echo ($this->m_status=="0" ? " selected": "");?>>Not published</option>
-					<option value="1"<?php echo ($this->m_status=="1" ? " selected": "");?>>Published</option>
-					<option value="2"<?php echo ($this->m_status=="2" ? " selected": "");?>>Approved</option>
-					<option value="3"<?php echo ($this->m_status=="3" ? " selected": "");?>>Rejected</option>
-					<option value="4"<?php echo ($this->m_status=="4" ? " selected": "");?>>Updated</option>
-				</select>
-			</div>
-			<?php
-			$PTFieldList = new Pr_typefieldList($this->m_productTypeID);
-			if ( $PTFieldList->HasField($this->m_productTypeID, 18) || $PTFieldList->HasFieldInGroup($this->m_productTypeID, 18) )
-			{
-				$prField = new Pr_field(18);
-				$prFieldOID = $prField->GetSubID();
-				
-				$optionData = new OptionsdataList($prFieldOID);
-				$optionDataList = $optionData->GetStructure();
-				if ( is_array($optionDataList) )
-				{
-					?>
-					<div class="titleColL"><span style="padding-right:20px">
-						<?php echo $prField->GetName();?>: 
-						<select name="field18" id="field18" onchange="document.location='index.php?pr_typeID=<?php echo $this->m_productTypeID;?>&status=<?php echo $this->m_status;?>&field18=' + this.value;">
-							<option value="all">All</option>
-							<?php
-							for ( $i=0; $i<count($optionDataList); $i++ )
-							{
-								?>
-								<option value="<?php echo $optionDataList[$i]["ID"];?>"<?php echo ($this->m_field18==$optionDataList[$i]["ID"] ? " selected": "");?>><?php echo $optionDataList[$i]["name"];?></option>
-								<?php
-							}
-							?>
-						</select>
-					</div>
-					<?php
-				}
-			}
-			?>
 			<div class="titleColL"><span style="padding-right: 20px">
 				<?php
-				$this->m_pr_mainList->DisplayNavigation ( "pr_typeID=$this->m_productTypeID&status=$this->m_status&field18=$this->m_field18" );
+				$this->m_pr_mainList->DisplayNavigation ( "pr_typeID=$this->m_productTypeID&status=$this->m_status" );
 				?>
 			</div>
 			<div class="titleColR">
@@ -364,47 +316,6 @@ class Pr_mainListCMS extends CMSObject implements CMSInterface
 	class="titleBox">
 	<tr>
 		<td>
-			<div class="titleColL"><span style="padding-right:20px">
-				Status: 
-				<select name="status" id="status" onchange="document.location='index.php?pr_typeID=<?php echo $this->m_productTypeID;?>&status=' + this.value;">
-					<option value="all">All</option>
-					<option value="0"<?php echo ($this->m_status=="0" ? " selected": "");?>>Not published</option>
-					<option value="1"<?php echo ($this->m_status=="1" ? " selected": "");?>>Published</option>
-					<option value="2"<?php echo ($this->m_status=="2" ? " selected": "");?>>Approved</option>
-					<option value="3"<?php echo ($this->m_status=="3" ? " selected": "");?>>Rejected</option>
-					<option value="4"<?php echo ($this->m_status=="4" ? " selected": "");?>>Updated</option>
-				</select>
-			</div>
-			<?php
-			$PTFieldList = new Pr_typefieldList($this->m_productTypeID);
-			if ( $PTFieldList->HasField($this->m_productTypeID, 18) || $PTFieldList->HasFieldInGroup($this->m_productTypeID, 18) )
-			{
-				$prField = new Pr_field(18);
-				$prFieldOID = $prField->GetSubID();
-				
-				$optionData = new OptionsdataList($prFieldOID);
-				$optionDataList = $optionData->GetStructure();
-				if ( is_array($optionDataList) )
-				{
-					?>
-					<div class="titleColL"><span style="padding-right:20px">
-						<?php echo $prField->GetName();?>: 
-						<select name="field18" id="field18" onchange="document.location='index.php?pr_typeID=<?php echo $this->m_productTypeID;?>&status=<?php echo $this->m_status;?>&field18=' + this.value;">
-							<option value="all">All</option>
-							<?php
-							for ( $i=0; $i<count($optionDataList); $i++ )
-							{
-								?>
-								<option value="<?php echo $optionDataList[$i]["ID"];?>"<?php echo ($this->m_field18==$optionDataList[$i]["ID"] ? " selected": "");?>><?php echo $optionDataList[$i]["name"];?></option>
-								<?php
-							}
-							?>
-						</select>
-					</div>
-					<?php
-				}
-			}
-			?>
 			<div class="titleColL"></div>
 			<div class="titleColR"></div>
 			<br class="clearFloat" />
@@ -422,7 +333,7 @@ class Pr_mainListCMS extends CMSObject implements CMSInterface
 	 */
 	function Update()
 	{
-		$this->m_pr_mainList = new Pr_mainList ( $this->m_productTypeID, 40, 'date', $this->m_status, $this->m_field18 );
+		$this->m_pr_mainList = new Pr_mainList ( $this->m_productTypeID, 40, 'date', $this->m_status );
 	}
 	
 	/**
